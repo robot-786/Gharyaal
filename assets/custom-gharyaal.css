@@ -1,0 +1,395 @@
+/**
+ * Gharyaal Watch Store - Custom CSS
+ * Luxury watch aesthetic styling
+ * 
+ * To use this file, add the following to your theme.liquid layout:
+ * {{ 'custom-gharyaal.css' | asset_url | stylesheet_tag }}
+ */
+
+/* ============================================
+   ROOT VARIABLES - Luxury Watch Theme
+   ============================================ */
+:root {
+  /* Gold/Luxury accent colors */
+  --gharyaal-gold: #D4AF37;
+  --gharyaal-gold-dark: #B8860B;
+  --gharyaal-gold-light: #F5E6BC;
+  
+  /* Dark luxury tones */
+  --gharyaal-black: #0a0a0a;
+  --gharyaal-charcoal: #1a1a1a;
+  --gharyaal-dark-gray: #2d2d2d;
+  
+  /* Light backgrounds */
+  --gharyaal-white: #ffffff;
+  --gharyaal-off-white: #f8f8f8;
+  --gharyaal-light-gray: #e5e5e5;
+}
+
+/* ============================================
+   TYPOGRAPHY ENHANCEMENTS
+   ============================================ */
+/* Elegant heading styles */
+h1, h2, h3, .h1, .h2, .h3 {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+/* ============================================
+   HERO SECTION ENHANCEMENTS
+   ============================================ */
+.section--hero {
+  position: relative;
+}
+
+.section--hero h1 {
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 700;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* ============================================
+   PRODUCT CARD ENHANCEMENTS
+   ============================================ */
+/* Card hover effects */
+.product-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* Product title styling */
+.product-card__content .product-title {
+  font-weight: 500;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Price styling with sale emphasis */
+.product-card .price__sale .price__regular {
+  text-decoration: line-through;
+  opacity: 0.6;
+  font-size: 0.875em;
+}
+
+.product-card .price__sale .price__current {
+  color: #dc2626;
+  font-weight: 700;
+}
+
+/* ============================================
+   CUSTOM BADGE ENHANCEMENTS
+   ============================================ */
+/* Override badge styling for luxury look */
+.product-badges {
+  gap: 6px;
+}
+
+.product-badges__badge {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  backdrop-filter: blur(4px);
+}
+
+/* Top Seller - Gold gradient */
+.product-badges__badge--top-seller {
+  background: linear-gradient(135deg, var(--gharyaal-gold), var(--gharyaal-gold-dark));
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(212, 175, 55, 0.4);
+}
+
+/* New Arrival - Blue accent */
+.product-badges__badge--new {
+  background: #2563eb;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.4);
+}
+
+/* Super Clone - Premium black & gold */
+.product-badges__badge--super-clone {
+  background: linear-gradient(135deg, var(--gharyaal-black), var(--gharyaal-charcoal));
+  color: var(--gharyaal-gold);
+  border: 1px solid var(--gharyaal-gold);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Limited Edition - Red urgency */
+.product-badges__badge--limited {
+  background: #dc2626;
+  color: #fff;
+  animation: pulse-badge 2s infinite;
+}
+
+@keyframes pulse-badge {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.85; }
+}
+
+/* Exclusive - Purple gradient */
+.product-badges__badge--exclusive {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.4);
+}
+
+/* ============================================
+   COLLECTION CARD ENHANCEMENTS
+   ============================================ */
+/* Brand collection cards */
+.collection-card {
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.collection-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 50px rgba(0, 0, 0, 0.15);
+}
+
+.collection-card__title {
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* ============================================
+   WHY CHOOSE US SECTION
+   ============================================ */
+.section-why-choose-us {
+  background: linear-gradient(180deg, var(--gharyaal-off-white) 0%, var(--gharyaal-white) 100%);
+}
+
+.why-choose-us__icon {
+  background: linear-gradient(135deg, var(--gharyaal-gold-light), #fff);
+  border-radius: 50%;
+  padding: 16px;
+  box-shadow: 0 4px 20px rgba(212, 175, 55, 0.2);
+}
+
+.why-choose-us__icon svg {
+  color: var(--gharyaal-gold-dark);
+}
+
+.why-choose-us__item {
+  background: var(--gharyaal-white);
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.why-choose-us__item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* ============================================
+   REVIEWS CAROUSEL SECTION
+   ============================================ */
+.reviews-carousel__card {
+  border: 1px solid var(--gharyaal-light-gray);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.reviews-carousel__card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+}
+
+.reviews-carousel__star--filled {
+  color: var(--gharyaal-gold) !important;
+}
+
+/* ============================================
+   INSTAGRAM FEED SECTION
+   ============================================ */
+.instagram-feed__item {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.instagram-feed__overlay {
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.8), rgba(184, 134, 11, 0.8));
+}
+
+.instagram-feed__handle a {
+  color: var(--gharyaal-gold-dark);
+}
+
+/* ============================================
+   BUTTON ENHANCEMENTS
+   ============================================ */
+/* Primary button - Gold accent */
+.button-primary,
+.button--primary {
+  background: linear-gradient(135deg, var(--gharyaal-gold), var(--gharyaal-gold-dark));
+  color: var(--gharyaal-black);
+  border: none;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  transition: all 0.3s ease;
+}
+
+.button-primary:hover,
+.button--primary:hover {
+  background: linear-gradient(135deg, var(--gharyaal-gold-dark), #996515);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+}
+
+/* Secondary button */
+.button-secondary,
+.button--secondary {
+  border: 2px solid var(--gharyaal-charcoal);
+  color: var(--gharyaal-charcoal);
+  background: transparent;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  transition: all 0.3s ease;
+}
+
+.button-secondary:hover,
+.button--secondary:hover {
+  background: var(--gharyaal-charcoal);
+  color: var(--gharyaal-white);
+}
+
+/* ============================================
+   HEADER ENHANCEMENTS
+   ============================================ */
+/* Announcement bar styling */
+.announcement-bar {
+  background: var(--gharyaal-charcoal);
+  color: var(--gharyaal-white);
+}
+
+.announcement-bar a {
+  color: var(--gharyaal-gold);
+}
+
+/* ============================================
+   FOOTER ENHANCEMENTS
+   ============================================ */
+.footer {
+  border-top: 1px solid var(--gharyaal-light-gray);
+}
+
+/* Social icons */
+.footer .social-icons a:hover {
+  color: var(--gharyaal-gold);
+}
+
+/* ============================================
+   FACETS/FILTERS ENHANCEMENTS
+   ============================================ */
+.facets__label {
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.75rem;
+}
+
+.facets__checkbox:checked + .facets__label::before {
+  background: var(--gharyaal-gold);
+  border-color: var(--gharyaal-gold);
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+@media screen and (max-width: 749px) {
+  .product-card:hover {
+    transform: none;
+    box-shadow: none;
+  }
+  
+  .why-choose-us__item:hover {
+    transform: none;
+  }
+  
+  .collection-card:hover {
+    transform: none;
+  }
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.section {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ============================================
+   WHATSAPP FLOATING BUTTON (Optional)
+   ============================================ */
+.whatsapp-float {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 30px;
+  right: 30px;
+  background: #25d366;
+  color: #fff;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 30px;
+  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.whatsapp-float:hover {
+  background: #128c7e;
+  transform: scale(1.1);
+  box-shadow: 0 8px 30px rgba(37, 211, 102, 0.5);
+}
+
+.whatsapp-float svg {
+  width: 32px;
+  height: 32px;
+  fill: currentColor;
+}
+
+@media screen and (max-width: 749px) {
+  .whatsapp-float {
+    width: 50px;
+    height: 50px;
+    bottom: 20px;
+    right: 20px;
+  }
+  
+  .whatsapp-float svg {
+    width: 26px;
+    height: 26px;
+  }
+}

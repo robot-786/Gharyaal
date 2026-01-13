@@ -1,0 +1,384 @@
+{% comment %}
+  Instagram Feed Section - Gharyaal Watch Store
+  Displays Instagram posts in a grid layout with a Visit Instagram button
+{% endcomment %}
+
+<div class="section-background color-{{ section.settings.color_scheme }}"></div>
+
+<div
+  class="
+    section
+    section--{{ section.settings.section_width }}
+    color-{{ section.settings.color_scheme }}
+    instagram-feed-section
+    spacing-style
+    gap-style
+  "
+  style="
+    {% render 'spacing-style', settings: section.settings %}
+    {% render 'gap-style', value: section.settings.gap %}
+  "
+>
+  <div class="instagram-feed__header">
+    {% if section.settings.heading != blank %}
+      <h2 class="instagram-feed__title h2">{{ section.settings.heading }}</h2>
+    {% endif %}
+    {% if section.settings.subheading != blank %}
+      <p class="instagram-feed__subtitle">{{ section.settings.subheading }}</p>
+    {% endif %}
+    {% if section.settings.instagram_handle != blank %}
+      <p class="instagram-feed__handle">
+        <a href="{{ section.settings.instagram_url }}" target="_blank" rel="noopener noreferrer">
+          @{{ section.settings.instagram_handle }}
+        </a>
+      </p>
+    {% endif %}
+  </div>
+
+  {% if section.blocks.size > 0 %}
+    <div class="instagram-feed__grid instagram-feed__grid--{{ section.settings.columns }}-columns">
+      {% for block in section.blocks %}
+        <div class="instagram-feed__item" {{ block.shopify_attributes }}>
+          <a 
+            href="{{ block.settings.post_url | default: section.settings.instagram_url }}" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="instagram-feed__link"
+          >
+            {% if block.settings.image != blank %}
+              <div class="instagram-feed__image-wrapper">
+                {{ block.settings.image | image_url: width: 400 | image_tag: 
+                  loading: 'lazy',
+                  class: 'instagram-feed__image',
+                  widths: '200, 300, 400'
+                }}
+                <div class="instagram-feed__overlay">
+                  <svg class="instagram-feed__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                    <path d="m16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+                  </svg>
+                </div>
+              </div>
+            {% else %}
+              <div class="instagram-feed__placeholder">
+                {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+              </div>
+            {% endif %}
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  {% if section.settings.show_button and section.settings.instagram_url != blank %}
+    <div class="instagram-feed__footer">
+      <a 
+        href="{{ section.settings.instagram_url }}" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        class="button button-secondary instagram-feed__button"
+      >
+        {{ section.settings.button_text | default: 'Visit Instagram' }}
+      </a>
+    </div>
+  {% endif %}
+</div>
+
+{% stylesheet %}
+  .instagram-feed-section {
+    text-align: center;
+  }
+
+  .instagram-feed__header {
+    margin-bottom: var(--padding-xl);
+  }
+
+  .instagram-feed__title {
+    margin: 0 0 var(--padding-sm);
+  }
+
+  .instagram-feed__subtitle {
+    margin: 0 0 var(--padding-xs);
+    opacity: 0.8;
+    max-width: 600px;
+    margin-inline: auto;
+  }
+
+  .instagram-feed__handle a {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .instagram-feed__handle a:hover {
+    text-decoration: underline;
+  }
+
+  .instagram-feed__grid {
+    display: grid;
+    gap: var(--padding-sm);
+  }
+
+  .instagram-feed__grid--3-columns {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .instagram-feed__grid--4-columns {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .instagram-feed__grid--5-columns {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  .instagram-feed__grid--6-columns {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  @media screen and (max-width: 989px) {
+    .instagram-feed__grid--5-columns,
+    .instagram-feed__grid--6-columns {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .instagram-feed__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .instagram-feed__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .instagram-feed__item {
+    aspect-ratio: 1;
+  }
+
+  .instagram-feed__link {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--border-radius, 4px);
+  }
+
+  .instagram-feed__image-wrapper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  .instagram-feed__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+
+  .instagram-feed__link:hover .instagram-feed__image {
+    transform: scale(1.05);
+  }
+
+  .instagram-feed__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .instagram-feed__link:hover .instagram-feed__overlay {
+    opacity: 1;
+  }
+
+  .instagram-feed__icon {
+    width: 32px;
+    height: 32px;
+    color: #fff;
+  }
+
+  .instagram-feed__placeholder {
+    aspect-ratio: 1;
+    background: var(--color-background);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--border-radius, 4px);
+  }
+
+  .instagram-feed__placeholder svg {
+    width: 40%;
+    height: 40%;
+    opacity: 0.3;
+  }
+
+  .instagram-feed__footer {
+    margin-top: var(--padding-xl);
+  }
+
+  .instagram-feed__button {
+    min-width: 200px;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Instagram Feed",
+  "class": "section-instagram-feed",
+  "tag": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Follow Us on Instagram"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Stay updated with our latest collections"
+    },
+    {
+      "type": "text",
+      "id": "instagram_handle",
+      "label": "Instagram handle",
+      "default": "gharyaal.pk",
+      "info": "Without the @ symbol"
+    },
+    {
+      "type": "url",
+      "id": "instagram_url",
+      "label": "Instagram profile URL",
+      "info": "https://instagram.com/gharyaal.pk"
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_button",
+      "label": "Show visit button",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "Visit Instagram"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "columns",
+      "label": "Columns",
+      "options": [
+        { "value": "3", "label": "3" },
+        { "value": "4", "label": "4" },
+        { "value": "5", "label": "5" },
+        { "value": "6", "label": "6" }
+      ],
+      "default": "6"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "Section width",
+      "options": [
+        { "value": "page-width", "label": "Page width" },
+        { "value": "full-width", "label": "Full width" }
+      ],
+      "default": "page-width"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "label": "Gap between items",
+      "min": 0,
+      "max": 40,
+      "step": 4,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "Top padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    }
+  ],
+  "blocks": [
+    {
+      "type": "post",
+      "name": "Instagram Post",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Post image"
+        },
+        {
+          "type": "url",
+          "id": "post_url",
+          "label": "Post URL (optional)",
+          "info": "Link to specific Instagram post. Leave blank to use profile URL."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Instagram Feed",
+      "category": "Social",
+      "blocks": [
+        { "type": "post" },
+        { "type": "post" },
+        { "type": "post" },
+        { "type": "post" },
+        { "type": "post" },
+        { "type": "post" }
+      ]
+    }
+  ]
+}
+{% endschema %}

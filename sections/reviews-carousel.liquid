@@ -1,0 +1,391 @@
+{% comment %}
+  Reviews Carousel Section - Gharyaal Watch Store
+  Displays customer review screenshots in an auto-scrolling horizontal carousel
+{% endcomment %}
+
+<div class="section-background color-{{ section.settings.color_scheme }}"></div>
+
+<div
+  class="
+    section
+    section--{{ section.settings.section_width }}
+    color-{{ section.settings.color_scheme }}
+    reviews-carousel-section
+    spacing-style
+    gap-style
+  "
+  style="
+    {% render 'spacing-style', settings: section.settings %}
+    {% render 'gap-style', value: section.settings.gap %}
+  "
+>
+  {% if section.settings.heading != blank %}
+    <div class="reviews-carousel__header">
+      <h2 class="reviews-carousel__title h2">{{ section.settings.heading }}</h2>
+      {% if section.settings.subheading != blank %}
+        <p class="reviews-carousel__subtitle">{{ section.settings.subheading }}</p>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  {% if section.blocks.size > 0 %}
+    {% capture slides %}
+      {% for block in section.blocks %}
+        <div class="reviews-carousel__slide" {{ block.shopify_attributes }}>
+          <div class="reviews-carousel__card">
+            {% if block.settings.image != blank %}
+              <div class="reviews-carousel__image-wrapper">
+                {{ block.settings.image | image_url: width: 400 | image_tag: 
+                  loading: 'lazy',
+                  class: 'reviews-carousel__image',
+                  widths: '200, 300, 400'
+                }}
+              </div>
+            {% else %}
+              <div class="reviews-carousel__placeholder">
+                {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+              </div>
+            {% endif %}
+            
+            {% if block.settings.customer_name != blank or block.settings.review_text != blank %}
+              <div class="reviews-carousel__content">
+                {% if block.settings.rating > 0 %}
+                  <div class="reviews-carousel__stars">
+                    {% for i in (1..5) %}
+                      <span class="reviews-carousel__star {% if i <= block.settings.rating %}reviews-carousel__star--filled{% endif %}">★</span>
+                    {% endfor %}
+                  </div>
+                {% endif %}
+                
+                {% if block.settings.review_text != blank %}
+                  <p class="reviews-carousel__text">{{ block.settings.review_text }}</p>
+                {% endif %}
+                
+                {% if block.settings.customer_name != blank %}
+                  <p class="reviews-carousel__customer">— {{ block.settings.customer_name }}</p>
+                {% endif %}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    {% endcapture %}
+
+    {% render 'slideshow',
+      slides: slides,
+      slide_count: section.blocks.size,
+      show_arrows: section.settings.show_arrows,
+      icon_style: section.settings.icons_style,
+      icon_shape: section.settings.icons_shape,
+      autoplay: section.settings.autoplay,
+      autoplay_speed: section.settings.autoplay_speed,
+      infinite: true,
+      class: 'reviews-carousel__slideshow'
+    %}
+  {% endif %}
+</div>
+
+{% stylesheet %}
+  .reviews-carousel-section {
+    overflow: hidden;
+  }
+
+  .reviews-carousel__header {
+    text-align: center;
+    margin-bottom: var(--padding-xl);
+  }
+
+  .reviews-carousel__title {
+    margin: 0 0 var(--padding-sm);
+  }
+
+  .reviews-carousel__subtitle {
+    margin: 0;
+    opacity: 0.8;
+    max-width: 600px;
+    margin-inline: auto;
+  }
+
+  .reviews-carousel__slideshow {
+    --slideshow-slide-size: 300px;
+  }
+
+  .reviews-carousel__slide {
+    flex: 0 0 auto;
+    width: 300px;
+    padding: var(--padding-xs);
+  }
+
+  @media screen and (max-width: 749px) {
+    .reviews-carousel__slide {
+      width: 260px;
+    }
+  }
+
+  .reviews-carousel__card {
+    background: var(--color-background);
+    border-radius: var(--border-radius, 8px);
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    height: 100%;
+  }
+
+  .reviews-carousel__image-wrapper {
+    aspect-ratio: 1;
+    overflow: hidden;
+  }
+
+  .reviews-carousel__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .reviews-carousel__placeholder {
+    aspect-ratio: 1;
+    background: var(--color-background);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .reviews-carousel__placeholder svg {
+    width: 50%;
+    height: 50%;
+    opacity: 0.3;
+  }
+
+  .reviews-carousel__content {
+    padding: var(--padding-md);
+  }
+
+  .reviews-carousel__stars {
+    margin-bottom: var(--padding-sm);
+  }
+
+  .reviews-carousel__star {
+    color: #ddd;
+    font-size: 1.2rem;
+  }
+
+  .reviews-carousel__star--filled {
+    color: #ffc107;
+  }
+
+  .reviews-carousel__text {
+    margin: 0 0 var(--padding-sm);
+    font-size: var(--font-size--sm);
+    line-height: 1.6;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .reviews-carousel__customer {
+    margin: 0;
+    font-size: var(--font-size--xs);
+    opacity: 0.7;
+    font-style: italic;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Reviews Carousel",
+  "class": "section-reviews-carousel",
+  "tag": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Customer Reviews"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "See what our customers have to say"
+    },
+    {
+      "type": "header",
+      "content": "Slideshow"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Autoplay",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "autoplay_speed",
+      "label": "Autoplay speed (seconds)",
+      "min": 2,
+      "max": 10,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "checkbox",
+      "id": "show_arrows",
+      "label": "Show navigation arrows",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "icons_style",
+      "label": "Arrow style",
+      "options": [
+        { "value": "arrow", "label": "Arrow" },
+        { "value": "chevron", "label": "Chevron" },
+        { "value": "none", "label": "None" }
+      ],
+      "default": "chevron"
+    },
+    {
+      "type": "select",
+      "id": "icons_shape",
+      "label": "Arrow shape",
+      "options": [
+        { "value": "none", "label": "None" },
+        { "value": "circle", "label": "Circle" },
+        { "value": "square", "label": "Square" }
+      ],
+      "default": "circle"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "Section width",
+      "options": [
+        { "value": "page-width", "label": "Page width" },
+        { "value": "full-width", "label": "Full width" }
+      ],
+      "default": "page-width"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "label": "Gap",
+      "min": 0,
+      "max": 60,
+      "step": 4,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "Top padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Screenshot image"
+        },
+        {
+          "type": "range",
+          "id": "rating",
+          "label": "Star rating",
+          "min": 0,
+          "max": 5,
+          "step": 1,
+          "default": 5,
+          "info": "Set to 0 to hide stars"
+        },
+        {
+          "type": "textarea",
+          "id": "review_text",
+          "label": "Review text (optional)",
+          "info": "Leave empty for screenshot-only display"
+        },
+        {
+          "type": "text",
+          "id": "customer_name",
+          "label": "Customer name (optional)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Reviews Carousel",
+      "category": "Social proof",
+      "blocks": [
+        {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "review_text": "Amazing quality watch! Looks exactly like the original.",
+            "customer_name": "Ahmed K."
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "review_text": "Fast delivery and excellent customer service.",
+            "customer_name": "Bilal S."
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "review_text": "Best watch store in Pakistan. Highly recommended!",
+            "customer_name": "Hassan M."
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "review_text": "The craftsmanship is incredible. Will buy again.",
+            "customer_name": "Usman R."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
