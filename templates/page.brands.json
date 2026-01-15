@@ -1,7 +1,10 @@
 /*
  * ------------------------------------------------------------
- * Shop By Brands Page Template
- * Displays all watch brands in a grid layout with images
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
 {
@@ -95,8 +98,6 @@
     },
     "brands_grid": {
       "type": "collection-list",
-      "blocks": {},
-      "block_order": [],
       "settings": {
         "collection_list": [],
         "layout_type": "grid",
@@ -109,7 +110,6 @@
         "icons_style": "chevron",
         "icons_shape": "circle",
         "section_width": "page-width",
-        "horizontal_alignment": "center",
         "gap": 24,
         "color_scheme": "scheme-1",
         "padding-block-start": 60,

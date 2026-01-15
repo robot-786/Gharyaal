@@ -1,113 +1,106 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
-    "hero_main": {
-      "type": "hero",
+    "watch_carousel_hero": {
+      "type": "watch-carousel-hero",
       "blocks": {
-        "hero_heading": {
+        "slide_1": {
+          "type": "watch_slide",
+          "settings": {}
+        },
+        "slide_2": {
+          "type": "watch_slide",
+          "settings": {}
+        },
+        "slide_3": {
+          "type": "watch_slide",
+          "settings": {}
+        },
+        "slide_4": {
+          "type": "watch_slide",
+          "settings": {}
+        },
+        "slide_5": {
+          "type": "watch_slide",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "slide_1",
+        "slide_2",
+        "slide_3",
+        "slide_4",
+        "slide_5"
+      ],
+      "settings": {
+        "section_height": 750,
+        "background_color": "#000000",
+        "enable_autoplay": true,
+        "autoplay_speed": 5,
+        "heading": "The Ultimate Luxury Timepieces",
+        "heading_color": "#ffffff",
+        "subheading": "Discover Exquisite Collections",
+        "subheading_color": "#d4af37",
+        "button_text": "Shop Now",
+        "button_link": "shopify://collections/all",
+        "button_bg_color": "#d4af37",
+        "button_text_color": "#000000"
+      }
+    },
+    "brand_marquee": {
+      "type": "marquee",
+      "blocks": {
+        "marquee_text_1": {
           "type": "text",
           "settings": {
-            "text": "<h1>Premium Master Copies</h1>",
+            "text": "<p>Rolex • Patek Philippe • Audemars Piguet • Vacheron Constantin • Cartier • Omega • Gharyaal By Taimour</p>",
             "width": "fit-content",
             "max_width": "normal",
-            "alignment": "center",
-            "type_preset": "h1",
-            "font": "var(--font-heading--family)",
-            "font_size": "3rem",
-            "line_height": "display-tight",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "color": "#ffffff",
+            "alignment": "left",
+            "type_preset": "body",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "0.15em",
+            "case": "uppercase",
+            "wrap": "nowrap",
+            "color": "#D4AF37",
             "background": false,
-            "background_color": "#00000026",
+            "background_color": "",
             "corner_radius": 0,
             "padding-block-start": 0,
             "padding-block-end": 0,
             "padding-inline-start": 0,
             "padding-inline-end": 0
           }
-        },
-        "hero_subheading": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Luxury Watches | As Good As Original</p>",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "center",
-            "type_preset": "body",
-            "font": "var(--font-body--family)",
-            "font_size": "1.25rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "color": "#ffffffcc",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 8,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          }
-        },
-        "hero_button": {
-          "type": "button",
-          "settings": {
-            "label": "Shop Now",
-            "link": "shopify://collections/all",
-            "open_in_new_tab": false,
-            "style_class": "button-primary",
-            "width": "fit-content",
-            "custom_width": 100,
-            "width_mobile": "fit-content",
-            "custom_width_mobile": 100
-          }
         }
       },
       "block_order": [
-        "hero_heading",
-        "hero_subheading",
-        "hero_button"
+        "marquee_text_1"
       ],
       "settings": {
-        "media_type_1": "image",
-        "media_type_2": "image",
-        "stack_media_on_mobile": false,
-        "custom_mobile_media": false,
-        "media_type_1_mobile": "image",
-        "media_type_2_mobile": "image",
-        "link": "",
-        "open_in_new_tab": false,
-        "content_direction": "column",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "center",
-        "vertical_alignment": "center",
-        "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "center",
-        "vertical_alignment_flex_direction_column": "center",
-        "gap": 16,
-        "section_width": "full-width",
-        "section_height": "large",
-        "section_height_custom": 70,
-        "color_scheme": "scheme-6",
-        "toggle_overlay": true,
-        "overlay_color": "#00000066",
-        "overlay_style": "solid",
-        "gradient_direction": "to bottom",
-        "blurred_reflection": false,
-        "reflection_opacity": 75,
-        "padding-block-start": 100,
-        "padding-block-end": 100
+        "movement_direction": "normal",
+        "color_scheme": "scheme-2",
+        "padding-block-start": 16,
+        "padding-block-end": 16,
+        "gap_between_elements": 0
       }
     },
-    "shop_by_brands": {
+    "shop_by_brand": {
       "type": "collection-list",
       "blocks": {
-        "brands_heading": {
+        "heading": {
           "type": "text",
           "settings": {
-            "text": "<h2>Shop By Brands</h2>",
+            "text": "<h2>Shop By Brand</h2>",
             "width": "100%",
             "max_width": "normal",
             "alignment": "center",
@@ -115,53 +108,28 @@
             "font": "var(--font-heading--family)",
             "font_size": "",
             "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
+            "letter_spacing": "0.05em",
+            "case": "uppercase",
             "wrap": "pretty",
-            "color": "var(--color-foreground-heading)",
+            "color": "#D4AF37",
             "background": false,
-            "background_color": "#00000026",
+            "background_color": "",
             "corner_radius": 0,
             "padding-block-start": 0,
             "padding-block-end": 0,
             "padding-inline-start": 0,
             "padding-inline-end": 0
           }
-        },
-        "brands_subheading": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Explore our collection of premium timepieces from the world's most prestigious brands</p>",
-            "width": "100%",
-            "max_width": "normal",
-            "alignment": "center",
-            "type_preset": "body",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "color": "var(--color-foreground)",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 24,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          }
         }
       },
       "block_order": [
-        "brands_heading",
-        "brands_subheading"
+        "heading"
       ],
       "settings": {
         "collection_list": [],
         "layout_type": "carousel",
-        "carousel_on_mobile": false,
-        "columns": 5,
+        "carousel_on_mobile": true,
+        "columns": 6,
         "mobile_columns": "2",
         "mobile_card_size": "60cqw",
         "columns_gap": 16,
@@ -169,11 +137,10 @@
         "icons_style": "chevron",
         "icons_shape": "circle",
         "section_width": "page-width",
-        "horizontal_alignment": "center",
-        "gap": 16,
+        "gap": 40,
         "color_scheme": "scheme-1",
-        "padding-block-start": 60,
-        "padding-block-end": 60
+        "padding-block-start": 80,
+        "padding-block-end": 80
       }
     },
     "new_arrivals": {
@@ -225,12 +192,12 @@
                 "font": "var(--font-heading--family)",
                 "font_size": "",
                 "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
+                "letter_spacing": "0.05em",
+                "case": "uppercase",
                 "wrap": "pretty",
-                "color": "var(--color-foreground-heading)",
+                "color": "#D4AF37",
                 "background": false,
-                "background_color": "#00000026",
+                "background_color": "",
                 "corner_radius": 0,
                 "padding-block-start": 0,
                 "padding-block-end": 0,
@@ -243,7 +210,6 @@
               "name": "t:names.product_list_button",
               "settings": {
                 "label": "View All",
-                "link": "shopify://collections/new-arrivals",
                 "open_in_new_tab": false,
                 "style_class": "link",
                 "width": "fit-content",
@@ -253,7 +219,10 @@
               }
             }
           },
-          "block_order": ["product_list_text", "product_list_button"]
+          "block_order": [
+            "product_list_text",
+            "product_list_button"
+          ]
         },
         "static-product-card": {
           "type": "_product-card",
@@ -302,11 +271,11 @@
                 "letter_spacing": "normal",
                 "case": "none",
                 "wrap": "pretty",
-                "color": "var(--color-foreground)",
+                "color": "#ffffff",
                 "background": false,
-                "background_color": "#00000026",
+                "background_color": "",
                 "corner_radius": 0,
-                "padding-block-start": 8,
+                "padding-block-start": 12,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
@@ -323,39 +292,42 @@
                 "width": "100%",
                 "alignment": "left",
                 "font": "var(--font-body--family)",
-                "font_size": "1rem",
+                "font_size": "1.125rem",
                 "line_height": "normal",
                 "letter_spacing": "normal",
                 "case": "none",
-                "color": "var(--color-foreground)",
-                "padding-block-start": 4,
+                "color": "#D4AF37",
+                "padding-block-start": 6,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
               }
             }
           },
-          "block_order": ["product-card-gallery", "product_title", "price"]
+          "block_order": [
+            "product-card-gallery",
+            "product_title",
+            "price"
+          ]
         }
       },
-      "block_order": [],
       "settings": {
         "collection": "new-arrivals",
         "layout_type": "carousel",
         "carousel_on_mobile": true,
         "max_products": 12,
-        "columns": 5,
+        "columns": 4,
         "mobile_columns": "2",
         "mobile_card_size": "60cqw",
-        "columns_gap": 16,
+        "columns_gap": 20,
         "rows_gap": 24,
         "icons_style": "chevron",
         "icons_shape": "circle",
         "section_width": "page-width",
         "horizontal_alignment": "flex-start",
-        "gap": 32,
+        "gap": 40,
         "color_scheme": "scheme-1",
-        "padding-block-start": 60,
+        "padding-block-start": 80,
         "padding-block-end": 60
       }
     },
@@ -400,7 +372,7 @@
               "type": "_product-list-text",
               "name": "t:names.collection_title",
               "settings": {
-                "text": "<h2>Rolex Collection</h2>",
+                "text": "<h2>Rolex</h2>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -408,12 +380,12 @@
                 "font": "var(--font-heading--family)",
                 "font_size": "",
                 "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
+                "letter_spacing": "0.05em",
+                "case": "uppercase",
                 "wrap": "pretty",
-                "color": "var(--color-foreground-heading)",
+                "color": "#D4AF37",
                 "background": false,
-                "background_color": "#00000026",
+                "background_color": "",
                 "corner_radius": 0,
                 "padding-block-start": 0,
                 "padding-block-end": 0,
@@ -426,7 +398,6 @@
               "name": "t:names.product_list_button",
               "settings": {
                 "label": "View All",
-                "link": "shopify://collections/rolex",
                 "open_in_new_tab": false,
                 "style_class": "link",
                 "width": "fit-content",
@@ -436,7 +407,10 @@
               }
             }
           },
-          "block_order": ["product_list_text", "product_list_button"]
+          "block_order": [
+            "product_list_text",
+            "product_list_button"
+          ]
         },
         "static-product-card": {
           "type": "_product-card",
@@ -485,11 +459,11 @@
                 "letter_spacing": "normal",
                 "case": "none",
                 "wrap": "pretty",
-                "color": "var(--color-foreground)",
+                "color": "#ffffff",
                 "background": false,
-                "background_color": "#00000026",
+                "background_color": "",
                 "corner_radius": 0,
-                "padding-block-start": 8,
+                "padding-block-start": 12,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
@@ -506,39 +480,230 @@
                 "width": "100%",
                 "alignment": "left",
                 "font": "var(--font-body--family)",
-                "font_size": "1rem",
+                "font_size": "1.125rem",
                 "line_height": "normal",
                 "letter_spacing": "normal",
                 "case": "none",
-                "color": "var(--color-foreground)",
-                "padding-block-start": 4,
+                "color": "#D4AF37",
+                "padding-block-start": 6,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
               }
             }
           },
-          "block_order": ["product-card-gallery", "product_title", "price"]
+          "block_order": [
+            "product-card-gallery",
+            "product_title",
+            "price"
+          ]
         }
       },
-      "block_order": [],
       "settings": {
         "collection": "rolex",
         "layout_type": "carousel",
         "carousel_on_mobile": true,
-        "max_products": 8,
+        "max_products": 12,
         "columns": 4,
         "mobile_columns": "2",
         "mobile_card_size": "60cqw",
-        "columns_gap": 16,
+        "columns_gap": 20,
         "rows_gap": 24,
         "icons_style": "chevron",
         "icons_shape": "circle",
         "section_width": "page-width",
         "horizontal_alignment": "flex-start",
-        "gap": 32,
+        "gap": 40,
         "color_scheme": "scheme-1",
-        "padding-block-start": 60,
+        "padding-block-start": 80,
+        "padding-block-end": 60
+      }
+    },
+    "patek_philippe_collection": {
+      "type": "product-list",
+      "blocks": {
+        "static-header": {
+          "type": "_product-list-content",
+          "name": "t:names.header",
+          "static": true,
+          "settings": {
+            "content_direction": "row",
+            "vertical_on_mobile": false,
+            "horizontal_alignment": "space-between",
+            "vertical_alignment": "flex-end",
+            "align_baseline": true,
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 12,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "background_media": "none",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "product_list_text": {
+              "type": "_product-list-text",
+              "name": "t:names.collection_title",
+              "settings": {
+                "text": "<h2>Patek Philippe</h2>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "h2",
+                "font": "var(--font-heading--family)",
+                "font_size": "",
+                "line_height": "normal",
+                "letter_spacing": "0.05em",
+                "case": "uppercase",
+                "wrap": "pretty",
+                "color": "#D4AF37",
+                "background": false,
+                "background_color": "",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              }
+            },
+            "product_list_button": {
+              "type": "_product-list-button",
+              "name": "t:names.product_list_button",
+              "settings": {
+                "label": "View All",
+                "open_in_new_tab": false,
+                "style_class": "link",
+                "width": "fit-content",
+                "custom_width": 100,
+                "width_mobile": "fit-content",
+                "custom_width_mobile": 100
+              }
+            }
+          },
+          "block_order": [
+            "product_list_text",
+            "product_list_button"
+          ]
+        },
+        "static-product-card": {
+          "type": "_product-card",
+          "name": "t:names.product_card",
+          "static": true,
+          "settings": {
+            "product_card_gap": 8,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "product-card-gallery": {
+              "type": "_product-card-gallery",
+              "name": "t:names.product_card_media",
+              "settings": {
+                "image_ratio": "portrait",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 8,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              }
+            },
+            "product_title": {
+              "type": "product-title",
+              "name": "t:names.product_title",
+              "settings": {
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "body",
+                "font": "var(--font-body--family)",
+                "font_size": "0.875rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "#ffffff",
+                "background": false,
+                "background_color": "",
+                "corner_radius": 0,
+                "padding-block-start": 12,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              }
+            },
+            "price": {
+              "type": "price",
+              "name": "t:names.product_price",
+              "settings": {
+                "show_sale_price_first": true,
+                "show_installments": false,
+                "show_tax_info": false,
+                "type_preset": "h6",
+                "width": "100%",
+                "alignment": "left",
+                "font": "var(--font-body--family)",
+                "font_size": "1.125rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "color": "#D4AF37",
+                "padding-block-start": 6,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              }
+            }
+          },
+          "block_order": [
+            "product-card-gallery",
+            "product_title",
+            "price"
+          ]
+        }
+      },
+      "settings": {
+        "collection": "patek-philippe",
+        "layout_type": "carousel",
+        "carousel_on_mobile": true,
+        "max_products": 12,
+        "columns": 4,
+        "mobile_columns": "2",
+        "mobile_card_size": "60cqw",
+        "columns_gap": 20,
+        "rows_gap": 24,
+        "icons_style": "chevron",
+        "icons_shape": "circle",
+        "section_width": "page-width",
+        "horizontal_alignment": "flex-start",
+        "gap": 40,
+        "color_scheme": "scheme-1",
+        "padding-block-start": 80,
         "padding-block-end": 60
       }
     },
@@ -583,7 +748,7 @@
               "type": "_product-list-text",
               "name": "t:names.collection_title",
               "settings": {
-                "text": "<h2>Audemars Piguet Collection</h2>",
+                "text": "<h2>Audemars Piguet</h2>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -591,12 +756,12 @@
                 "font": "var(--font-heading--family)",
                 "font_size": "",
                 "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
+                "letter_spacing": "0.05em",
+                "case": "uppercase",
                 "wrap": "pretty",
-                "color": "var(--color-foreground-heading)",
+                "color": "#D4AF37",
                 "background": false,
-                "background_color": "#00000026",
+                "background_color": "",
                 "corner_radius": 0,
                 "padding-block-start": 0,
                 "padding-block-end": 0,
@@ -609,7 +774,6 @@
               "name": "t:names.product_list_button",
               "settings": {
                 "label": "View All",
-                "link": "shopify://collections/audemars-piguet",
                 "open_in_new_tab": false,
                 "style_class": "link",
                 "width": "fit-content",
@@ -619,7 +783,10 @@
               }
             }
           },
-          "block_order": ["product_list_text", "product_list_button"]
+          "block_order": [
+            "product_list_text",
+            "product_list_button"
+          ]
         },
         "static-product-card": {
           "type": "_product-card",
@@ -668,11 +835,11 @@
                 "letter_spacing": "normal",
                 "case": "none",
                 "wrap": "pretty",
-                "color": "var(--color-foreground)",
+                "color": "#ffffff",
                 "background": false,
-                "background_color": "#00000026",
+                "background_color": "",
                 "corner_radius": 0,
-                "padding-block-start": 8,
+                "padding-block-start": 12,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
@@ -689,39 +856,418 @@
                 "width": "100%",
                 "alignment": "left",
                 "font": "var(--font-body--family)",
-                "font_size": "1rem",
+                "font_size": "1.125rem",
                 "line_height": "normal",
                 "letter_spacing": "normal",
                 "case": "none",
-                "color": "var(--color-foreground)",
-                "padding-block-start": 4,
+                "color": "#D4AF37",
+                "padding-block-start": 6,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
               }
             }
           },
-          "block_order": ["product-card-gallery", "product_title", "price"]
+          "block_order": [
+            "product-card-gallery",
+            "product_title",
+            "price"
+          ]
         }
       },
-      "block_order": [],
       "settings": {
         "collection": "audemars-piguet",
         "layout_type": "carousel",
         "carousel_on_mobile": true,
-        "max_products": 8,
+        "max_products": 12,
         "columns": 4,
         "mobile_columns": "2",
         "mobile_card_size": "60cqw",
-        "columns_gap": 16,
+        "columns_gap": 20,
         "rows_gap": 24,
         "icons_style": "chevron",
         "icons_shape": "circle",
         "section_width": "page-width",
         "horizontal_alignment": "flex-start",
-        "gap": 32,
+        "gap": 40,
         "color_scheme": "scheme-1",
-        "padding-block-start": 60,
+        "padding-block-start": 80,
+        "padding-block-end": 60
+      }
+    },
+    "tissot_collection": {
+      "type": "product-list",
+      "blocks": {
+        "static-header": {
+          "type": "_product-list-content",
+          "name": "t:names.header",
+          "static": true,
+          "settings": {
+            "content_direction": "row",
+            "vertical_on_mobile": false,
+            "horizontal_alignment": "space-between",
+            "vertical_alignment": "flex-end",
+            "align_baseline": true,
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 12,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "background_media": "none",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "product_list_text": {
+              "type": "_product-list-text",
+              "name": "t:names.collection_title",
+              "settings": {
+                "text": "<h2>Tissot</h2>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "h2",
+                "font": "var(--font-heading--family)",
+                "font_size": "",
+                "line_height": "normal",
+                "letter_spacing": "0.05em",
+                "case": "uppercase",
+                "wrap": "pretty",
+                "color": "#D4AF37",
+                "background": false,
+                "background_color": "",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              }
+            },
+            "product_list_button": {
+              "type": "_product-list-button",
+              "name": "t:names.product_list_button",
+              "settings": {
+                "label": "View All",
+                "open_in_new_tab": false,
+                "style_class": "link",
+                "width": "fit-content",
+                "custom_width": 100,
+                "width_mobile": "fit-content",
+                "custom_width_mobile": 100
+              }
+            }
+          },
+          "block_order": [
+            "product_list_text",
+            "product_list_button"
+          ]
+        },
+        "static-product-card": {
+          "type": "_product-card",
+          "name": "t:names.product_card",
+          "static": true,
+          "settings": {
+            "product_card_gap": 8,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "product-card-gallery": {
+              "type": "_product-card-gallery",
+              "name": "t:names.product_card_media",
+              "settings": {
+                "image_ratio": "portrait",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 8,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              }
+            },
+            "product_title": {
+              "type": "product-title",
+              "name": "t:names.product_title",
+              "settings": {
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "body",
+                "font": "var(--font-body--family)",
+                "font_size": "0.875rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "#ffffff",
+                "background": false,
+                "background_color": "",
+                "corner_radius": 0,
+                "padding-block-start": 12,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              }
+            },
+            "price": {
+              "type": "price",
+              "name": "t:names.product_price",
+              "settings": {
+                "show_sale_price_first": true,
+                "show_installments": false,
+                "show_tax_info": false,
+                "type_preset": "h6",
+                "width": "100%",
+                "alignment": "left",
+                "font": "var(--font-body--family)",
+                "font_size": "1.125rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "color": "#D4AF37",
+                "padding-block-start": 6,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              }
+            }
+          },
+          "block_order": [
+            "product-card-gallery",
+            "product_title",
+            "price"
+          ]
+        }
+      },
+      "settings": {
+        "collection": "tissot",
+        "layout_type": "carousel",
+        "carousel_on_mobile": true,
+        "max_products": 12,
+        "columns": 4,
+        "mobile_columns": "2",
+        "mobile_card_size": "60cqw",
+        "columns_gap": 20,
+        "rows_gap": 24,
+        "icons_style": "chevron",
+        "icons_shape": "circle",
+        "section_width": "page-width",
+        "horizontal_alignment": "flex-start",
+        "gap": 40,
+        "color_scheme": "scheme-1",
+        "padding-block-start": 80,
+        "padding-block-end": 60
+      }
+    },
+    "tag_heuer_collection": {
+      "type": "product-list",
+      "blocks": {
+        "static-header": {
+          "type": "_product-list-content",
+          "name": "t:names.header",
+          "static": true,
+          "settings": {
+            "content_direction": "row",
+            "vertical_on_mobile": false,
+            "horizontal_alignment": "space-between",
+            "vertical_alignment": "flex-end",
+            "align_baseline": true,
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 12,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "background_media": "none",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "product_list_text": {
+              "type": "_product-list-text",
+              "name": "t:names.collection_title",
+              "settings": {
+                "text": "<h2>Tag Heuer</h2>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "h2",
+                "font": "var(--font-heading--family)",
+                "font_size": "",
+                "line_height": "normal",
+                "letter_spacing": "0.05em",
+                "case": "uppercase",
+                "wrap": "pretty",
+                "color": "#D4AF37",
+                "background": false,
+                "background_color": "",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              }
+            },
+            "product_list_button": {
+              "type": "_product-list-button",
+              "name": "t:names.product_list_button",
+              "settings": {
+                "label": "View All",
+                "open_in_new_tab": false,
+                "style_class": "link",
+                "width": "fit-content",
+                "custom_width": 100,
+                "width_mobile": "fit-content",
+                "custom_width_mobile": 100
+              }
+            }
+          },
+          "block_order": [
+            "product_list_text",
+            "product_list_button"
+          ]
+        },
+        "static-product-card": {
+          "type": "_product-card",
+          "name": "t:names.product_card",
+          "static": true,
+          "settings": {
+            "product_card_gap": 8,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "product-card-gallery": {
+              "type": "_product-card-gallery",
+              "name": "t:names.product_card_media",
+              "settings": {
+                "image_ratio": "portrait",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 8,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              }
+            },
+            "product_title": {
+              "type": "product-title",
+              "name": "t:names.product_title",
+              "settings": {
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "body",
+                "font": "var(--font-body--family)",
+                "font_size": "0.875rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "#ffffff",
+                "background": false,
+                "background_color": "",
+                "corner_radius": 0,
+                "padding-block-start": 12,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              }
+            },
+            "price": {
+              "type": "price",
+              "name": "t:names.product_price",
+              "settings": {
+                "show_sale_price_first": true,
+                "show_installments": false,
+                "show_tax_info": false,
+                "type_preset": "h6",
+                "width": "100%",
+                "alignment": "left",
+                "font": "var(--font-body--family)",
+                "font_size": "1.125rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "color": "#D4AF37",
+                "padding-block-start": 6,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              }
+            }
+          },
+          "block_order": [
+            "product-card-gallery",
+            "product_title",
+            "price"
+          ]
+        }
+      },
+      "settings": {
+        "collection": "tag-heuer",
+        "layout_type": "carousel",
+        "carousel_on_mobile": true,
+        "max_products": 12,
+        "columns": 4,
+        "mobile_columns": "2",
+        "mobile_card_size": "60cqw",
+        "columns_gap": 20,
+        "rows_gap": 24,
+        "icons_style": "chevron",
+        "icons_shape": "circle",
+        "section_width": "page-width",
+        "horizontal_alignment": "flex-start",
+        "gap": 40,
+        "color_scheme": "scheme-1",
+        "padding-block-start": 80,
         "padding-block-end": 60
       }
     },
@@ -766,7 +1312,7 @@
               "type": "_product-list-text",
               "name": "t:names.collection_title",
               "settings": {
-                "text": "<h2>Omega Collection</h2>",
+                "text": "<h2>Omega</h2>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -774,12 +1320,12 @@
                 "font": "var(--font-heading--family)",
                 "font_size": "",
                 "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
+                "letter_spacing": "0.05em",
+                "case": "uppercase",
                 "wrap": "pretty",
-                "color": "var(--color-foreground-heading)",
+                "color": "#D4AF37",
                 "background": false,
-                "background_color": "#00000026",
+                "background_color": "",
                 "corner_radius": 0,
                 "padding-block-start": 0,
                 "padding-block-end": 0,
@@ -792,7 +1338,6 @@
               "name": "t:names.product_list_button",
               "settings": {
                 "label": "View All",
-                "link": "shopify://collections/omega",
                 "open_in_new_tab": false,
                 "style_class": "link",
                 "width": "fit-content",
@@ -802,7 +1347,10 @@
               }
             }
           },
-          "block_order": ["product_list_text", "product_list_button"]
+          "block_order": [
+            "product_list_text",
+            "product_list_button"
+          ]
         },
         "static-product-card": {
           "type": "_product-card",
@@ -851,11 +1399,11 @@
                 "letter_spacing": "normal",
                 "case": "none",
                 "wrap": "pretty",
-                "color": "var(--color-foreground)",
+                "color": "#ffffff",
                 "background": false,
-                "background_color": "#00000026",
+                "background_color": "",
                 "corner_radius": 0,
-                "padding-block-start": 8,
+                "padding-block-start": 12,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
@@ -872,43 +1420,46 @@
                 "width": "100%",
                 "alignment": "left",
                 "font": "var(--font-body--family)",
-                "font_size": "1rem",
+                "font_size": "1.125rem",
                 "line_height": "normal",
                 "letter_spacing": "normal",
                 "case": "none",
-                "color": "var(--color-foreground)",
-                "padding-block-start": 4,
+                "color": "#D4AF37",
+                "padding-block-start": 6,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
               }
             }
           },
-          "block_order": ["product-card-gallery", "product_title", "price"]
+          "block_order": [
+            "product-card-gallery",
+            "product_title",
+            "price"
+          ]
         }
       },
-      "block_order": [],
       "settings": {
         "collection": "omega",
         "layout_type": "carousel",
         "carousel_on_mobile": true,
-        "max_products": 8,
+        "max_products": 12,
         "columns": 4,
         "mobile_columns": "2",
         "mobile_card_size": "60cqw",
-        "columns_gap": 16,
+        "columns_gap": 20,
         "rows_gap": 24,
         "icons_style": "chevron",
         "icons_shape": "circle",
         "section_width": "page-width",
         "horizontal_alignment": "flex-start",
-        "gap": 32,
+        "gap": 40,
         "color_scheme": "scheme-1",
-        "padding-block-start": 60,
+        "padding-block-start": 80,
         "padding-block-end": 60
       }
     },
-    "cartier_collection": {
+    "hublot_collection": {
       "type": "product-list",
       "blocks": {
         "static-header": {
@@ -949,7 +1500,7 @@
               "type": "_product-list-text",
               "name": "t:names.collection_title",
               "settings": {
-                "text": "<h2>Cartier Collection</h2>",
+                "text": "<h2>Hublot</h2>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -957,12 +1508,12 @@
                 "font": "var(--font-heading--family)",
                 "font_size": "",
                 "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
+                "letter_spacing": "0.05em",
+                "case": "uppercase",
                 "wrap": "pretty",
-                "color": "var(--color-foreground-heading)",
+                "color": "#D4AF37",
                 "background": false,
-                "background_color": "#00000026",
+                "background_color": "",
                 "corner_radius": 0,
                 "padding-block-start": 0,
                 "padding-block-end": 0,
@@ -975,7 +1526,6 @@
               "name": "t:names.product_list_button",
               "settings": {
                 "label": "View All",
-                "link": "shopify://collections/cartier",
                 "open_in_new_tab": false,
                 "style_class": "link",
                 "width": "fit-content",
@@ -985,7 +1535,10 @@
               }
             }
           },
-          "block_order": ["product_list_text", "product_list_button"]
+          "block_order": [
+            "product_list_text",
+            "product_list_button"
+          ]
         },
         "static-product-card": {
           "type": "_product-card",
@@ -1034,11 +1587,11 @@
                 "letter_spacing": "normal",
                 "case": "none",
                 "wrap": "pretty",
-                "color": "var(--color-foreground)",
+                "color": "#ffffff",
                 "background": false,
-                "background_color": "#00000026",
+                "background_color": "",
                 "corner_radius": 0,
-                "padding-block-start": 8,
+                "padding-block-start": 12,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
@@ -1055,39 +1608,42 @@
                 "width": "100%",
                 "alignment": "left",
                 "font": "var(--font-body--family)",
-                "font_size": "1rem",
+                "font_size": "1.125rem",
                 "line_height": "normal",
                 "letter_spacing": "normal",
                 "case": "none",
-                "color": "var(--color-foreground)",
-                "padding-block-start": 4,
+                "color": "#D4AF37",
+                "padding-block-start": 6,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
               }
             }
           },
-          "block_order": ["product-card-gallery", "product_title", "price"]
+          "block_order": [
+            "product-card-gallery",
+            "product_title",
+            "price"
+          ]
         }
       },
-      "block_order": [],
       "settings": {
-        "collection": "cartier",
+        "collection": "hublot",
         "layout_type": "carousel",
         "carousel_on_mobile": true,
-        "max_products": 8,
+        "max_products": 12,
         "columns": 4,
         "mobile_columns": "2",
         "mobile_card_size": "60cqw",
-        "columns_gap": 16,
+        "columns_gap": 20,
         "rows_gap": 24,
         "icons_style": "chevron",
         "icons_shape": "circle",
         "section_width": "page-width",
         "horizontal_alignment": "flex-start",
-        "gap": 32,
+        "gap": 40,
         "color_scheme": "scheme-1",
-        "padding-block-start": 60,
+        "padding-block-start": 80,
         "padding-block-end": 60
       }
     },
@@ -1097,9 +1653,9 @@
         "feature_1": {
           "type": "feature",
           "settings": {
-            "icon_name": "shield-check",
+            "icon_name": "checkmark",
             "title": "Premium Quality",
-            "description": "Crafted with precision using the finest materials for lasting durability"
+            "description": "Master copies crafted with precision and finest materials for lasting durability"
           }
         },
         "feature_2": {
@@ -1107,7 +1663,7 @@
           "settings": {
             "icon_name": "truck",
             "title": "Fast Delivery",
-            "description": "Express shipping across Pakistan with secure packaging"
+            "description": "Express shipping across Pakistan with secure, discreet packaging"
           }
         },
         "feature_3": {
@@ -1115,142 +1671,106 @@
           "settings": {
             "icon_name": "lock",
             "title": "Secure Payments",
-            "description": "100% secure payment options including COD available"
+            "description": "100% secure payment options including Cash on Delivery available"
           }
         },
         "feature_4": {
           "type": "feature",
           "settings": {
-            "icon_name": "headset",
+            "icon_name": "heart",
             "title": "24/7 Support",
-            "description": "Round the clock customer support via WhatsApp"
+            "description": "Round the clock customer support via WhatsApp and phone"
           }
         }
       },
-      "block_order": ["feature_1", "feature_2", "feature_3", "feature_4"],
+      "block_order": [
+        "feature_1",
+        "feature_2",
+        "feature_3",
+        "feature_4"
+      ],
       "settings": {
-        "heading": "Why Choose Gharyaal?",
+        "heading": "Why Customers Choose Us",
         "columns": "4",
-        "color_scheme": "scheme-1",
-        "padding-block-start": 60,
-        "padding-block-end": 60
+        "color_scheme": "scheme-2",
+        "padding-block-start": 100,
+        "padding-block-end": 100
       }
     },
-    "reviews_carousel": {
+    "testimonials": {
       "type": "reviews-carousel",
       "blocks": {
         "review_1": {
           "type": "review",
           "settings": {
             "rating": 5,
-            "review_text": "Absolutely amazing quality! The watch looks exactly like the original. Fast shipping and great packaging.",
-            "customer_name": "Ahmed K."
+            "review_text": "Absolutely stunning watch! The quality is incredible and looks exactly like the original. Fast shipping too.",
+            "customer_name": "Ahmed K., Karachi"
           }
         },
         "review_2": {
           "type": "review",
           "settings": {
             "rating": 5,
-            "review_text": "Best replica watches in Pakistan. I've ordered 3 times now and never disappointed. Highly recommended!",
-            "customer_name": "Hassan M."
+            "review_text": "Best replica watches in Pakistan. I've ordered 3 times now and every time the quality exceeds my expectations.",
+            "customer_name": "Hassan M., Lahore"
           }
         },
         "review_3": {
           "type": "review",
           "settings": {
             "rating": 5,
-            "review_text": "The Rolex Submariner I ordered is stunning. Everyone thinks it's the real deal. Great customer service too!",
-            "customer_name": "Ali R."
+            "review_text": "The Rolex Submariner I ordered is perfect. Everyone thinks it's real. Great customer service too!",
+            "customer_name": "Ali R., Islamabad"
           }
         },
         "review_4": {
           "type": "review",
           "settings": {
             "rating": 5,
-            "review_text": "Premium quality at affordable prices. The attention to detail is incredible. Will definitely order again.",
-            "customer_name": "Usman S."
+            "review_text": "Premium quality at affordable prices. The attention to detail is amazing. Will definitely order again.",
+            "customer_name": "Usman S., Rawalpindi"
           }
         },
         "review_5": {
           "type": "review",
           "settings": {
             "rating": 5,
-            "review_text": "Received my AP Royal Oak yesterday. The finish and weight feel exactly like the original. Amazing!",
-            "customer_name": "Bilal A."
+            "review_text": "Received my AP Royal Oak yesterday. The finish, weight, and movement feel exactly like the original!",
+            "customer_name": "Bilal A., Multan"
           }
         }
       },
-      "block_order": ["review_1", "review_2", "review_3", "review_4", "review_5"],
+      "block_order": [
+        "review_1",
+        "review_2",
+        "review_3",
+        "review_4",
+        "review_5"
+      ],
       "settings": {
         "heading": "What Our Customers Say",
         "autoplay": true,
         "autoplay_speed": 5,
-        "color_scheme": "scheme-2",
-        "padding-block-start": 60,
-        "padding-block-end": 60
-      }
-    },
-    "instagram_feed": {
-      "type": "instagram-feed",
-      "blocks": {
-        "post_1": {
-          "type": "post",
-          "settings": {
-            "post_url": "https://instagram.com"
-          }
-        },
-        "post_2": {
-          "type": "post",
-          "settings": {
-            "post_url": "https://instagram.com"
-          }
-        },
-        "post_3": {
-          "type": "post",
-          "settings": {
-            "post_url": "https://instagram.com"
-          }
-        },
-        "post_4": {
-          "type": "post",
-          "settings": {
-            "post_url": "https://instagram.com"
-          }
-        },
-        "post_5": {
-          "type": "post",
-          "settings": {
-            "post_url": "https://instagram.com"
-          }
-        },
-        "post_6": {
-          "type": "post",
-          "settings": {
-            "post_url": "https://instagram.com"
-          }
-        }
-      },
-      "block_order": ["post_1", "post_2", "post_3", "post_4", "post_5", "post_6"],
-      "settings": {
-        "heading": "Follow Us on Instagram",
-        "instagram_handle": "gharyaal",
-        "columns": "6",
         "color_scheme": "scheme-1",
-        "padding-block-start": 60,
-        "padding-block-end": 60
+        "padding-block-start": 100,
+        "padding-block-end": 100
       }
     }
   },
   "order": [
-    "hero_main",
-    "shop_by_brands",
+    "watch_carousel_hero",
+    "brand_marquee",
+    "shop_by_brand",
     "new_arrivals",
     "rolex_collection",
+    "patek_philippe_collection",
     "ap_collection",
+    "tissot_collection",
+    "tag_heuer_collection",
     "omega_collection",
-    "cartier_collection",
+    "hublot_collection",
     "why_choose_us",
-    "reviews_carousel",
-    "instagram_feed"
+    "testimonials"
   ]
 }

@@ -1,0 +1,239 @@
+{% comment %}
+  Gharyaal Custom Header Layout
+  Desktop: Hamburger, Home, Shop By Brand, Super Clones | Logo (centered) | Search, Cart, Profile
+  Mobile: Hamburger, Logo (centered), Search, Cart, Profile
+{% endcomment %}
+
+<style>
+/* Gharyaal Header Layout Styles */
+.gharyaal-header-wrapper {
+  background: var(--gharyaal-black, #000000);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+}
+
+.gharyaal-header-container {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 15px 30px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 30px;
+}
+
+/* Left Section */
+.gharyaal-header-left {
+  display: flex;
+  align-items: center;
+  gap: 35px;
+}
+
+.gharyaal-nav-link {
+  color: var(--gharyaal-white, #ffffff);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
+  white-space: nowrap;
+  padding: 0 10px;
+}
+
+.gharyaal-nav-link:hover {
+  color: var(--gharyaal-gold, #D4AF37);
+}
+
+/* Center Logo */
+.gharyaal-header-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.gharyaal-logo {
+  max-width: 150px;
+  max-height: 50px;
+  height: auto;
+}
+
+.gharyaal-logo img {
+  width: 100%;
+  height: 100%;
+  max-height: 50px;
+  object-fit: contain;
+  display: block;
+}
+
+/* Right Section */
+.gharyaal-header-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 20px;
+}
+
+.gharyaal-icon-button {
+  background: transparent;
+  border: none;
+  color: var(--gharyaal-white, #ffffff);
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.gharyaal-icon-button:hover {
+  color: var(--gharyaal-gold, #D4AF37);
+}
+
+.gharyaal-icon-button svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* Hide original header menu on desktop */
+@media screen and (min-width: 769px) {
+  .header__column:has(header-menu) {
+    display: none !important;
+  }
+  
+  .gharyaal-nav-links {
+    display: flex;
+  }
+}
+
+/* Mobile Styles */
+@media screen and (max-width: 768px) {
+  .gharyaal-header-container {
+    padding: 12px 20px;
+    grid-template-columns: auto 1fr auto;
+    gap: 15px;
+  }
+
+  .gharyaal-header-left {
+    gap: 0;
+  }
+
+  .gharyaal-nav-links {
+    display: none;
+  }
+
+  .gharyaal-header-center {
+    justify-content: center;
+  }
+
+  .gharyaal-logo {
+    max-width: 110px;
+    max-height: 40px;
+  }
+
+  .gharyaal-header-right {
+    gap: 12px;
+  }
+
+  .gharyaal-icon-button {
+    padding: 6px;
+  }
+
+  .gharyaal-icon-button svg {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .gharyaal-header-container {
+    padding: 10px 15px;
+    gap: 10px;
+  }
+
+  .gharyaal-logo {
+    max-width: 90px;
+    max-height: 35px;
+  }
+
+  .gharyaal-header-right {
+    gap: 8px;
+  }
+
+  .gharyaal-icon-button {
+    padding: 4px;
+  }
+
+  .gharyaal-icon-button svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+</style>
+
+<div class="gharyaal-header-wrapper">
+  <div class="gharyaal-header-container">
+    
+    {%- comment -%} LEFT SECTION - Hamburger + Nav Links {%- endcomment -%}
+    <div class="gharyaal-header-left">
+      {%- comment -%} Hamburger Menu {%- endcomment -%}
+      {% render 'gharyaal-mega-menu' %}
+      
+      {%- comment -%} Desktop Navigation Links {%- endcomment -%}
+      <nav class="gharyaal-nav-links">
+        <a href="/" class="gharyaal-nav-link">Home</a>
+        <a href="/collections" class="gharyaal-nav-link">Shop By Brand</a>
+        <a href="/collections/super-clones" class="gharyaal-nav-link">Super Clones</a>
+      </nav>
+    </div>
+
+    {%- comment -%} CENTER SECTION - Logo {%- endcomment -%}
+    <div class="gharyaal-header-center">
+      <a href="/" class="gharyaal-logo">
+        <img 
+          src="{{ 'logo.png' | asset_url }}"
+          alt="{{ shop.name }}"
+          width="200"
+          height="auto"
+        >
+      </a>
+    </div>
+
+    {%- comment -%} RIGHT SECTION - Search, Cart, Profile {%- endcomment -%}
+    <div class="gharyaal-header-right">
+      {%- comment -%} Search Button {%- endcomment -%}
+      <button type="button" class="gharyaal-icon-button" aria-label="Search" onclick="document.querySelector('predictive-search')?.open()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"/>
+          <path d="m21 21-4.35-4.35"/>
+        </svg>
+      </button>
+
+      {%- comment -%} Cart Icon {%- endcomment -%}
+      <a href="/cart" class="gharyaal-icon-button" aria-label="Cart">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M9 2L5 6v12a2 2 0 002 2h10a2 2 0 002-2V6l-4-4H9z"/>
+          <path d="M9 6h6"/>
+        </svg>
+        {% if cart.item_count > 0 %}
+          <span style="position: absolute; top: 0; right: 0; background: var(--gharyaal-gold, #D4AF37); color: #000; border-radius: 50%; width: 18px; height: 18px; font-size: 10px; display: flex; align-items: center; justify-content: center; font-weight: 700;">{{ cart.item_count }}</span>
+        {% endif %}
+      </a>
+
+      {%- comment -%} Profile/Account Button {%- endcomment -%}
+      {% if shop.customer_accounts_enabled %}
+        <a href="/account" class="gharyaal-icon-button" aria-label="Account">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+          </svg>
+        </a>
+      {% endif %}
+    </div>
+
+  </div>
+</div>

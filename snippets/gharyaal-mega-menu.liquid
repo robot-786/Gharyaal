@@ -1,0 +1,495 @@
+{% comment %}
+  Gharyaal Hamburger Menu - Custom navigation with 12 categories
+  Dark luxury theme with gold accents
+  Works on both mobile and desktop
+{% endcomment %}
+
+<details
+  id="Details-gharyaal-menu"
+  class="gharyaal-menu-drawer-container"
+>
+  <summary
+    class="header__icon header__icon--menu header-actions__action"
+    aria-label="Menu"
+  >
+    <span class="hamburger-icon">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </span>
+  </summary>
+  
+  <div class="gharyaal-drawer">
+    <div class="gharyaal-drawer-header">
+      <button class="gharyaal-drawer-close" type="button" aria-label="Close">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5L15 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    
+    <nav class="gharyaal-drawer-nav" role="navigation">
+        
+        {%- comment -%} 1. ROLEX {%- endcomment -%}
+        <details class="gharyaal-menu-item">
+          <summary class="gharyaal-menu-link">
+            <span>Rolex</span>
+            <svg class="chevron" width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </summary>
+          <div class="gharyaal-submenu">
+            <a href="/collections/rolex-submariner" class="gharyaal-sublink">Submariner</a>
+            <a href="/collections/rolex-daytona" class="gharyaal-sublink">Daytona</a>
+            <a href="/collections/rolex-datejust" class="gharyaal-sublink">Datejust</a>
+            <a href="/collections/rolex-daydate" class="gharyaal-sublink">Day-Date</a>
+            <a href="/collections/rolex-gmt" class="gharyaal-sublink">GMT-Master</a>
+            <a href="/collections/rolex-yacht-master" class="gharyaal-sublink">Yacht-Master</a>
+            <a href="/collections/rolex-oyster-perpetual" class="gharyaal-sublink">Oyster Perpetual</a>
+            <a href="/collections/rolex-land-dweller" class="gharyaal-sublink">Sea-Dweller</a>
+            <a href="/collections/rolex-skydweller" class="gharyaal-sublink">Sky-Dweller</a>
+          </div>
+        </details>
+
+        {%- comment -%} 2. PATEK PHILIPPE {%- endcomment -%}
+        <details class="gharyaal-menu-item">
+          <summary class="gharyaal-menu-link">
+            <span>Patek Philippe</span>
+            <svg class="chevron" width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </summary>
+          <div class="gharyaal-submenu">
+            <a href="/collections/patek-philippe-nautilus" class="gharyaal-sublink">Nautilus</a>
+            <a href="/collections/patek-philippe-aquanaut" class="gharyaal-sublink">Aquanaut</a>
+            <a href="/collections/patek-philippe-skeleton" class="gharyaal-sublink">Skeleton</a>
+            <a href="/collections/patek-philippe-cubitus" class="gharyaal-sublink">Cubitus</a>
+            <a href="/collections/patek-philippe-power-reserve" class="gharyaal-sublink">Power Reserve</a>
+            <a href="/collections/patek-philippe-side-second" class="gharyaal-sublink">Small Seconds</a>
+            <a href="/collections/patek-philippe-strap" class="gharyaal-sublink">Leather Strap</a>
+          </div>
+        </details>
+
+        {%- comment -%} 3. AUDEMARS PIGUET {%- endcomment -%}
+        <details class="gharyaal-menu-item">
+          <summary class="gharyaal-menu-link">
+            <span>Audemars Piguet</span>
+            <svg class="chevron" width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </summary>
+          <div class="gharyaal-submenu">
+            <a href="/collections/audemars-piguet-automatic" class="gharyaal-sublink">Automatic</a>
+            <a href="/collections/audemars-piguet-chronograph" class="gharyaal-sublink">Chronograph</a>
+            <a href="/collections/audemars-piguet-offshore" class="gharyaal-sublink">Royal Oak Offshore</a>
+            <a href="/collections/audemars-piguet-skeleton" class="gharyaal-sublink">Skeleton</a>
+            <a href="/collections/audemars-piguet-strap" class="gharyaal-sublink">Leather Strap</a>
+          </div>
+        </details>
+
+        {%- comment -%} 4. OMEGA {%- endcomment -%}
+        <details class="gharyaal-menu-item">
+          <summary class="gharyaal-menu-link">
+            <span>Omega</span>
+            <svg class="chevron" width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </summary>
+          <div class="gharyaal-submenu">
+            <a href="/collections/omega-bracelet" class="gharyaal-sublink">Metal Bracelet</a>
+            <a href="/collections/omega-strap" class="gharyaal-sublink">Leather Strap</a>
+          </div>
+        </details>
+
+        {%- comment -%} 5. TAG HEUER {%- endcomment -%}
+        <details class="gharyaal-menu-item">
+          <summary class="gharyaal-menu-link">
+            <span>Tag Heuer</span>
+            <svg class="chevron" width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </summary>
+          <div class="gharyaal-submenu">
+            <a href="/collections/tag-heuer-bracelet" class="gharyaal-sublink">Metal Bracelet</a>
+            <a href="/collections/tag-heuer-strap" class="gharyaal-sublink">Leather Strap</a>
+          </div>
+        </details>
+
+        {%- comment -%} 6. TISSOT {%- endcomment -%}
+        <details class="gharyaal-menu-item">
+          <summary class="gharyaal-menu-link">
+            <span>Tissot</span>
+            <svg class="chevron" width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </summary>
+          <div class="gharyaal-submenu">
+            <a href="/collections/tissot-bracelet" class="gharyaal-sublink">Metal Bracelet</a>
+            <a href="/collections/tissot-strap" class="gharyaal-sublink">Leather Strap</a>
+          </div>
+        </details>
+
+        {%- comment -%} 7. HUBLOT (no subcategories) {%- endcomment -%}
+        <div class="gharyaal-menu-item">
+          <a href="/collections/hublot" class="gharyaal-menu-link gharyaal-menu-link--no-sub">
+            <span>Hublot</span>
+          </a>
+        </div>
+
+        {%- comment -%} 8. SUPER CLONES {%- endcomment -%}
+        <details class="gharyaal-menu-item">
+          <summary class="gharyaal-menu-link">
+            <span>Super Clones</span>
+            <svg class="chevron" width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </summary>
+          <div class="gharyaal-submenu">
+            <a href="/collections/super-clone-rolex" class="gharyaal-sublink">Rolex</a>
+            <a href="/collections/super-clone-patek-philippe" class="gharyaal-sublink">Patek Philippe</a>
+            <a href="/collections/super-clone-audemars-piguet" class="gharyaal-sublink">Audemars Piguet</a>
+            <a href="/collections/super-clone-omega" class="gharyaal-sublink">Omega</a>
+            <a href="/collections/super-clone-richard-mille" class="gharyaal-sublink">Richard Mille</a>
+            <a href="/collections/super-clone-franck-muller" class="gharyaal-sublink">Franck Muller</a>
+          </div>
+        </details>
+
+        {%- comment -%} 9. BUDGET WATCHES {%- endcomment -%}
+        <details class="gharyaal-menu-item">
+          <summary class="gharyaal-menu-link">
+            <span>Budget Watches</span>
+            <svg class="chevron" width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </summary>
+          <div class="gharyaal-submenu">
+            <a href="/collections/budget-watches-bracelet" class="gharyaal-sublink">Metal Bracelet</a>
+            <a href="/collections/budget-watches-strap" class="gharyaal-sublink">Leather Strap</a>
+          </div>
+        </details>
+
+        {%- comment -%} 10. WOMEN WATCHES {%- endcomment -%}
+        <details class="gharyaal-menu-item">
+          <summary class="gharyaal-menu-link">
+            <span>Women Watches</span>
+            <svg class="chevron" width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </summary>
+          <div class="gharyaal-submenu">
+            <a href="/collections/women-watches-bracelet" class="gharyaal-sublink">Metal Bracelet</a>
+            <a href="/collections/women-watches-strap" class="gharyaal-sublink">Leather Strap</a>
+          </div>
+        </details>
+
+        {%- comment -%} 11. STONE WATCHES {%- endcomment -%}
+        <details class="gharyaal-menu-item">
+          <summary class="gharyaal-menu-link">
+            <span>Stone Watches</span>
+            <svg class="chevron" width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </summary>
+          <div class="gharyaal-submenu">
+            <a href="/collections/stone-watches-bracelet" class="gharyaal-sublink">Metal Bracelet</a>
+            <a href="/collections/stone-watches-strap" class="gharyaal-sublink">Leather Strap</a>
+          </div>
+        </details>
+
+        {%- comment -%} 12. OZ/RX QUALITY {%- endcomment -%}
+        <details class="gharyaal-menu-item">
+          <summary class="gharyaal-menu-link">
+            <span>OZ/RX Quality</span>
+            <svg class="chevron" width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </summary>
+          <div class="gharyaal-submenu">
+            <a href="/collections/oz-rx-quality-rolex" class="gharyaal-sublink">Rolex</a>
+            <a href="/collections/oz-rx-quality-patek-philippe" class="gharyaal-sublink">Patek Philippe</a>
+            <a href="/collections/oz-rx-quality-audemars-piguet" class="gharyaal-sublink">Audemars Piguet</a>
+          </div>
+        </details>
+        
+      </nav>
+    </div>
+  </details>
+
+<style>
+/* Gharyaal Hamburger Menu Styles */
+
+/* Hide the original header drawer to avoid duplicate hamburgers */
+.header__drawer {
+  display: none !important;
+}
+
+/* Hide original close button if it somehow appears */
+.menu-drawer__close-button {
+  display: none !important;
+}
+
+/* Hamburger Icon */
+.header__icon--menu {
+  cursor: pointer;
+  padding: 10px;
+  background: transparent;
+  border: none;
+  position: relative;
+  z-index: 1001;
+}
+
+.hamburger-icon {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 28px;
+}
+
+.hamburger-line {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background: var(--gharyaal-gold, #D4AF37);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Drawer Container */
+.gharyaal-menu-drawer-container {
+  position: relative;
+}
+
+.gharyaal-menu-drawer-container[open] .hamburger-line:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.gharyaal-menu-drawer-container[open] .hamburger-line:nth-child(2) {
+  opacity: 0;
+}
+
+.gharyaal-menu-drawer-container[open] .hamburger-line:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Drawer Overlay and Panel */
+.gharyaal-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  max-width: 400px;
+  height: 100vh;
+  background: var(--gharyaal-black, #000000);
+  border-left: 2px solid var(--gharyaal-gold, #D4AF37);
+  box-shadow: -5px 0 30px rgba(0, 0, 0, 0.8);
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  z-index: 100000;
+  overflow-y: auto;
+}
+
+.gharyaal-menu-drawer-container[open] .gharyaal-drawer {
+  transform: translateX(0);
+}
+
+/* Drawer Header */
+.gharyaal-drawer-header {
+  padding: 20px;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+  display: flex;
+  justify-content: flex-end;
+  position: sticky;
+  top: 0;
+  background: var(--gharyaal-black, #000000);
+  z-index: 10;
+}
+
+.gharyaal-drawer-close {
+  background: transparent;
+  border: none;
+  color: var(--gharyaal-gold, #D4AF37);
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+
+.gharyaal-drawer-close:hover {
+  transform: rotate(90deg);
+}
+
+/* Navigation */
+.gharyaal-drawer-nav {
+  padding: 20px 0;
+}
+
+/* Menu Items */
+.gharyaal-menu-item {
+  border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.gharyaal-menu-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 25px;
+  color: var(--gharyaal-white, #ffffff);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  width: 100%;
+  text-align: left;
+}
+
+.gharyaal-menu-link:hover {
+  background: rgba(212, 175, 55, 0.1);
+  color: var(--gharyaal-gold, #D4AF37);
+  padding-left: 30px;
+}
+
+.gharyaal-menu-link--no-sub {
+  cursor: pointer;
+}
+
+/* Chevron Icon */
+.chevron {
+  color: var(--gharyaal-gold, #D4AF37);
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+.gharyaal-menu-item[open] .chevron {
+  transform: rotate(180deg);
+}
+
+/* Submenu */
+.gharyaal-submenu {
+  background: rgba(212, 175, 55, 0.05);
+  padding: 10px 0;
+  display: none;
+}
+
+.gharyaal-menu-item[open] .gharyaal-submenu {
+  display: block;
+}
+
+.gharyaal-sublink {
+  display: block;
+  padding: 12px 25px 12px 45px;
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+  border-left: 3px solid transparent;
+}
+
+.gharyaal-sublink:hover {
+  color: var(--gharyaal-gold, #D4AF37);
+  background: rgba(212, 175, 55, 0.1);
+  padding-left: 50px;
+  border-left-color: var(--gharyaal-gold, #D4AF37);
+}
+
+/* Backdrop */
+.gharyaal-menu-drawer-container[open]::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  z-index: 99999;
+}
+
+/* Hide carousel elements when menu is open */
+.gharyaal-menu-drawer-container[open] ~ * watch-carousel-hero,
+.gharyaal-menu-drawer-container[open] ~ watch-carousel-hero {
+  z-index: 1 !important;
+}
+
+body:has(.gharyaal-menu-drawer-container[open]) .swipe-hint {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  z-index: -1 !important;
+}
+
+body:has(.gharyaal-menu-drawer-container[open]) .nav-button {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+/* Mobile Adjustments */
+@media screen and (max-width: 480px) {
+  .gharyaal-drawer {
+    max-width: 100%;
+    border-left: none;
+  }
+}
+
+/* Scrollbar Styling */
+.gharyaal-drawer::-webkit-scrollbar {
+  width: 8px;
+}
+
+.gharyaal-drawer::-webkit-scrollbar-track {
+  background: var(--gharyaal-black, #000000);
+}
+
+.gharyaal-drawer::-webkit-scrollbar-thumb {
+  background: var(--gharyaal-gold, #D4AF37);
+  border-radius: 4px;
+}
+
+.gharyaal-drawer::-webkit-scrollbar-thumb:hover {
+  background: #b8941f;
+}
+</style>
+
+<script>
+// Enhanced drawer functionality
+document.addEventListener('DOMContentLoaded', function() {
+  const details = document.querySelector('#Details-gharyaal-menu');
+  const closeBtn = document.querySelector('.gharyaal-drawer-close');
+  
+  if (closeBtn && details) {
+    closeBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      details.removeAttribute('open');
+    });
+  }
+  
+  // Close on backdrop click
+  if (details) {
+    details.addEventListener('click', function(e) {
+      if (e.target === this) {
+        this.removeAttribute('open');
+      }
+    });
+  }
+  
+  // Prevent body scroll when menu is open
+  const observer = new MutationObserver(function(mutations) {
+    mutations.forEach(function(mutation) {
+      if (mutation.attributeName === 'open') {
+        if (details.hasAttribute('open')) {
+          document.body.style.overflow = 'hidden';
+        } else {
+          document.body.style.overflow = '';
+        }
+      }
+    });
+  });
+  
+  if (details) {
+    observer.observe(details, { attributes: true });
+  }
+});
+</script>
