@@ -5,20 +5,48 @@
 {% endcomment %}
 
 <div class="brand-landing-page">
-  {%- comment -%} Brand Hero Section {%- endcomment -%}
-  <div class="brand-hero" style="{% if collection.image %}background-image: url('{{ collection.image | image_url: width: 1920 }}');{% endif %}">
-    <div class="brand-hero-overlay"></div>
-    <div class="brand-hero-content page-width">
-      <h1 class="brand-title">{{ collection.title }}</h1>
-      {% if collection.description != blank %}
-        <div class="brand-description">{{ collection.description }}</div>
+  {%- comment -%} Brand Logo Section {%- endcomment -%}
+  <div class="brand-logo-hero">
+    <div class="brand-logo-center">
+      {%- liquid
+        assign logo_filename = ''
+        case collection.handle
+          when 'rolex'
+            assign logo_filename = 'rolex-logo.png'
+          when 'patek-philippe'
+            assign logo_filename = 'patek-logo.png'
+          when 'audemars-piguet'
+            assign logo_filename = 'ap-logo.png'
+          when 'omega'
+            assign logo_filename = 'omega-logo.png'
+          when 'tag-heuer'
+            assign logo_filename = 'th-logo.png'
+          when 'tissot'
+            assign logo_filename = 'tissot-logo.png'
+          when 'hublot'
+            assign logo_filename = 'hublot-logo.png'
+        endcase
+      -%}
+      {% if logo_filename != '' %}
+        <img 
+          src="{{ logo_filename | asset_url }}" 
+          alt="{{ collection.title }} Logo"
+          class="brand-hero-logo"
+          width="300"
+          height="240"
+          loading="eager"
+        >
       {% endif %}
     </div>
+    <h1 class="brand-title">{{ collection.title }}</h1>
+    {% if collection.description != blank %}
+      <div class="brand-description">{{ collection.description }}</div>
+    {% endif %}
   </div>
 
-  {%- comment -%} Subcategories Grid {%- endcomment -%}
+  {%- comment -%} Sub Brands Grid {%- endcomment -%}
   <div class="subcategories-section page-width">
-    <h2 class="section-heading">Shop by Collection</h2>
+    <h2 class="section-heading">Sub Brands</h2>
     
     <div class="subcategories-grid">
       {% comment %}
@@ -30,7 +58,29 @@
       {% assign subcollections = '' %}
       
       {% for col in collections %}
-        {% if col.handle contains brand_handle and col.handle != brand_handle %}
+        {%- liquid
+          assign show_collection = false
+          assign col_handle_lower = col.handle | downcase
+          
+          # Only show collections that START with the brand handle (e.g., rolex-submariner for rolex)
+          # This prevents super-clone-rolex from showing on rolex page
+          assign brand_prefix = brand_handle | append: '-'
+          
+          if col.handle contains brand_prefix and col.handle != brand_handle
+            # Check if the collection handle actually starts with the brand
+            assign handle_start = col.handle | slice: 0, brand_prefix.size
+            if handle_start == brand_prefix
+              assign show_collection = true
+            endif
+          endif
+          
+          # Exclude OZ/RX and Super Clone collections
+          if col_handle_lower contains 'oz' or col_handle_lower contains 'rx' or col_handle_lower contains 'super-clone'
+            assign show_collection = false
+          endif
+        -%}
+        
+        {% if show_collection %}
           <div class="subcategory-card">
             <a href="{{ col.url }}" class="subcategory-link">
               <div class="subcategory-image">
@@ -130,30 +180,31 @@
   color: var(--gharyaal-white, #ffffff);
 }
 
-/* Brand Hero */
-.brand-hero {
-  position: relative;
-  height: 400px;
+/* Brand Logo Hero */
+.brand-logo-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px 60px;
+  text-align: center;
+  background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(10,10,10,1) 100%);
+}
+
+.brand-logo-center {
+  width: 200px;
+  height: 160px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-size: cover;
-  background-position: center;
-  background-color: var(--gharyaal-charcoal, #0a0a0a);
-  margin-bottom: 60px;
+  margin-bottom: 30px;
 }
 
-.brand-hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.8) 100%);
-}
-
-.brand-hero-content {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  padding: 40px 20px;
+.brand-hero-logo {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  filter: brightness(1.1);
 }
 
 .brand-title {

@@ -1,0 +1,422 @@
+{% comment %}
+  Shop By Brand - Logo Grid Section
+  Displays brand logos with hover animations
+{% endcomment %}
+
+<style>
+.shop-by-brand-section {
+  background: var(--gharyaal-black, #000000);
+  padding: 80px 20px;
+}
+
+.shop-by-brand-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.shop-by-brand-heading {
+  text-align: center;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: var(--gharyaal-gold, #D4AF37);
+  margin: 0 0 60px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+.brand-logos-grid {
+  display: flex;
+  gap: 20px;
+  padding: 20px 0;
+  list-style: none;
+  margin: 0;
+  justify-content: center;
+  flex-wrap: nowrap;
+}
+
+.brand-logo-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  transition: all 0.4s ease;
+  padding: 20px 15px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid transparent;
+  min-width: 140px;
+  max-width: 160px;
+  flex: 1;
+}
+
+.brand-logo-item:hover {
+  transform: translateY(-10px);
+  background: rgba(212, 175, 55, 0.05);
+  border-color: rgba(212, 175, 55, 0.3);
+  box-shadow: 0 10px 40px rgba(212, 175, 55, 0.2);
+}
+
+.brand-logo-wrapper {
+  width: 100%;
+  max-width: 100px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+  transition: all 0.4s ease;
+}
+
+.brand-logo-item:hover .brand-logo-wrapper {
+  transform: scale(1.1);
+}
+
+.brand-logo-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: grayscale(0%) brightness(1);
+  transition: all 0.4s ease;
+}
+
+{% comment %} .brand-logo-item:hover .brand-logo-wrapper img {
+  filter: grayscale(0%) brightness(100);
+} {% endcomment %}
+
+.brand-name {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.brand-logo-item:hover .brand-name {
+  color: var(--gharyaal-gold, #D4AF37);
+}
+
+/* Navigation Buttons */
+.brand-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: var(--gharyaal-gold, #D4AF37);
+  font-size: 48px;
+  font-weight: 300;
+  cursor: pointer;
+  z-index: 10;
+  opacity: 0.7;
+  transition: all 0.3s ease;
+  padding: 10px;
+  line-height: 1;
+  outline: none !important;
+  box-shadow: none !important;
+  appearance: none;
+}
+
+.brand-nav:hover {
+  opacity: 1;
+  color: #FFD700;
+}
+
+.brand-nav:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.brand-nav--prev {
+  left: -60px;
+}
+
+.brand-nav--next {
+  right: -60px;
+}
+
+/* Swipe Hint */
+.brand-swipe-hint {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: none;
+  align-items: center;
+  gap: 8px;
+  color: rgba(212, 175, 55, 0.7);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  z-index: 50;
+  animation: brand-swipe-pulse 2s ease-in-out infinite;
+}
+
+.brand-swipe-hint svg {
+  opacity: 0.6;
+}
+
+@keyframes brand-swipe-pulse {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.brand-logos-wrapper {
+  position: relative;
+}
+
+/* Mobile Responsive */
+@media screen and (max-width: 768px) {
+  .shop-by-brand-section {
+    padding: 60px 20px;
+  }
+
+  .shop-by-brand-heading {
+    margin-bottom: 40px;
+  }
+
+  .brand-logos-grid {
+    gap: 20px;
+    padding: 20px 10px 60px;
+    justify-content: flex-start;
+    overflow-x: auto;
+    overflow-y: visible;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .brand-logos-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .brand-logo-wrapper {
+    max-width: 100px;
+    height: 80px;
+  }
+
+  .brand-logo-item {
+    padding: 20px 15px;
+    min-width: 140px;
+    flex-shrink: 0;
+  }
+
+  .brand-nav {
+    display: none;
+  }
+
+  .brand-swipe-hint {
+    display: flex;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .brand-logos-grid {
+    gap: 15px;
+  }
+
+  .brand-logo-wrapper {
+    max-width: 80px;
+    height: 65px;
+  }
+
+  .brand-name {
+    font-size: 0.75rem;
+  }
+
+  .brand-logo-item {
+    min-width: 120px;
+    padding: 15px 10px;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .brand-nav {
+    display: none;
+  }
+
+  .brand-swipe-hint {
+    display: none;
+  }
+}
+</style>
+
+<div class="shop-by-brand-section">
+  <div class="shop-by-brand-container">
+    {% if section.settings.heading != blank %}
+      <h2 class="shop-by-brand-heading">{{ section.settings.heading }}</h2>
+    {% endif %}
+
+    <div class="brand-logos-wrapper">
+      <button class="brand-nav brand-nav--prev" aria-label="Previous brands">‹</button>
+      <button class="brand-nav brand-nav--next" aria-label="Next brands">›</button>
+
+      <div class="brand-logos-grid">
+        {%- comment -%} Rolex {%- endcomment -%}
+        <a href="{{ routes.collections_url }}/rolex" class="brand-logo-item">
+          <div class="brand-logo-wrapper">
+            <img 
+              src="{{ 'rolex-logo.png' | asset_url }}" 
+              alt="Rolex"
+              width="300"
+              height="240"
+              loading="lazy"
+            >
+          </div>
+          <span class="brand-name">Rolex</span>
+        </a>
+
+        {%- comment -%} Patek Philippe {%- endcomment -%}
+        <a href="{{ routes.collections_url }}/patek-philippe" class="brand-logo-item">
+          <div class="brand-logo-wrapper">
+            <img 
+              src="{{ 'patek-logo.png' | asset_url }}" 
+              alt="Patek Philippe"
+              width="300"
+              height="240"
+              loading="lazy"
+            >
+          </div>
+          <span class="brand-name">Patek Philippe</span>
+        </a>
+
+        {%- comment -%} Audemars Piguet {%- endcomment -%}
+        <a href="{{ routes.collections_url }}/audemars-piguet" class="brand-logo-item">
+          <div class="brand-logo-wrapper">
+            <img 
+              src="{{ 'ap-logo.png' | asset_url }}" 
+              alt="Audemars Piguet"
+              width="300"
+              height="240"
+              loading="lazy"
+            >
+          </div>
+          <span class="brand-name">Audemars Piguet</span>
+        </a>
+
+        {%- comment -%} Omega {%- endcomment -%}
+        <a href="{{ routes.collections_url }}/omega" class="brand-logo-item">
+          <div class="brand-logo-wrapper">
+            <img 
+              src="{{ 'omega-logo.png' | asset_url }}" 
+              alt="Omega"
+              width="300"
+              height="240"
+              loading="lazy"
+            >
+          </div>
+          <span class="brand-name">Omega</span>
+        </a>
+
+        {%- comment -%} Tag Heuer {%- endcomment -%}
+        <a href="{{ routes.collections_url }}/tag-heuer" class="brand-logo-item">
+          <div class="brand-logo-wrapper">
+            <img 
+              src="{{ 'th-logo.png' | asset_url }}" 
+              alt="Tag Heuer"
+              width="300"
+              height="240"
+              loading="lazy"
+            >
+          </div>
+          <span class="brand-name">Tag Heuer</span>
+        </a>
+
+        {%- comment -%} Tissot {%- endcomment -%}
+        <a href="{{ routes.collections_url }}/tissot" class="brand-logo-item">
+          <div class="brand-logo-wrapper">
+            <img 
+              src="{{ 'tissot-logo.png' | asset_url }}" 
+              alt="Tissot"
+              width="300"
+              height="240"
+              loading="lazy"
+            >
+          </div>
+          <span class="brand-name">Tissot</span>
+        </a>
+
+        {%- comment -%} Hublot {%- endcomment -%}
+        <a href="{{ routes.collections_url }}/hublot" class="brand-logo-item">
+          <div class="brand-logo-wrapper">
+            <img 
+              src="{{ 'hublot-logo.png' | asset_url }}" 
+              alt="Hublot"
+              width="300"
+              height="240"
+              loading="lazy"
+            >
+          </div>
+          <span class="brand-name">Hublot</span>
+        </a>
+      </div>
+
+      <div class="brand-swipe-hint">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>Swipe</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const wrapper = document.querySelector('.brand-logos-wrapper');
+  if (!wrapper) return;
+
+  const grid = wrapper.querySelector('.brand-logos-grid');
+  const prevBtn = wrapper.querySelector('.brand-nav--prev');
+  const nextBtn = wrapper.querySelector('.brand-nav--next');
+  
+  if (!grid || !prevBtn || !nextBtn) return;
+
+  const scrollAmount = 280; // Approximate width of one brand item + gap
+
+  prevBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    grid.scrollBy({
+      left: -scrollAmount,
+      behavior: 'smooth'
+    });
+  });
+
+  nextBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    grid.scrollBy({
+      left: scrollAmount,
+      behavior: 'smooth'
+    });
+  });
+});
+</script>
+
+{% schema %}
+{
+  "name": "Shop By Brand Logos",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Shop By Brand"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Shop By Brand Logos"
+    }
+  ]
+}
+{% endschema %}

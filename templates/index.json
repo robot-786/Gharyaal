@@ -95,52 +95,9 @@
       }
     },
     "shop_by_brand": {
-      "type": "collection-list",
-      "blocks": {
-        "heading": {
-          "type": "text",
-          "settings": {
-            "text": "<h2>Shop By Brand</h2>",
-            "width": "100%",
-            "max_width": "normal",
-            "alignment": "center",
-            "type_preset": "h2",
-            "font": "var(--font-heading--family)",
-            "font_size": "",
-            "line_height": "normal",
-            "letter_spacing": "0.05em",
-            "case": "uppercase",
-            "wrap": "pretty",
-            "color": "#D4AF37",
-            "background": false,
-            "background_color": "",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          }
-        }
-      },
-      "block_order": [
-        "heading"
-      ],
+      "type": "shop-by-brand-logos",
       "settings": {
-        "collection_list": [],
-        "layout_type": "carousel",
-        "carousel_on_mobile": true,
-        "columns": 6,
-        "mobile_columns": "2",
-        "mobile_card_size": "60cqw",
-        "columns_gap": 16,
-        "rows_gap": 16,
-        "icons_style": "chevron",
-        "icons_shape": "circle",
-        "section_width": "page-width",
-        "gap": 40,
-        "color_scheme": "scheme-1",
-        "padding-block-start": 80,
-        "padding-block-end": 80
+        "heading": "Shop By Brand"
       }
     },
     "new_arrivals": {
