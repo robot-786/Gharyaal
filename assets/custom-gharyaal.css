@@ -24,27 +24,33 @@
   --gharyaal-white: #ffffff;
   --gharyaal-off-white: #f8f8f8;
   --gharyaal-light-gray: #cccccc;
+
+  /* Gradients - Linear Soft (Lighter) */
+  --gharyaal-gradient-body: linear-gradient(180deg, #0b0b0b 0%, #1f1f1f 100%);
 }
 
 /* ============================================
    GLOBAL DARK THEME
    ============================================ */
 body {
-  background: var(--gharyaal-black);
+  background: var(--gharyaal-gradient-body);
+  background-attachment: fixed;
   color: var(--gharyaal-white);
 }
 
 /* Section backgrounds */
 .color-scheme-1,
 .scheme-1 {
-  background: var(--gharyaal-black);
+  background: transparent;
   color: var(--gharyaal-white);
 }
 
 .color-scheme-2,
 .scheme-2 {
-  background: var(--gharyaal-dark-gray);
+  background: #202020; /* Lighter Matte Dark Grey */
   color: var(--gharyaal-white);
+  border-top: 1px solid rgba(212, 175, 55, 0.05);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.05);
 }
 
 /* ============================================
