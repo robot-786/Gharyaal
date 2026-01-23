@@ -1,75 +1,220 @@
-
-
-<div class="section-background color-{{ section.settings.color_scheme }}"></div>
-<div
-  class="section section--{{ section.settings.section_width }} spacing-style {% if section.settings.color_scheme != blank %}color-{{ section.settings.color_scheme }}{% endif %}"
-  style="{% render 'spacing-padding', settings: section.settings %}"
->
-  {{ section.settings.custom_liquid }}
-</div>
-
 {% schema %}
 {
-  "name": "t:names.custom_liquid",
+  "name": "Custom Luxury Footer",
   "settings": [
     {
-      "type": "liquid",
-      "id": "custom_liquid",
-      "label": "t:settings.custom_liquid",
-      "info": "t:info.custom_liquid"
+      "type": "header",
+      "content": "Colors"
     },
     {
-      "type": "color_scheme",
-      "id": "color_scheme",
-      "label": "t:settings.color_scheme",
-      "default": "scheme-1"
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#000000"
     },
     {
-      "type": "select",
-      "id": "section_width",
-      "label": "t:settings.width",
-      "options": [
-        {
-          "value": "page-width",
-          "label": "t:options.page"
-        },
-        {
-          "value": "full-width",
-          "label": "t:options.full"
-        }
-      ],
-      "default": "page-width"
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#ffffff"
     },
     {
       "type": "header",
-      "content": "t:content.padding"
+      "content": "Column 1: Quick Links"
     },
     {
-      "type": "range",
-      "id": "padding-block-start",
-      "label": "t:settings.top",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "default": 0
+      "type": "text",
+      "id": "col_1_heading",
+      "label": "Heading",
+      "default": "QUICK LINKS"
     },
     {
-      "type": "range",
-      "id": "padding-block-end",
-      "label": "t:settings.bottom",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "default": 0
+      "type": "link_list",
+      "id": "col_1_menu",
+      "label": "Menu",
+      "default": "footer"
+    },
+    {
+      "type": "header",
+      "content": "Column 2: Contact Us"
+    },
+    {
+      "type": "text",
+      "id": "col_2_heading",
+      "label": "Heading",
+      "default": "CONTACT US"
+    },
+    {
+      "type": "text",
+      "id": "contact_email",
+      "label": "Email Address",
+      "default": "support@doppelwatches.com"
+    },
+    {
+      "type": "text",
+      "id": "contact_phone",
+      "label": "Phone Number",
+      "default": "+923268181493"
+    },
+    {
+      "type": "textarea",
+      "id": "contact_address",
+      "label": "Physical Address",
+      "default": "House # 915, road E, phase 3, Bahria town, Rawalpindi"
+    },
+    {
+      "type": "header",
+      "content": "Column 3: Legal"
+    },
+    {
+      "type": "text",
+      "id": "col_3_heading",
+      "label": "Heading",
+      "default": "LEGAL"
+    },
+    {
+      "type": "link_list",
+      "id": "col_3_menu",
+      "label": "Menu",
+      "default": "footer"
     }
   ],
   "presets": [
     {
-      "name": "t:names.custom_liquid",
-      "category": "t:categories.layout"
+      "name": "Custom Luxury Footer"
     }
   ]
 }
 {% endschema %}
+
+<style>
+  .custom-footer-section {
+    background-color: {{ section.settings.bg_color }};
+    color: {{ section.settings.text_color }};
+    padding: 60px 20px;
+    font-family: var(--font-body-family), sans-serif; /* Uses your theme's font */
+  }
+
+  .custom-footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+  }
+
+  /* Headings */
+  .footer-col h3 {
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 25px;
+    font-weight: 500;
+    color: {{ section.settings.text_color }};
+  }
+
+  /* Links and Text */
+  .footer-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .footer-col li {
+    margin-bottom: 15px;
+  }
+
+  .footer-col a {
+    text-decoration: none;
+    color: {{ section.settings.text_color }};
+    opacity: 0.8;
+    font-size: 14px;
+    transition: opacity 0.3s ease;
+  }
+
+  .footer-col a:hover {
+    opacity: 1;
+    text-decoration: underline;
+  }
+
+  .footer-col p {
+    margin: 0 0 15px 0;
+    font-size: 14px;
+    opacity: 0.8;
+    line-height: 1.6;
+    color: {{ section.settings.text_color }};
+  }
+
+  /* Contact Specifics */
+  .contact-row {
+    margin-bottom: 15px;
+    font-size: 14px;
+    opacity: 0.8;
+  }
+  .contact-label {
+    opacity: 1; 
+  }
+
+  /* Mobile Responsive */
+  @media screen and (max-width: 768px) {
+    .custom-footer-container {
+      grid-template-columns: 1fr; /* Stack vertically */
+      gap: 50px;
+      text-align: left; /* Keep left align like luxury brands */
+    }
+  }
+</style>
+
+<div class="custom-footer-section">
+  <div class="custom-footer-container">
+
+    <div class="footer-col">
+      <h3>{{ section.settings.col_1_heading }}</h3>
+      <ul>
+        {% for link in linklists[section.settings.col_1_menu].links %}
+          <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+        {% else %}
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">FAQs</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h3>{{ section.settings.col_2_heading }}</h3>
+      
+      {% if section.settings.contact_email != blank %}
+        <div class="contact-row">
+          <span class="contact-label">Email:</span> {{ section.settings.contact_email }}
+        </div>
+      {% endif %}
+
+      {% if section.settings.contact_phone != blank %}
+        <div class="contact-row">
+          <span class="contact-label">Phone:</span> {{ section.settings.contact_phone }}
+        </div>
+      {% endif %}
+
+      {% if section.settings.contact_address != blank %}
+        <div class="contact-row">
+          <span class="contact-label">Address:</span> {{ section.settings.contact_address }}
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="footer-col">
+      <h3>{{ section.settings.col_3_heading }}</h3>
+      <ul>
+        {% for link in linklists[section.settings.col_3_menu].links %}
+          <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+        {% else %}
+           <li><a href="#">Shipping Policy</a></li>
+          <li><a href="#">Return/Exchange Policy</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+
+  </div>
+</div>

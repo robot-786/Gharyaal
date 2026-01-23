@@ -61,7 +61,7 @@
         "marquee_text_1": {
           "type": "text",
           "settings": {
-            "text": "<p>Rolex • Patek Philippe • Audemars Piguet • Vacheron Constantin • Cartier • Omega • Gharyaal By Taimour</p>",
+            "text": "<p>Rolex • Patek Philippe • Audemars Piguet • Hublot • Tag Heuer • Tissot • Cartier • Omega • Gharyaal By Taimour • </p>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
@@ -80,14 +80,15 @@
             "padding-block-end": 0,
             "padding-inline-start": 0,
             "padding-inline-end": 0
-          }
+          },
+          "blocks": {}
         }
       },
       "block_order": [
         "marquee_text_1"
       ],
       "settings": {
-        "movement_direction": "normal",
+        "movement_direction": "reverse",
         "color_scheme": "scheme-2",
         "padding-block-start": 16,
         "padding-block-end": 16,
@@ -160,7 +161,8 @@
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
-              }
+              },
+              "blocks": {}
             },
             "product_list_button": {
               "type": "_product-list-button",
@@ -173,7 +175,8 @@
                 "custom_width": 100,
                 "width_mobile": "fit-content",
                 "custom_width_mobile": 100
-              }
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -212,7 +215,8 @@
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
-              }
+              },
+              "blocks": {}
             },
             "product_title": {
               "type": "product-title",
@@ -236,7 +240,8 @@
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
-              }
+              },
+              "blocks": {}
             },
             "price": {
               "type": "price",
@@ -258,7 +263,8 @@
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
-              }
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -348,7 +354,8 @@
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
-              }
+              },
+              "blocks": {}
             },
             "product_list_button": {
               "type": "_product-list-button",
@@ -361,7 +368,8 @@
                 "custom_width": 100,
                 "width_mobile": "fit-content",
                 "custom_width_mobile": 100
-              }
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -400,7 +408,8 @@
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
-              }
+              },
+              "blocks": {}
             },
             "product_title": {
               "type": "product-title",
@@ -424,7 +433,8 @@
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
-              }
+              },
+              "blocks": {}
             },
             "price": {
               "type": "price",
@@ -446,7 +456,8 @@
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
-              }
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -536,7 +547,8 @@
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
-              }
+              },
+              "blocks": {}
             },
             "product_list_button": {
               "type": "_product-list-button",
@@ -549,7 +561,8 @@
                 "custom_width": 100,
                 "width_mobile": "fit-content",
                 "custom_width_mobile": 100
-              }
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -588,7 +601,8 @@
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
-              }
+              },
+              "blocks": {}
             },
             "product_title": {
               "type": "product-title",
@@ -612,7 +626,8 @@
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
-              }
+              },
+              "blocks": {}
             },
             "price": {
               "type": "price",
@@ -634,7 +649,8 @@
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
-              }
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -724,7 +740,8 @@
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
-              }
+              },
+              "blocks": {}
             },
             "product_list_button": {
               "type": "_product-list-button",
@@ -737,7 +754,8 @@
                 "custom_width": 100,
                 "width_mobile": "fit-content",
                 "custom_width_mobile": 100
-              }
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -776,7 +794,8 @@
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
-              }
+              },
+              "blocks": {}
             },
             "product_title": {
               "type": "product-title",
@@ -800,7 +819,8 @@
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
-              }
+              },
+              "blocks": {}
             },
             "price": {
               "type": "price",
@@ -822,7 +842,8 @@
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
-              }
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -912,7 +933,8 @@
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
-              }
+              },
+              "blocks": {}
             },
             "product_list_button": {
               "type": "_product-list-button",
@@ -925,7 +947,8 @@
                 "custom_width": 100,
                 "width_mobile": "fit-content",
                 "custom_width_mobile": 100
-              }
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -964,7 +987,8 @@
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
-              }
+              },
+              "blocks": {}
             },
             "product_title": {
               "type": "product-title",
@@ -988,7 +1012,8 @@
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
-              }
+              },
+              "blocks": {}
             },
             "price": {
               "type": "price",
@@ -1010,7 +1035,8 @@
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
-              }
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -1100,7 +1126,8 @@
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
-              }
+              },
+              "blocks": {}
             },
             "product_list_button": {
               "type": "_product-list-button",
@@ -1113,7 +1140,8 @@
                 "custom_width": 100,
                 "width_mobile": "fit-content",
                 "custom_width_mobile": 100
-              }
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -1152,7 +1180,8 @@
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
-              }
+              },
+              "blocks": {}
             },
             "product_title": {
               "type": "product-title",
@@ -1176,7 +1205,8 @@
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
-              }
+              },
+              "blocks": {}
             },
             "price": {
               "type": "price",
@@ -1198,7 +1228,8 @@
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
-              }
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -1288,7 +1319,8 @@
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
-              }
+              },
+              "blocks": {}
             },
             "product_list_button": {
               "type": "_product-list-button",
@@ -1301,7 +1333,8 @@
                 "custom_width": 100,
                 "width_mobile": "fit-content",
                 "custom_width_mobile": 100
-              }
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -1340,7 +1373,8 @@
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
-              }
+              },
+              "blocks": {}
             },
             "product_title": {
               "type": "product-title",
@@ -1364,7 +1398,8 @@
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
-              }
+              },
+              "blocks": {}
             },
             "price": {
               "type": "price",
@@ -1386,7 +1421,8 @@
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
-              }
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -1476,7 +1512,8 @@
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
-              }
+              },
+              "blocks": {}
             },
             "product_list_button": {
               "type": "_product-list-button",
@@ -1489,7 +1526,8 @@
                 "custom_width": 100,
                 "width_mobile": "fit-content",
                 "custom_width_mobile": 100
-              }
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -1528,7 +1566,8 @@
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
-              }
+              },
+              "blocks": {}
             },
             "product_title": {
               "type": "product-title",
@@ -1552,7 +1591,8 @@
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
-              }
+              },
+              "blocks": {}
             },
             "price": {
               "type": "price",
@@ -1574,7 +1614,8 @@
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
-              }
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -1604,12 +1645,206 @@
         "padding-block-end": 60
       }
     },
+    "product_list_7QgfzF": {
+      "type": "product-list",
+      "blocks": {
+        "static-header": {
+          "type": "_product-list-content",
+          "name": "t:names.header",
+          "static": true,
+          "settings": {
+            "content_direction": "row",
+            "vertical_on_mobile": false,
+            "horizontal_alignment": "space-between",
+            "vertical_alignment": "flex-end",
+            "align_baseline": true,
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 12,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "background_media": "none",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "product_list_text_QrWGz7": {
+              "type": "_product-list-text",
+              "name": "t:names.collection_title",
+              "settings": {
+                "text": "<h2>Stone Watches</h2>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "h2",
+                "font": "var(--font-heading--family)",
+                "font_size": "",
+                "line_height": "normal",
+                "letter_spacing": "0.05em",
+                "case": "uppercase",
+                "wrap": "pretty",
+                "color": "#D4AF37",
+                "background": false,
+                "background_color": "",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "product_list_button_Vdq4xp": {
+              "type": "_product-list-button",
+              "name": "t:names.product_list_button",
+              "settings": {
+                "label": "View All",
+                "open_in_new_tab": false,
+                "style_class": "link",
+                "width": "fit-content",
+                "custom_width": 100,
+                "width_mobile": "fit-content",
+                "custom_width_mobile": 100
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "product_list_text_QrWGz7",
+            "product_list_button_Vdq4xp"
+          ]
+        },
+        "static-product-card": {
+          "type": "_product-card",
+          "name": "t:names.product_card",
+          "static": true,
+          "settings": {
+            "product_card_gap": 8,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "product_card_gallery_XBpct3": {
+              "type": "_product-card-gallery",
+              "name": "t:names.product_card_media",
+              "settings": {
+                "image_ratio": "portrait",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 8,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "product_title_NpGVh8": {
+              "type": "product-title",
+              "name": "t:names.product_title",
+              "settings": {
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "body",
+                "font": "var(--font-body--family)",
+                "font_size": "0.875rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "#ffffff",
+                "background": false,
+                "background_color": "",
+                "corner_radius": 0,
+                "padding-block-start": 12,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "price_TKxUbG": {
+              "type": "price",
+              "name": "t:names.product_price",
+              "settings": {
+                "show_sale_price_first": true,
+                "show_installments": false,
+                "show_tax_info": false,
+                "type_preset": "h6",
+                "width": "100%",
+                "alignment": "left",
+                "font": "var(--font-body--family)",
+                "font_size": "1.125rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "color": "#D4AF37",
+                "padding-block-start": 6,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "product_card_gallery_XBpct3",
+            "product_title_NpGVh8",
+            "price_TKxUbG"
+          ]
+        }
+      },
+      "settings": {
+        "collection": "hublot",
+        "layout_type": "carousel",
+        "carousel_on_mobile": true,
+        "max_products": 12,
+        "columns": 4,
+        "mobile_columns": "2",
+        "mobile_card_size": "60cqw",
+        "columns_gap": 20,
+        "rows_gap": 24,
+        "icons_style": "chevron",
+        "icons_shape": "circle",
+        "section_width": "page-width",
+        "horizontal_alignment": "flex-start",
+        "gap": 40,
+        "color_scheme": "scheme-1",
+        "padding-block-start": 80,
+        "padding-block-end": 60
+      }
+    },
     "why_choose_us": {
       "type": "why-choose-us",
       "blocks": {
         "feature_1": {
           "type": "feature",
           "settings": {
+            "icon_svg": "",
             "icon_name": "checkmark",
             "title": "Premium Quality",
             "description": "Master copies crafted with precision and finest materials for lasting durability"
@@ -1618,6 +1853,7 @@
         "feature_2": {
           "type": "feature",
           "settings": {
+            "icon_svg": "",
             "icon_name": "truck",
             "title": "Fast Delivery",
             "description": "Express shipping across Pakistan with secure, discreet packaging"
@@ -1626,6 +1862,7 @@
         "feature_3": {
           "type": "feature",
           "settings": {
+            "icon_svg": "",
             "icon_name": "lock",
             "title": "Secure Payments",
             "description": "100% secure payment options including Cash on Delivery available"
@@ -1634,6 +1871,7 @@
         "feature_4": {
           "type": "feature",
           "settings": {
+            "icon_svg": "",
             "icon_name": "heart",
             "title": "24/7 Support",
             "description": "Round the clock customer support via WhatsApp and phone"
@@ -1647,71 +1885,298 @@
         "feature_4"
       ],
       "settings": {
-        "heading": "Why Customers Choose Us",
-        "columns": "4",
+        "section_width": "page-width",
         "color_scheme": "scheme-2",
+        "gap": 24,
         "padding-block-start": 100,
         "padding-block-end": 100
       }
     },
-    "testimonials": {
-      "type": "reviews-carousel",
+    "dispatch_video_ghMm8z": {
+      "type": "dispatch-video",
+      "name": "Dispatch Video",
+      "settings": {
+        "video": "shopify://files/videos/dispatch vid.mp4",
+        "heading": "Dispatch Video for Your Order",
+        "description": "<p>We record and send a dispatch video for every order before shipping. This ensures complete transparency and lets you see exactly what you're receiving before it leaves our warehouse.</p><p>Your satisfaction and trust are our top priorities.</p>",
+        "button_label": "",
+        "button_link": "",
+        "section_width": "page-width",
+        "color_scheme": "",
+        "padding-block-start": 60,
+        "padding-block-end": 60
+      }
+    },
+    "1768741532e18418b6": {
+      "type": "_blocks",
       "blocks": {
-        "review_1": {
-          "type": "review",
+        "ai_gen_block_af9fe91_PHWJMX": {
+          "type": "ai_gen_block_af9fe91",
           "settings": {
-            "rating": 5,
-            "review_text": "Absolutely stunning watch! The quality is incredible and looks exactly like the original. Fast shipping too.",
-            "customer_name": "Ahmed K., Karachi"
+            "heading": "Testimonials",
+            "heading_size": 32,
+            "background_color": "#333333",
+            "heading_color": "#000000",
+            "border_color": "#0000000f",
+            "grid_gap": 8,
+            "image_border_radius": 8,
+            "desktop_width_percent": 50
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_af9fe91_PHWJMX"
+      ],
+      "name": "Testimonials",
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 12,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "color_scheme": "",
+        "background_media": "none",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_radius": 0,
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "section_YyByKY": {
+      "type": "section",
+      "blocks": {
+        "image_FQrm9G": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/man-signing-for-shipping-box.jpg",
+            "link": "",
+            "image_ratio": "square",
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 17,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "group_UenHMr": {
+          "type": "group",
+          "settings": {
+            "content_direction": "column",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 12,
+            "width": "custom",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "background_media": "none",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "toggle_overlay": false,
+            "overlay_color": "#00000026",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "link": "",
+            "open_in_new_tab": false,
+            "placeholder": "",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "text_FKQGah": {
+              "type": "text",
+              "name": "t:names.heading",
+              "settings": {
+                "text": "<h2>Why we take Rs1000 Advance?</h2>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "custom",
+                "font": "var(--font-heading--family)",
+                "font_size": "2rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-primary)",
+                "background": true,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "text_nUdMBN": {
+              "type": "text",
+              "settings": {
+                "text": "<ul><li>We take <strong>Rs.1000 advance</strong> as deposit for the confirmation of your orders</li><li>Because most of the time people do order watches for fun but at the end of the day they don't pay for their parcels. </li><li>Due to this we lose packaging cost, transportation cost, labor cost, & wasted time.</li><li>So to overcome that we only ship orders after recieving Rs<strong>1000 in advance</strong>.</li><li>Serious buyers will do that others will cancel rightaway & we can save time for our genuine customers.</li><li><strong>Hope you understand the thought.</strong></li></ul>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "text_FKQGah",
+            "text_nUdMBN"
+          ]
+        }
+      },
+      "block_order": [
+        "image_FQrm9G",
+        "group_UenHMr"
+      ],
+      "name": "t:names.image_with_text",
+      "settings": {
+        "content_direction": "row",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 32,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "color_scheme": "",
+        "background_media": "none",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_radius": 0,
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "padding-block-start": 40,
+        "padding-block-end": 40
+      }
+    },
+    "instagram_feed_kjcGde": {
+      "type": "instagram-feed",
+      "blocks": {
+        "post_3WweEr": {
+          "type": "post",
+          "settings": {
+            "post_url": ""
           }
         },
-        "review_2": {
-          "type": "review",
+        "post_pmtm6A": {
+          "type": "post",
           "settings": {
-            "rating": 5,
-            "review_text": "Best replica watches in Pakistan. I've ordered 3 times now and every time the quality exceeds my expectations.",
-            "customer_name": "Hassan M., Lahore"
+            "post_url": ""
           }
         },
-        "review_3": {
-          "type": "review",
+        "post_xP3Txz": {
+          "type": "post",
           "settings": {
-            "rating": 5,
-            "review_text": "The Rolex Submariner I ordered is perfect. Everyone thinks it's real. Great customer service too!",
-            "customer_name": "Ali R., Islamabad"
+            "post_url": ""
           }
         },
-        "review_4": {
-          "type": "review",
+        "post_B6nAxU": {
+          "type": "post",
           "settings": {
-            "rating": 5,
-            "review_text": "Premium quality at affordable prices. The attention to detail is amazing. Will definitely order again.",
-            "customer_name": "Usman S., Rawalpindi"
+            "post_url": ""
           }
         },
-        "review_5": {
-          "type": "review",
+        "post_7jExEH": {
+          "type": "post",
           "settings": {
-            "rating": 5,
-            "review_text": "Received my AP Royal Oak yesterday. The finish, weight, and movement feel exactly like the original!",
-            "customer_name": "Bilal A., Multan"
+            "post_url": ""
+          }
+        },
+        "post_ThGhT7": {
+          "type": "post",
+          "settings": {
+            "post_url": ""
           }
         }
       },
       "block_order": [
-        "review_1",
-        "review_2",
-        "review_3",
-        "review_4",
-        "review_5"
+        "post_3WweEr",
+        "post_pmtm6A",
+        "post_xP3Txz",
+        "post_B6nAxU",
+        "post_7jExEH",
+        "post_ThGhT7"
       ],
+      "custom_css": [
+        ".button {position: absolute; height: 60px; left: 50%; transform: translateX(-50%); bottom: 5px;}"
+      ],
+      "name": "Instagram Feed",
       "settings": {
-        "heading": "What Our Customers Say",
-        "autoplay": true,
-        "autoplay_speed": 5,
-        "color_scheme": "scheme-1",
-        "padding-block-start": 100,
-        "padding-block-end": 100
+        "heading": "Follow Us on Instagram",
+        "subheading": "Stay updated with our latest collections",
+        "instagram_handle": "gharyaal7",
+        "instagram_url": "https://www.instagram.com/gharyaal7",
+        "show_button": true,
+        "button_text": "Visit Instagram",
+        "columns": "6",
+        "section_width": "page-width",
+        "color_scheme": "scheme-5",
+        "gap": 16,
+        "padding-block-start": 48,
+        "padding-block-end": 48
       }
     }
   },
@@ -1727,7 +2192,11 @@
     "tag_heuer_collection",
     "omega_collection",
     "hublot_collection",
+    "product_list_7QgfzF",
     "why_choose_us",
-    "testimonials"
+    "dispatch_video_ghMm8z",
+    "1768741532e18418b6",
+    "section_YyByKY",
+    "instagram_feed_kjcGde"
   ]
 }

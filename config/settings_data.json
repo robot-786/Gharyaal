@@ -9,6 +9,8 @@
  */
 {
   "current": {
+    "logo_height": 36,
+    "logo_height_mobile": 28,
     "type_body_font": "inter_n4",
     "type_subheading_font": "inter_n5",
     "type_heading_font": "inter_n7",
@@ -60,6 +62,7 @@
     "icon_stroke": "default",
     "input_border_width": 1,
     "inputs_border_radius": 4,
+    "popover_color_scheme": "scheme-58084d4c-a86e-4d0a-855e-a0966e5043f7",
     "popover_border_radius": 14,
     "popover_border": "none",
     "currency_code_enabled_product_pages": false,
@@ -74,14 +77,15 @@
     "variant_button_border_width": 1,
     "variant_button_radius": 14,
     "variant_button_width": "equal-width-buttons",
+    "content_for_index": [],
     "color_schemes": {
       "scheme-1": {
         "settings": {
           "background": "#ffffff",
-          "foreground_heading": "#000000",
-          "foreground": "#000000cf",
-          "primary": "#000000cf",
-          "primary_hover": "#000000",
+          "foreground_heading": "#d4af37",
+          "foreground": "#ffffff",
+          "primary": "#d4af37",
+          "primary_hover": "#d4af37",
           "border": "#0000000f",
           "shadow": "#000000",
           "primary_button_background": "#000000",
@@ -121,7 +125,7 @@
           "foreground": "#000000cf",
           "primary": "#000000cf",
           "primary_hover": "#ffffff",
-          "border": "#DFDFDF",
+          "border": "#dfdfdf",
           "shadow": "#000000",
           "primary_button_background": "#000000",
           "primary_button_text": "#ffffff",
@@ -348,9 +352,7 @@
           "selected_variant_hover_border_color": "#1a1a1a"
         }
       }
-    },
-    "logo_height": 36,
-    "logo_height_mobile": 28
+    }
   },
   "presets": {
     "Horizon": {

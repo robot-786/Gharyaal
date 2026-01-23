@@ -12,19 +12,19 @@
         assign logo_filename = ''
         case collection.handle
           when 'rolex'
-            assign logo_filename = 'rolex-logo.png'
+            assign logo_filename = 'brand-rolex-logo.png'
           when 'patek-philippe'
-            assign logo_filename = 'patek-logo.png'
+            assign logo_filename = 'brand-patek-logo.png'
           when 'audemars-piguet'
-            assign logo_filename = 'ap-logo.png'
+            assign logo_filename = 'brand-ap-logo.png'
           when 'omega'
-            assign logo_filename = 'omega-logo.png'
+            assign logo_filename = 'brand-omega-logo.png'
           when 'tag-heuer'
-            assign logo_filename = 'th-logo.png'
+            assign logo_filename = 'brand-th-logo.png'
           when 'tissot'
-            assign logo_filename = 'tissot-logo.png'
+            assign logo_filename = 'brand-tissot-logo.png'
           when 'hublot'
-            assign logo_filename = 'hublot-logo.png'
+            assign logo_filename = 'brand-hublot-logo.png'
         endcase
       -%}
       {% if logo_filename != '' %}
@@ -36,9 +36,17 @@
           height="240"
           loading="eager"
         >
+      {% else %}
+        <img 
+          src="{{ 'logo.png' | asset_url }}" 
+          alt="{{ shop.name }}"
+          class="brand-fallback-gharyaal-logo"
+          loading="eager"
+        >
+        <h1 class="brand-title-fallback">{{ collection.title }}</h1>
       {% endif %}
     </div>
-    <h1 class="brand-title">{{ collection.title }}</h1>
+    {% comment %} <h1 class="brand-title">{{ collection.title }}</h1> {% endcomment %}
     {% if collection.description != blank %}
       <div class="brand-description">{{ collection.description }}</div>
     {% endif %}
@@ -46,7 +54,7 @@
 
   {%- comment -%} Sub Brands Grid {%- endcomment -%}
   <div class="subcategories-section page-width">
-    <h2 class="section-heading">Sub Brands</h2>
+    <h2 class="section-heading">categories</h2>
     
     <div class="subcategories-grid">
       {% comment %}
@@ -74,9 +82,15 @@
             endif
           endif
           
-          # Exclude OZ/RX and Super Clone collections
-          if col_handle_lower contains 'oz' or col_handle_lower contains 'rx' or col_handle_lower contains 'super-clone'
-            assign show_collection = false
+          # Special handling for OZ/RX and Super Clone brands
+          # Only exclude if we're NOT on their parent brand page
+          if show_collection == true
+            if brand_handle != 'oz-rx-quality' and brand_handle != 'super-clone'
+              # Exclude OZ/RX and Super Clone subcollections from showing on other brand pages
+              if col_handle_lower contains 'oz-rx-quality' or col_handle_lower contains 'super-clone'
+                assign show_collection = false
+              endif
+            endif
           endif
         -%}
         
@@ -192,12 +206,14 @@
 }
 
 .brand-logo-center {
-  width: 200px;
-  height: 160px;
+  width: 300px;
+  min-height: 240px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   margin-bottom: 30px;
+  gap: 20px;
 }
 
 .brand-hero-logo {
@@ -205,6 +221,25 @@
   max-height: 100%;
   object-fit: contain;
   filter: brightness(1.1);
+}
+
+.brand-fallback-gharyaal-logo {
+  max-width: 200px;
+  height: auto;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+.brand-title-fallback {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  color: #D4AF37;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+  text-align: center;
+  line-height: 1.2;
 }
 
 .brand-title {

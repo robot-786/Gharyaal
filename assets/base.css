@@ -4037,3 +4037,306 @@ text-component {
     font-size: max(1rem, 100%);
   }
 }
+
+/* Custom Product Card Fixes - Premium Luxury Style */
+
+/* 1. Fix Hover Cut-off */
+/* Add breathing room to the grid containers instead of individual cards to prevent cut-off */
+.product-grid,
+.collection-list {
+  padding-top: 20px !important;
+  padding-bottom: 20px !important;
+  margin-top: -20px !important; /* Counteract the padding layout shift */
+}
+
+.resource-list__item,
+.product-grid__card,
+.collection-list__item {
+  overflow: visible !important;
+  /* Remove the individual padding that looked bad */
+  padding-top: 0 !important; 
+}
+
+/* 2. Premium Typography & Colors */
+
+/* Indent text content */
+.product-card .text-block,
+.product-card p {
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+/* Product Title Typography */
+.product-card .text-block,
+.product-card__content a {
+  font-family: var(--font-heading-family); /* Use theme heading font */
+  font-weight: 500;
+  letter-spacing: 0.05em; /* Slight tracking for elegance */
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: #FFFFFF !important;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  margin-bottom: 4px;
+}
+
+/* Hover Effect */
+.product-card:hover .text-block,
+.product-card:hover a {
+  color: #D4AF37 !important; /* Gharyaal Gold */
+}
+
+/* Price Styling */
+.product-card .price {
+  font-family: var(--font-heading-family);
+  color: #EBC656 !important; /* Brighter, vibrant gold */
+  font-weight: 800; /* Extra bold */
+  letter-spacing: 0.02em;
+  font-size: 1.15rem; /* Larger size */
+  line-height: 1.2;
+  text-shadow: 0 0 12px rgba(235, 198, 86, 0.25); /* Psychological glow effect */
+  margin-top: 5px;
+  display: inline-block;
+    padding-left: 6px;
+  padding-right: 6px;
+}
+
+/* Compare Price Styling */
+.product-card .compare-at-price {
+  font-family: var(--font-body-family);
+  color: rgba(255, 255, 255, 0.4) !important; /* More subtle to make main price pop */
+  font-weight: 400;
+  font-size: 0.85rem;
+  text-decoration: line-through;
+  margin-right: 8px;
+}
+
+/* Grid Item Spacing */
+.grid__item,
+.collection-product-card {
+  /* Ensure consistent spacing without awkward gaps */
+  padding-top: 0 !important;
+}
+
+
+/* ========================================= */
+/* PREMIUM PRODUCT PAGE STYLES              */
+/* ========================================= */
+
+/* Main Gallery Container - Desktop Card Styling */
+@media screen and (min-width: 750px) {
+  .product-media-gallery {
+    background: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* Constrain image size on desktop */
+  .product-media-gallery__media,
+  .product-media-gallery__image,
+  .product-media-gallery img {
+    max-height: 550px !important;
+    width: 100% !important;
+    object-fit: contain !important;
+    border-radius: 12px !important;
+  }
+}
+
+/* Mobile - Keep original clean look */
+@media screen and (max-width: 749px) {
+  .product-media-gallery {
+    background: transparent !important;
+    border: none;
+    padding: 0;
+  }
+  
+  .product-media-gallery__media,
+  .product-media-gallery__image {
+    border-radius: 0 !important;
+  }
+}
+
+/* Image Premium Styling - Curved Card */
+.product-media-gallery__media,
+.product-media-gallery__image {
+  border-radius: 16px !important; /* Curved corners for premium card feel */
+  overflow: hidden;
+  cursor: zoom-in !important; /* Make it obvious it's clickable */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.product-media-gallery__media:hover,
+.product-media-gallery__image:hover {
+  box-shadow: 0 8px 30px rgba(212, 175, 55, 0.2);
+}
+
+/* Carousel/Slider Styling */
+.product-media-gallery .slider-button {
+  background: rgba(0, 0, 0, 0.4) !important;
+  color: #D4AF37 !important; /* Gold Arrows */
+  border: 1px solid rgba(212, 175, 55, 0.3) !important;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  transition: all 0.3s ease;
+}
+
+.product-media-gallery .slider-button:hover {
+  background: #D4AF37 !important;
+  color: #000000 !important;
+  transform: scale(1.1);
+  border-color: #D4AF37 !important;
+}
+
+/* Thumbnails */
+.thumbnail-list {
+  padding-top: 20px;
+}
+
+.thumbnail-list__item.slider__slide {
+  opacity: 0.6;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.thumbnail-list__item.slider__slide:hover,
+.thumbnail-list__item[aria-current='true'] {
+  opacity: 1;
+  border-bottom: 2px solid #D4AF37; /* Gold active indicator */
+  transform: translateY(-2px);
+}
+
+.thumbnail {
+  border-radius: 0;
+  box-shadow: none !important;
+}
+
+/* Mobile Specifics */
+@media screen and (max-width: 749px) {
+  .product-media-gallery .slider-button {
+    display: flex !important; /* Force arrows on mobile if desired, or let swipe handle it */
+    width: 36px;
+    height: 36px;
+  }
+  
+  /* Dots styling */
+  .slider-counter__link--dots .dot {
+    background-color: rgba(255, 255, 255, 0.3);
+    border: none;
+  }
+  
+  .slider-counter__link--active.slider-counter__link--dots .dot {
+    background-color: #D4AF37;
+  }
+}
+
+/* Product Info Section - Luxury Typography */
+.product__info-container .product__title h1 {
+  font-family: var(--font-heading-family);
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  margin-bottom: 10px;
+}
+
+/* Product Page Price Styling - Multiple Selectors for Comprehensive Coverage */
+product-price,
+product-price .price,
+product-price .price-item,
+product-price span,
+.product__info-container .price,
+.product__info-container .price-item,
+.product__info-container .price-item--regular,
+.product__info-container .price-item--sale,
+.product-information .price,
+.product-information .price-item,
+.price__regular,
+.price__sale {
+  color: #EBC656 !important;
+  font-weight: 700 !important;
+  font-size: 1.5rem !important;
+  text-shadow: 0 0 10px rgba(235, 198, 86, 0.2);
+}
+
+/* Price container background for visibility */
+product-price {
+  padding: 8px 0;
+  display: block;
+}
+
+/* Compare at price (strikethrough) */
+.compare-at-price,
+.price__regular .price-item {
+  color: rgba(255, 255, 255, 0.3) !important;
+  text-decoration: line-through;
+  font-size: 1.2rem !important;
+}
+
+.product__description {
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.8;
+  font-weight: 300;
+  font-size: 1rem;
+}
+
+/* Zoom Modal Customization */
+.product-media-modal__content > * {
+  max-height: 90vh !important; /* Ensure big image fits */
+}
+
+.product-media-modal {
+  background-color: rgba(0,0,0,0.95) !important; /* Darker backdrop for premium feel */
+}
+
+/* Product Guarantees Section */
+.product-guarantees {
+  background: rgba(212, 175, 55, 0.05);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 12px;
+  padding: 24px;
+  margin: 24px 0;
+}
+
+.product-guarantees__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 16px;
+}
+
+.product-guarantees__item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #FFFFFF;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.product-guarantees__icon {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  color: #D4AF37;
+}
+
+/* Packaging Options */
+.product-form__input .variant-input-wrapper {
+  margin-bottom: 20px;
+}
+
+.product-form__input label {
+  color: #FFFFFF;
+  font-weight: 500;
+  margin-bottom: 8px;
+  display: block;
+}
+

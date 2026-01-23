@@ -1,0 +1,192 @@
+{% comment %}
+  Automatic Packaging Options for All Products
+  Adds packaging selection with pricing
+  Requires a "Premium Packaging" product with handle "premium-packaging"
+{% endcomment %}
+
+<div class="product-packaging-options" style="margin: 20px 0;">
+  <label class="form__label" style="color: #FFFFFF; font-weight: 500; margin-bottom: 12px; display: block;">
+    Packaging Options
+  </label>
+  
+  <div class="packaging-options-wrapper" style="display: flex; flex-direction: column; gap: 12px;">
+    <label class="packaging-option" style="display: flex; align-items: center; padding: 16px; background: rgba(255, 255, 255, 0.05); border: 2px solid rgba(255, 255, 255, 0.1); border-radius: 8px; cursor: pointer; transition: all 0.3s ease;">
+      <input 
+        type="radio" 
+        name="packaging_option" 
+        value="normal" 
+        checked 
+        class="packaging-radio"
+        style="margin-right: 12px; width: 20px; height: 20px; accent-color: #D4AF37;"
+      >
+      <div style="flex: 1;">
+        <div style="color: #FFFFFF; font-weight: 500; margin-bottom: 4px;">Normal Packaging</div>
+        <div style="color: rgba(255, 255, 255, 0.6); font-size: 0.9rem;">Standard secure packaging - Free</div>
+      </div>
+      <div style="color: #D4AF37; font-weight: 600;">Free</div>
+    </label>
+    
+    <label class="packaging-option" style="display: flex; align-items: center; padding: 16px; background: rgba(255, 255, 255, 0.05); border: 2px solid rgba(255, 255, 255, 0.1); border-radius: 8px; cursor: pointer; transition: all 0.3s ease;">
+      <input 
+        type="radio" 
+        name="packaging_option" 
+        value="premium" 
+        class="packaging-radio"
+        style="margin-right: 12px; width: 20px; height: 20px; accent-color: #D4AF37;"
+      >
+      <div style="flex: 1;">
+        <div style="color: #FFFFFF; font-weight: 500; margin-bottom: 4px;">Original Premium Branded Packaging</div>
+        <div style="color: rgba(255, 255, 255, 0.6); font-size: 0.9rem;">Authentic brand box with certificates</div>
+      </div>
+      <div style="color: #D4AF37; font-weight: 600;">+Rs 2,500</div>
+    </label>
+  </div>
+  
+  <input type="hidden" name="properties[Packaging]" id="packaging-property-value" value="Normal Packaging (Free)">
+  <input type="hidden" id="packaging-selection" value="normal">
+</div>
+
+<style>
+.packaging-option:hover {
+  border-color: rgba(212, 175, 55, 0.5) !important;
+  background: rgba(212, 175, 55, 0.08) !important;
+  transform: translateX(4px);
+}
+
+.packaging-option input:checked {
+  accent-color: #D4AF37;
+}
+
+.packaging-option:has(input:checked) {
+  border-color: #D4AF37 !important;
+  background: rgba(212, 175, 55, 0.1) !important;
+}
+</style>
+
+<script>
+(function() {
+  if (window.packagingOptionsInitialized) return;
+  window.packagingOptionsInitialized = true;
+
+  // Premium Packaging Product Handle - UPDATE THIS after creating the product
+  const PREMIUM_PACKAGING_HANDLE = 'premium-packaging';
+  let premiumPackagingVariantId = null;
+
+  document.addEventListener('DOMContentLoaded', async function() {
+    const packagingInputs = document.querySelectorAll('.packaging-radio');
+    const propertyInput = document.getElementById('packaging-property-value');
+    const packagingSelection = document.getElementById('packaging-selection');
+    const productForm = document.querySelector('product-form form, form[action*="/cart/add"]');
+    
+    if (!productForm) return;
+    
+    // Fetch premium packaging product details
+    try {
+      const response = await fetch(`/products/${PREMIUM_PACKAGING_HANDLE}.js`);
+      const packagingProduct = await response.json();
+      premiumPackagingVariantId = packagingProduct.variants[0].id;
+    } catch (error) {
+      console.error('Premium packaging product not found. Please create a product with handle "premium-packaging"');
+    }
+    
+    // Store original add to cart handler
+    const addToCartButtons = productForm.querySelectorAll('[name="add"]');
+    
+    addToCartButtons.forEach(button => {
+      button.addEventListener('click', async function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        const formData = new FormData(productForm);
+        const variantId = formData.get('id');
+        const quantity = parseInt(formData.get('quantity') || '1');
+        const selectedPackaging = document.querySelector('.packaging-radio:checked');
+        
+        // Build main product item
+        const items = [{
+          id: variantId,
+          quantity: quantity,
+          properties: {
+            'Packaging': selectedPackaging?.value === 'premium' 
+              ? 'Original Premium Branded Packaging (+Rs 2,500)' 
+              : 'Normal Packaging (Free)'
+          }
+        }];
+        
+        // Add premium packaging as separate line item if selected
+        if (selectedPackaging?.value === 'premium' && premiumPackagingVariantId) {
+          items.push({
+            id: premiumPackagingVariantId,
+            quantity: quantity,
+            properties: {
+              '_packaging_for': variantId
+            }
+          });
+        }
+        
+        // Add to cart
+        try {
+          const response = await fetch('/cart/add.js', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ items: items })
+          });
+          
+          const data = await response.json();
+          
+          // Trigger cart refresh
+          if (typeof window.Shopify !== 'undefined' && window.Shopify.theme) {
+            document.documentElement.dispatchEvent(new CustomEvent('cart:refresh'));
+          }
+          
+          // Open cart drawer if exists
+          const cartDrawer = document.querySelector('cart-drawer');
+          const cartNotification = document.querySelector('cart-notification');
+          
+          if (cartDrawer && typeof cartDrawer.open === 'function') {
+            cartDrawer.open();
+          } else if (cartNotification && typeof cartNotification.open === 'function') {
+            cartNotification.open();
+          }
+          
+          // Trigger Shopify section rendering if available
+          if (document.querySelector('cart-drawer')) {
+            fetch('/?section_id=cart-drawer')
+              .then(res => res.text())
+              .then(html => {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                const newDrawer = doc.querySelector('cart-drawer');
+                if (newDrawer) {
+                  document.querySelector('cart-drawer').innerHTML = newDrawer.innerHTML;
+                }
+              });
+          }
+          
+        } catch (error) {
+          console.error('Error adding to cart:', error);
+          alert('Error adding to cart. Please try again.');
+        }
+      });
+    });
+    
+    // Handle packaging option changes
+    packagingInputs.forEach(input => {
+      input.addEventListener('change', function() {
+        // Update hidden inputs
+        if (propertyInput) {
+          propertyInput.value = this.value === 'premium' 
+            ? 'Original Premium Branded Packaging (+Rs 2,500)' 
+            : 'Normal Packaging (Free)';
+        }
+        if (packagingSelection) {
+          packagingSelection.value = this.value;
+        }
+      });
+    });
+  });
+})();
+</script>
+

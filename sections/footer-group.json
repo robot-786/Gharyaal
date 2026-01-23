@@ -11,6 +11,22 @@
   "type": "footer",
   "name": "Footer",
   "sections": {
+    "custom_liquid_nPrpYt": {
+      "type": "custom-liquid",
+      "name": "Custom Luxury Footer",
+      "settings": {
+        "bg_color": "#000000",
+        "text_color": "#ffffff",
+        "col_1_heading": "QUICK LINKS",
+        "col_1_menu": "footer",
+        "col_2_heading": "CONTACT US",
+        "contact_email": "gharyaalbytaimour714@gmail.com",
+        "contact_phone": "+92 3259556689",
+        "contact_address": "",
+        "col_3_heading": "LEGAL",
+        "col_3_menu": "footer-legal-menu"
+      }
+    },
     "footer_m9NzUG": {
       "type": "footer",
       "blocks": {
@@ -115,9 +131,9 @@
             "width": "fill",
             "custom_width": 100,
             "inherit_color_scheme": true,
+            "color_scheme": "",
             "heading": "",
             "heading_preset": "h3",
-            "color_scheme": "",
             "border_style": "all",
             "border_width": 1,
             "border_radius": 100,
@@ -148,19 +164,19 @@
         "padding-block-end": 30
       }
     },
-    "footer_utilities_jLGE8U": {
+    "footer_utilities_z4cjM3": {
       "type": "footer-utilities",
       "blocks": {
-        "footer_copyright_jweRK8": {
+        "footer_copyright_yDjbic": {
           "type": "footer-copyright",
           "settings": {
-            "show_powered_by": true,
+            "show_powered_by": false,
             "font_size": "0.75rem",
-            "case": "none"
+            "case": "uppercase"
           },
           "blocks": {}
         },
-        "footer_policy_list_VCdnpa": {
+        "footer_policy_list_BbVkdy": {
           "type": "footer-policy-list",
           "settings": {
             "font_size": "0.75rem",
@@ -168,14 +184,14 @@
           },
           "blocks": {}
         },
-        "social_links_Ew63Kq": {
+        "social_links_dpYDNa": {
           "type": "social-links",
           "settings": {
-            "facebook_url": "https://www.facebook.com/",
-            "instagram_url": "https://www.instagram.com/",
-            "youtube_url": "https://www.youtube.com/",
-            "tiktok_url": "https://www.tiktok.com/",
-            "twitter_url": "https://x.com/",
+            "facebook_url": "",
+            "instagram_url": "",
+            "youtube_url": "",
+            "tiktok_url": "",
+            "twitter_url": "",
             "threads_url": "",
             "linkedin_url": "",
             "bluesky_url": "",
@@ -189,23 +205,24 @@
         }
       },
       "block_order": [
-        "footer_copyright_jweRK8",
-        "footer_policy_list_VCdnpa",
-        "social_links_Ew63Kq"
+        "footer_copyright_yDjbic",
+        "footer_policy_list_BbVkdy",
+        "social_links_dpYDNa"
       ],
-      "name": "t:names.utilities",
+      "name": "t:names.policies_and_links",
       "settings": {
         "section_width": "page-width",
         "gap": 24,
-        "divider_thickness": 0,
-        "color_scheme": "",
+        "divider_thickness": 1,
+        "color_scheme": "scheme-1",
         "padding-block-start": 20,
-        "padding-block-end": 48
+        "padding-block-end": 20
       }
     }
   },
   "order": [
+    "custom_liquid_nPrpYt",
     "footer_m9NzUG",
-    "footer_utilities_jLGE8U"
+    "footer_utilities_z4cjM3"
   ]
 }

@@ -1,0 +1,584 @@
+{% doc %}
+  @prompt
+    a 4x5 grid of 9:16 image screenshots of customer reviews
+    each image should open up when clicked, follow the same solour scheme of the website, make them smaller, they should only popup when clicked
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-review-grid-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+    padding: 40px 20px;
+    background-color: {{ block.settings.background_color }};
+    box-shadow: 0 0 0 100vw {{ block.settings.background_color }};
+     clip-path: inset(0 -100vw);
+  }
+
+  .ai-review-grid__container-{{ ai_gen_id }} {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .ai-review-grid__heading-{{ ai_gen_id }} {
+    text-align: center;
+    margin-bottom: 40px;
+    color: {{ block.settings.heading_color }};
+    font-size: {{ block.settings.heading_size }}px;
+  }
+
+  .ai-review-grid__grid-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: {{ block.settings.grid_gap }}px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .ai-review-grid__item-{{ ai_gen_id }} {
+    position: relative;
+    aspect-ratio: 9/11;
+    overflow: hidden;
+    border-radius: {{ block.settings.image_border_radius }}px;
+    cursor: pointer;
+    border: 1px solid {{ block.settings.border_color }};
+    max-width: 180px;
+    margin: 0 auto;
+  }
+
+  .ai-review-grid__image-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .ai-review-grid__placeholder-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    background-color: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .ai-review-grid__placeholder-{{ ai_gen_id }} svg {
+    width: 60%;
+    height: 60%;
+    opacity: 0.2;
+  }
+
+  .ai-review-grid__empty-state-{{ ai_gen_id }} {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px;
+    color: #000000cf;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .ai-review-grid__lightbox-{{ ai_gen_id }} {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    z-index: 9999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .ai-review-grid__lightbox-{{ ai_gen_id }}.active {
+    display: flex;
+    opacity: 1;
+  }
+
+  .ai-review-grid__lightbox-content-{{ ai_gen_id }} {
+    position: relative;
+    max-width: 500px;
+    max-height: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ai-review-grid__lightbox-image-{{ ai_gen_id }} {
+    max-width: 100%;
+    max-height: 85vh;
+    object-fit: contain;
+    border-radius: {{ block.settings.image_border_radius }}px;
+  }
+
+  .ai-review-grid__lightbox-close-{{ ai_gen_id }} {
+    position: absolute;
+    top: -50px;
+    right: 0;
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 40px;
+    cursor: pointer;
+    padding: 10px;
+    line-height: 1;
+    transition: opacity 0.3s ease;
+    font-weight: 300;
+  }
+
+  .ai-review-grid__lightbox-close-{{ ai_gen_id }}:hover {
+    opacity: 0.7;
+  }
+
+  .ai-review-grid__lightbox-nav-{{ ai_gen_id }} {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    font-size: 32px;
+    cursor: pointer;
+    padding: 12px 16px;
+    line-height: 1;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+  }
+
+  .ai-review-grid__lightbox-nav-{{ ai_gen_id }}:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  .ai-review-grid__lightbox-prev-{{ ai_gen_id }} {
+    left: -60px;
+  }
+
+  .ai-review-grid__lightbox-next-{{ ai_gen_id }} {
+    right: -60px;
+  }
+
+  @media screen and (max-width: 989px) {
+    .ai-review-grid__grid-{{ ai_gen_id }} {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .ai-review-grid__lightbox-content-{{ ai_gen_id }} {
+      max-width: 400px;
+    }
+
+    .ai-review-grid__lightbox-prev-{{ ai_gen_id }} {
+      left: 10px;
+    }
+
+    .ai-review-grid__lightbox-next-{{ ai_gen_id }} {
+      right: 10px;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-review-grid__grid-{{ ai_gen_id }} {
+      display: flex;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      gap: 16px;
+      padding: 0 20px 20px;
+      scrollbar-width: thin;
+      scrollbar-color: #D4AF37 rgba(255, 255, 255, 0.1);
+      max-width: 100%;
+    }
+
+    .ai-review-grid__grid-{{ ai_gen_id }}::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    .ai-review-grid__grid-{{ ai_gen_id }}::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 3px;
+    }
+
+    .ai-review-grid__grid-{{ ai_gen_id }}::-webkit-scrollbar-thumb {
+      background: #D4AF37;
+      border-radius: 3px;
+    }
+
+    .ai-review-grid__item-{{ ai_gen_id }} {
+      flex: 0 0 280px;
+      max-width: 280px;
+      scroll-snap-align: center;
+      scroll-snap-stop: always;
+    }
+
+    .ai-review-grid__heading-{{ ai_gen_id }} {
+      font-size: {{ block.settings.heading_size | times: 0.7 }}px;
+      margin-bottom: 24px;
+    }
+
+    .ai-review-grid__lightbox-content-{{ ai_gen_id }} {
+      max-width: 90%;
+    }
+
+    .ai-review-grid__lightbox-nav-{{ ai_gen_id }} {
+      font-size: 24px;
+      padding: 8px 12px;
+    }
+
+    .ai-review-grid__lightbox-close-{{ ai_gen_id }} {
+      font-size: 32px;
+      top: -45px;
+    }
+  }
+{% endstyle %}
+
+<customer-review-grid-{{ ai_gen_id }} class="ai-review-grid-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-review-grid__container-{{ ai_gen_id }}">
+    {% if block.settings.heading != blank %}
+      <h2 class="ai-review-grid__heading-{{ ai_gen_id }}">{{ block.settings.heading }}</h2>
+    {% endif %}
+
+    <div class="ai-review-grid__grid-{{ ai_gen_id }}">
+      {% for i in (1..20) %}
+        {% liquid
+          assign image_key = 'review_image_' | append: i
+          assign review_image = block.settings[image_key]
+        %}
+
+        <div class="ai-review-grid__item-{{ ai_gen_id }}" data-index="{{ i }}">
+          {% if review_image %}
+            <img
+              src="{{ review_image | image_url: width: 400 }}"
+              alt="{{ review_image.alt | escape }}"
+              loading="lazy"
+              width="400"
+              height="711"
+              class="ai-review-grid__image-{{ ai_gen_id }}"
+            >
+          {% else %}
+            <div class="ai-review-grid__placeholder-{{ ai_gen_id }}">
+              {{ 'image' | placeholder_svg_tag }}
+              <div class="ai-review-grid__empty-state-{{ ai_gen_id }}">
+                Add image {{ i }}
+              </div>
+            </div>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="ai-review-grid__lightbox-{{ ai_gen_id }}" data-lightbox>
+    <div class="ai-review-grid__lightbox-content-{{ ai_gen_id }}">
+      <button class="ai-review-grid__lightbox-close-{{ ai_gen_id }}" aria-label="Close lightbox">×</button>
+      <button class="ai-review-grid__lightbox-nav-{{ ai_gen_id }} ai-review-grid__lightbox-prev-{{ ai_gen_id }}" aria-label="Previous image">‹</button>
+      <img src="" alt="" class="ai-review-grid__lightbox-image-{{ ai_gen_id }}" data-lightbox-image>
+      <button class="ai-review-grid__lightbox-nav-{{ ai_gen_id }} ai-review-grid__lightbox-next-{{ ai_gen_id }}" aria-label="Next image">›</button>
+    </div>
+  </div>
+</customer-review-grid-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class CustomerReviewGrid{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+        this.images = [];
+        this.currentIndex = 0;
+      }
+
+      connectedCallback() {
+        this.lightbox = this.querySelector('[data-lightbox]');
+        this.lightboxImage = this.querySelector('[data-lightbox-image]');
+        this.closeBtn = this.querySelector('.ai-review-grid__lightbox-close-{{ ai_gen_id }}');
+        this.prevBtn = this.querySelector('.ai-review-grid__lightbox-prev-{{ ai_gen_id }}');
+        this.nextBtn = this.querySelector('.ai-review-grid__lightbox-next-{{ ai_gen_id }}');
+        this.items = this.querySelectorAll('.ai-review-grid__item-{{ ai_gen_id }}');
+
+        this.collectImages();
+        this.setupEventListeners();
+      }
+
+      collectImages() {
+        this.items.forEach((item, index) => {
+          const img = item.querySelector('.ai-review-grid__image-{{ ai_gen_id }}');
+          if (img) {
+            this.images.push({
+              src: img.src.replace('width=400', 'width=800'),
+              alt: img.alt,
+              index: index
+            });
+          }
+        });
+      }
+
+      setupEventListeners() {
+        this.items.forEach((item, index) => {
+          const img = item.querySelector('.ai-review-grid__image-{{ ai_gen_id }}');
+          if (img) {
+            item.addEventListener('click', () => {
+              this.openLightbox(index);
+            });
+          }
+        });
+
+        this.closeBtn.addEventListener('click', () => {
+          this.closeLightbox();
+        });
+
+        this.prevBtn.addEventListener('click', () => {
+          this.showPrevious();
+        });
+
+        this.nextBtn.addEventListener('click', () => {
+          this.showNext();
+        });
+
+        this.lightbox.addEventListener('click', (e) => {
+          if (e.target === this.lightbox) {
+            this.closeLightbox();
+          }
+        });
+
+        document.addEventListener('keydown', (e) => {
+          if (!this.lightbox.classList.contains('active')) return;
+
+          if (e.key === 'Escape') {
+            this.closeLightbox();
+          } else if (e.key === 'ArrowLeft') {
+            this.showPrevious();
+          } else if (e.key === 'ArrowRight') {
+            this.showNext();
+          }
+        });
+      }
+
+      openLightbox(index) {
+        const imageIndex = this.images.findIndex(img => img.index === index);
+        if (imageIndex === -1) return;
+
+        this.currentIndex = imageIndex;
+        this.updateLightboxImage();
+        this.lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+
+      closeLightbox() {
+        this.lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+
+      showPrevious() {
+        this.currentIndex = (this.currentIndex - 1 + this.images.length) % this.images.length;
+        this.updateLightboxImage();
+      }
+
+      showNext() {
+        this.currentIndex = (this.currentIndex + 1) % this.images.length;
+        this.updateLightboxImage();
+      }
+
+      updateLightboxImage() {
+        const currentImage = this.images[this.currentIndex];
+        this.lightboxImage.src = currentImage.src;
+        this.lightboxImage.alt = currentImage.alt;
+      }
+    }
+
+    customElements.define('customer-review-grid-{{ ai_gen_id }}', CustomerReviewGrid{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Customer review grid",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Customer Reviews"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Heading size",
+      "min": 16,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "header",
+      "content": "Style"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border color",
+      "default": "#0000000f"
+    },
+    {
+      "type": "range",
+      "id": "grid_gap",
+      "label": "Grid gap",
+      "min": 4,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "image_border_radius",
+      "label": "Image border radius",
+      "min": 0,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "header",
+      "content": "Review images"
+    },
+    {
+      "type": "image_picker",
+      "id": "review_image_1",
+      "label": "Review image 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "review_image_2",
+      "label": "Review image 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "review_image_3",
+      "label": "Review image 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "review_image_4",
+      "label": "Review image 4"
+    },
+    {
+      "type": "image_picker",
+      "id": "review_image_5",
+      "label": "Review image 5"
+    },
+    {
+      "type": "image_picker",
+      "id": "review_image_6",
+      "label": "Review image 6"
+    },
+    {
+      "type": "image_picker",
+      "id": "review_image_7",
+      "label": "Review image 7"
+    },
+    {
+      "type": "image_picker",
+      "id": "review_image_8",
+      "label": "Review image 8"
+    },
+    {
+      "type": "image_picker",
+      "id": "review_image_9",
+      "label": "Review image 9"
+    },
+    {
+      "type": "image_picker",
+      "id": "review_image_10",
+      "label": "Review image 10"
+    },
+    {
+      "type": "image_picker",
+      "id": "review_image_11",
+      "label": "Review image 11"
+    },
+    {
+      "type": "image_picker",
+      "id": "review_image_12",
+      "label": "Review image 12"
+    },
+    {
+      "type": "image_picker",
+      "id": "review_image_13",
+      "label": "Review image 13"
+    },
+    {
+      "type": "image_picker",
+      "id": "review_image_14",
+      "label": "Review image 14"
+    },
+    {
+      "type": "image_picker",
+      "id": "review_image_15",
+      "label": "Review image 15"
+    },
+    {
+      "type": "image_picker",
+      "id": "review_image_16",
+      "label": "Review image 16"
+    },
+    {
+      "type": "image_picker",
+      "id": "review_image_17",
+      "label": "Review image 17"
+    },
+    {
+      "type": "image_picker",
+      "id": "review_image_18",
+      "label": "Review image 18"
+    },
+    {
+      "type": "image_picker",
+      "id": "review_image_19",
+      "label": "Review image 19"
+    },
+    {
+      "type": "image_picker",
+      "id": "review_image_20",
+      "label": "Review image 20"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Customer review grid"
+    }
+  ]
+}
+{% endschema %}
