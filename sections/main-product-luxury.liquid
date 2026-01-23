@@ -1,0 +1,541 @@
+{% comment %}
+  Luxury Product Page - Gharyaal
+  Carousel layout with sticky details and refined aesthetics.
+{% endcomment %}
+
+<div class="luxury-product-page" data-section-id="{{ section.id }}">
+  <div class="page-width">
+    <div class="product-grid">
+      
+      <!-- Left Column: Media Gallery (Carousel) -->
+      <div class="product-media-gallery">
+        <div class="media-carousel">
+          {% for media in product.media %}
+            <div class="media-item" data-media-id="{{ media.id }}">
+              {% render 'product-media', media: media, loop: section.settings.enable_video_looping, modal_id: section.id, role: 'presentation', media_class: 'luxury-media-img' %}
+            </div>
+          {% else %}
+            <div class="media-item placeholder">
+              {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+            </div>
+          {% endfor %}
+        </div>
+        
+        <!-- Carousel Controls -->
+        {% if product.media.size > 1 %}
+          <div class="carousel-controls">
+            <button class="carousel-btn prev" aria-label="Previous image">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            </button>
+            <button class="carousel-btn next" aria-label="Next image">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </button>
+          </div>
+          <div class="carousel-dots">
+            {% for media in product.media %}
+              <div class="carousel-dot {% if forloop.first %}active{% endif %}" data-index="{{ forloop.index0 }}"></div>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+
+      <!-- Right Column: Sticky Product Info -->
+      <div class="product-info-wrapper">
+        <div class="product-info-sticky">
+          <div class="product-info-content">
+          
+            {%- for block in section.blocks -%}
+              {%- case block.type -%}
+                
+                {%- when '@app' -%}
+                  {% render block %}
+
+                {%- when 'title' -%}
+                  <h1 class="product-title" {{ block.shopify_attributes }}>
+                    {{ product.title | escape }}
+                  </h1>
+
+                {%- when 'price' -%}
+                  <div class="product-price" {{ block.shopify_attributes }}>
+                    {% render 'price', product_resource: product, use_variant: true, show_sale_price_first: true %}
+                  </div>
+
+                {%- when 'packaging' -%}
+                  <div class="product-packaging-block" {{ block.shopify_attributes }}>
+                    {% render 'product-packaging-options' %}
+                  </div>
+
+                {%- when 'variant_picker' -%}
+                  {% render 'variant-main-picker', product_resource: product, block: block, product_form_id: 'product-form-{{ section.id }}' %}
+
+                {%- when 'buy_buttons' -%}
+                  <div {{ block.shopify_attributes }}>
+                    <product-form class="product-form">
+                      {%- form 'product', product, id: 'product-form-{{ section.id }}', class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
+                        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+                        {% render 'add-to-cart-button', 
+                          can_add_to_cart: product.selected_or_first_available_variant.available, 
+                          product: product, 
+                          add_to_cart_text: 'ADD TO CART',
+                          class: 'product-form__submit'
+                        %}
+                      {%- endform -%}
+                    </product-form>
+                  </div>
+
+                {%- when 'description' -%}
+                  <div class="product-description rte" {{ block.shopify_attributes }}>
+                    {{ product.description }}
+                  </div>
+
+                {%- when 'collapsible_row' -%}
+                  <div class="accordion-item" {{ block.shopify_attributes }}>
+                    <details>
+                      <summary>
+                        <div class="summary-content">
+                          {% render 'icon', icon: block.settings.icon %}
+                          <span>{{ block.settings.heading | default: block.settings.page.title }}</span>
+                        </div>
+                        {% render 'icon', icon: 'caret' %}
+                      </summary>
+                      <div class="accordion-content rte">
+                        {{ block.settings.content }}
+                        {{ block.settings.page.content }}
+                      </div>
+                    </details>
+                  </div>
+
+                {%- when 'text' -%}
+                  <p class="product-text" style="color: {{ block.settings.color }};" {{ block.shopify_attributes }}>
+                    {{ block.settings.text }}
+                  </p>
+
+              {%- endcase -%}
+            {%- endfor -%}
+          
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Luxury Product Page",
+  "tag": "section",
+  "class": "section-luxury-product",
+  "blocks": [
+    {
+      "type": "@app"
+    },
+    {
+      "type": "title",
+      "name": "Product Title",
+      "limit": 1
+    },
+    {
+      "type": "price",
+      "name": "Price",
+      "limit": 1
+    },
+    {
+      "type": "packaging",
+      "name": "Packaging Options",
+      "limit": 1
+    },
+    {
+      "type": "variant_picker",
+      "name": "Variant Picker",
+      "limit": 1
+    },
+    {
+      "type": "buy_buttons",
+      "name": "Buy Buttons",
+      "limit": 1
+    },
+    {
+      "type": "description",
+      "name": "Description",
+      "limit": 1
+    },
+    {
+      "type": "text",
+      "name": "Text",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "default": "Text block",
+          "label": "Text"
+        },
+        {
+          "type": "color",
+          "id": "color",
+          "label": "Color"
+        }
+      ]
+    },
+    {
+      "type": "collapsible_row",
+      "name": "Collapsible Row",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "default": "Collapsible Row",
+          "label": "Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Row content"
+        },
+        {
+          "type": "page",
+          "id": "page",
+          "label": "Row content from page"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_video_looping",
+      "default": false,
+      "label": "Enable video looping"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  /* --- Luxury Product Page CSS --- */
+  
+  .luxury-product-page {
+    padding: 20px 0 80px;
+    background-color: #000;
+    color: #fff;
+  }
+
+  .product-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  @media screen and (min-width: 990px) {
+    .product-grid {
+      grid-template-columns: 1.5fr 1fr;
+      gap: 30px; /* Reduced gap to bring text closer to image */
+      align-items: start;
+    }
+  }
+
+  /* CAROUSEL MEDIA */
+  .product-media-gallery {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .media-carousel {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    scrollbar-width: none; /* Hide scrollbar Firefox */
+  }
+  
+  .media-carousel::-webkit-scrollbar {
+    display: none; /* Hide scrollbar Chrome/Safari */
+  }
+
+  .media-item {
+    flex: 0 0 100%;
+    width: 100%;
+    scroll-snap-align: center;
+    position: relative;
+    /* Removed fixed background and aspect-ratio to fit image naturally */
+    border-radius: 0;
+    overflow: hidden;
+  }
+
+  /* RESET FORCE FILL - Let image define height */
+  .media-item .product-media {
+    width: 100%;
+    height: auto !important; /* Allow natural height */
+    padding-bottom: 0 !important;
+    aspect-ratio: unset !important;
+  }
+
+  .media-item img,
+  .media-item video,
+  .media-item .product-media__image {
+    width: 100%;
+    height: auto !important; /* Natural height */
+    object-fit: contain !important; /* Show full image always */
+    display: block;
+    position: relative; /* Not absolute, take up space */
+  }
+
+  /* Carousel Navigation */
+  .carousel-controls {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    height: 0; /* Minimize height to avoid blocking clicks */
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Center vertically */
+    transform: translateY(-50%);
+    pointer-events: none; /* Let clicks pass through empty space */
+    padding: 0 20px;
+    z-index: 10; /* High z-index */
+  }
+
+  .carousel-btn {
+    pointer-events: auto; /* Re-enable clicks on buttons */
+    background: #fff; /* Solid white for visibility */
+    border: none;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  }
+
+  .carousel-btn:hover {
+    background: #fff;
+    transform: scale(1.1);
+  }
+
+  .carousel-btn svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 16px;
+    padding-bottom: 20px;
+  }
+
+  .carousel-dot {
+    width: 8px;
+    height: 8px;
+    background: rgba(255,255,255,0.3);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .carousel-dot.active {
+    background: #D4AF37;
+  }
+
+  /* STICKY INFO & PADDING FIX */
+  .product-info-wrapper {
+    position: relative;
+    height: 100%;
+  }
+
+  .product-info-sticky {
+    position: sticky;
+    top: 120px;
+  }
+  
+  .product-info-content {
+    /* Mobile padding */
+    padding: 0 24px; 
+  }
+  
+  @media screen and (min-width: 990px) {
+    .product-info-content {
+      /* Desktop asymmetric: Closer to image (left: 10px), far from edge (right: 60px) */
+      padding: 0 60px 0 10px; 
+    }
+  }
+
+  .product-info-sticky {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  /* TYPOGRAPHY */
+  .product-title {
+    font-family: var(--font-heading-family);
+    font-size: 2.2rem;
+    line-height: 1.1;
+    color: #fff;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .product-price {
+    font-family: var(--font-body-family);
+    font-size: 1.5rem;
+    color: #D4AF37; /* Gharyaal Gold */
+    font-weight: 500;
+  }
+
+  .product-description {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.8);
+    margin-top: 10px;
+  }
+
+  /* BUTTONS & FORMS */
+  .product-form__submit {
+    width: 100%;
+    background: #D4AF37;
+    color: #000;
+    border: none;
+    padding: 16px;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+  }
+
+  .product-form__submit:hover {
+    background: #e5bd3f;
+    transform: translateY(-2px);
+  }
+
+  /* ACCORDION */
+  .accordion-item {
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  
+  .accordion-item:last-child {
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .accordion-item summary {
+    padding: 16px 0;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+
+  .accordion-item summary:hover {
+    color: #D4AF37;
+  }
+
+  .accordion-item details[open] summary ~ .accordion-content {
+    animation: fadeIn 0.3s ease;
+  }
+
+  .accordion-content {
+    padding-bottom: 16px;
+    color: rgba(255,255,255,0.7);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .summary-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Mobile Adjustments */
+  @media screen and (max-width: 768px) {
+    .product-title {
+      font-size: 1.8rem;
+    }
+    
+    .product-info-sticky {
+      position: static;
+    }
+    
+    .media-item img {
+      max-height: 500px; /* Cap mobile image height */
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const sections = document.querySelectorAll('.luxury-product-page');
+    
+    sections.forEach(section => {
+      const carousel = section.querySelector('.media-carousel');
+      const dots = section.querySelectorAll('.carousel-dot');
+      const prevBtn = section.querySelector('.carousel-btn.prev');
+      const nextBtn = section.querySelector('.carousel-btn.next');
+      
+      if (!carousel) return;
+
+      // Update active dot on scroll
+      carousel.addEventListener('scroll', () => {
+        const scrollLeft = carousel.scrollLeft;
+        const itemWidth = carousel.offsetWidth;
+        const activeIndex = Math.round(scrollLeft / itemWidth);
+        
+        dots.forEach((dot, index) => {
+          dot.classList.toggle('active', index === activeIndex);
+        });
+      }, { passive: true });
+
+      // Dot click
+      dots.forEach(dot => {
+        dot.addEventListener('click', () => {
+          const index = parseInt(dot.dataset.index);
+          const itemWidth = carousel.offsetWidth;
+          carousel.scrollTo({
+            left: index * itemWidth,
+            behavior: 'smooth'
+          });
+        });
+      });
+
+      // Arrow clicks
+      if (prevBtn && nextBtn) {
+        prevBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          const itemWidth = carousel.offsetWidth;
+          // Scroll to the previous item explicitly for better snap behavior
+          const currentScroll = carousel.scrollLeft;
+          const targetScroll = Math.max(0, currentScroll - itemWidth);
+          carousel.scrollTo({ left: targetScroll, behavior: 'smooth' });
+        });
+        
+        nextBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          const itemWidth = carousel.offsetWidth;
+          const currentScroll = carousel.scrollLeft;
+          const maxScroll = carousel.scrollWidth - carousel.offsetWidth;
+          const targetScroll = Math.min(maxScroll, currentScroll + itemWidth);
+          carousel.scrollTo({ left: targetScroll, behavior: 'smooth' });
+        });
+      }
+    });
+  });
+</script>

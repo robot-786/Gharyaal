@@ -273,7 +273,7 @@ h2, .h2 {
   background: var(--gharyaal-dark-gray);
   border: 1px solid rgba(212, 175, 55, 0.1);
   border-radius: 12px;
-  padding: 2rem;
+  padding: 1rem;
   transition: all 0.3s ease;
 }
 
@@ -285,7 +285,8 @@ h2, .h2 {
 
 .why-choose-us__icon {
   color: var(--gharyaal-gold);
-  font-size: 3rem;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
 }
 
 .why-choose-us__item-title {

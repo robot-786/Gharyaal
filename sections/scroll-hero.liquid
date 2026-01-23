@@ -1,0 +1,323 @@
+{% schema %}
+{
+  "name": "Scroll Hero (GSAP)",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading_line_1",
+      "label": "Heading Line 1",
+      "default": "Precision"
+    },
+    {
+      "type": "text",
+      "id": "heading_line_2",
+      "label": "Heading Line 2",
+      "default": "Motion"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Experience the mechanics of time."
+    },
+    {
+      "type": "header",
+      "content": "Animation Settings"
+    },
+    {
+      "type": "number",
+      "id": "frame_count",
+      "label": "Frame Count",
+      "default": 122
+    },
+    {
+      "type": "text",
+      "id": "scroll_distance",
+      "label": "Scroll Distance",
+      "default": "400%",
+      "info": "e.g., 400% means the animation plays over 4 screen heights."
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent Color",
+      "default": "#D4AF37"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Scroll Hero (GSAP)"
+    }
+  ]
+}
+{% endschema %}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+<style>
+  .scroll-hero-section {
+    position: relative;
+    width: 100%;
+    /* Min height to allow scrolling if JS fails, 
+       but GSAP will pin it, so height is controlled by pin spacing */
+    height: 100vh; 
+    background-color: #000;
+    overflow: hidden;
+  }
+
+  .hero-scroll-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    z-index: 1;
+    object-fit: cover;
+  }
+
+  .scroll-loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+    width: 300px;
+    text-align: center;
+    pointer-events: none;
+  }
+
+  .scroll-loader-text {
+    font-family: var(--font-heading-family);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: {{ section.settings.accent_color }};
+  }
+
+  .scroll-loader-bar-bg {
+    width: 100%;
+    height: 2px;
+    background: rgba(255,255,255,0.1);
+  }
+
+  .scroll-loader-bar {
+    height: 100%;
+    background-color: {{ section.settings.accent_color }};
+    width: 0%;
+    transition: width 0.1s ease-out;
+    box-shadow: 0 0 10px {{ section.settings.accent_color | color_modify: 'alpha', 0.5 }};
+  }
+
+  .scroll-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none; /* Let clicks pass */
+  }
+
+  .hero-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease, transform 1s ease;
+  }
+
+  .hero-title.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .hero-title .line {
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 700;
+    line-height: 1.1;
+    text-transform: uppercase;
+    color: {{ section.settings.text_color }};
+    letter-spacing: -0.02em;
+  }
+
+  .hero-title .line.text-accent {
+    color: {{ section.settings.accent_color }};
+  }
+
+  .hero-subtitle {
+    margin-top: 1.5rem;
+    color: rgba(255,255,255,0.7);
+    font-size: 1.1rem;
+    max-width: 600px;
+    text-align: center;
+  }
+</style>
+
+<div class="scroll-hero-section" id="ScrollHero-{{ section.id }}">
+  <div class="scroll-loader" id="Loader-{{ section.id }}">
+    <div class="scroll-loader-text">Loading <span id="LoaderPercent-{{ section.id }}">0</span>%</div>
+    <div class="scroll-loader-bar-bg">
+      <div class="scroll-loader-bar" id="LoaderBar-{{ section.id }}"></div>
+    </div>
+  </div>
+
+  <canvas id="Canvas-{{ section.id }}" class="hero-scroll-canvas"></canvas>
+
+  <div class="scroll-overlay">
+    <h1 class="hero-title" id="Title-{{ section.id }}">
+      <span class="line">{{ section.settings.heading_line_1 }}</span>
+      <span class="line text-accent">{{ section.settings.heading_line_2 }}</span>
+      {% if section.settings.subheading != blank %}
+        <p class="hero-subtitle">{{ section.settings.subheading }}</p>
+      {% endif %}
+    </h1>
+  </div>
+</div>
+
+<script>
+  (function() {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const container = document.getElementById('ScrollHero-{{ section.id }}');
+    const canvas = document.getElementById('Canvas-{{ section.id }}');
+    const loader = document.getElementById('Loader-{{ section.id }}');
+    const loaderPercent = document.getElementById('LoaderPercent-{{ section.id }}');
+    const loaderBar = document.getElementById('LoaderBar-{{ section.id }}');
+    const title = document.getElementById('Title-{{ section.id }}');
+    const ctx = canvas.getContext('2d');
+
+    const frameCount = {{ section.settings.frame_count }};
+    const images = [];
+    let isLoaded = false;
+    
+    // Generate Frame URL pattern
+    // We grab a real asset URL and replace the number
+    // Example: cdn.../assets/frame_0001.webp?v=123
+    const frameBase = "{{ 'frame_0001.webp' | asset_url }}";
+    
+    const getFrameUrl = (index) => {
+      // pad with 4 zeros: 1 -> 0001, 10 -> 0010
+      const paddedIndex = index.toString().padStart(4, '0');
+      return frameBase.replace('frame_0001', 'frame_' + paddedIndex);
+    };
+
+    // Preload Images
+    let loadedCount = 0;
+    const onFrameLoad = () => {
+      loadedCount++;
+      const percent = Math.round((loadedCount / frameCount) * 100);
+      
+      if (loaderPercent) loaderPercent.innerText = percent;
+      if (loaderBar) loaderBar.style.width = percent + '%';
+
+      if (loadedCount === frameCount) {
+        isLoaded = true;
+        
+        // Hide loader, show title
+        gsap.to(loader, { opacity: 0, duration: 0.5, onComplete: () => loader.style.display = 'none' });
+        title.classList.add('visible');
+        
+        // Initial render
+        renderFrame(0);
+        initScroll();
+      }
+    };
+
+    for (let i = 1; i <= frameCount; i++) {
+      const img = new Image();
+      img.src = getFrameUrl(i);
+      img.onload = onFrameLoad;
+      img.onerror = () => {
+        console.error('Failed frame:', i);
+        onFrameLoad(); // Proceed anyway
+      };
+      images.push(img);
+    }
+
+    // Render Logic
+    const renderFrame = (index) => {
+      if (!images[index]) return;
+      const img = images[index];
+      
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Object-fit: cover simulation
+      const canvasWidth = canvas.width;
+      const canvasHeight = canvas.height;
+      const imgRatio = img.width / img.height;
+      const canvasRatio = canvasWidth / canvasHeight;
+
+      let drawWidth, drawHeight, offsetX, offsetY;
+
+      if (canvasRatio > imgRatio) {
+        // Window is wider than image
+        drawWidth = canvasWidth;
+        drawHeight = canvasWidth / imgRatio;
+        offsetX = 0;
+        offsetY = (canvasHeight - drawHeight) / 2;
+      } else {
+        // Window is taller than image
+        drawWidth = canvasHeight * imgRatio;
+        drawHeight = canvasHeight;
+        offsetX = (canvasWidth - drawWidth) / 2;
+        offsetY = 0;
+      }
+
+      // Mobile Adjustment (Optional based on React code)
+      // The React code scaled it down on mobile (0.65). Let's keep it simple (cover) for now 
+      // or implement if user finds it zoomed in. 
+      // React code: if (canvasWidth < 768) { scale 0.65 ... }
+      // We will check logic later if requested. For now, full cover is standard.
+
+      ctx.drawImage(img, offsetX, offsetY, drawWidth, drawHeight);
+    };
+
+    const resizeCanvas = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      renderFrame(0); // This might need current index, but 0 is safe fallback or we track it
+    };
+
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    // GSAP Animation
+    function initScroll() {
+      const scrollObj = { frame: 0 };
+      
+      ScrollTrigger.create({
+        trigger: container,
+        start: 'top top',
+        end: "+={{ section.settings.scroll_distance }}", 
+        pin: true,
+        scrub: 0.5,
+        onUpdate: (self) => {
+          // Map progress 0-1 to frame index 0-(total-1)
+          const frameIndex = Math.min(
+            frameCount - 1,
+            Math.ceil(self.progress * (frameCount - 1))
+          );
+          renderFrame(frameIndex);
+        }
+      });
+    }
+
+  })();
+</script>

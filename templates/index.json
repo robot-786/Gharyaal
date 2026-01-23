@@ -9,50 +9,12 @@
  */
 {
   "sections": {
-    "watch_carousel_hero": {
-      "type": "watch-carousel-hero",
-      "blocks": {
-        "slide_1": {
-          "type": "watch_slide",
-          "settings": {}
-        },
-        "slide_2": {
-          "type": "watch_slide",
-          "settings": {}
-        },
-        "slide_3": {
-          "type": "watch_slide",
-          "settings": {}
-        },
-        "slide_4": {
-          "type": "watch_slide",
-          "settings": {}
-        },
-        "slide_5": {
-          "type": "watch_slide",
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "slide_1",
-        "slide_2",
-        "slide_3",
-        "slide_4",
-        "slide_5"
-      ],
+    "scroll_hero_cQzWpb": {
+      "type": "scroll-hero",
+      "name": "Scroll Hero Animation",
       "settings": {
-        "section_height": 750,
-        "background_color": "#000000",
-        "enable_autoplay": true,
-        "autoplay_speed": 5,
-        "heading": "The Ultimate Luxury Timepieces",
-        "heading_color": "#ffffff",
-        "subheading": "Discover Exquisite Collections",
-        "subheading_color": "#d4af37",
-        "button_text": "Shop Now",
-        "button_link": "shopify://collections/all",
-        "button_bg_color": "#d4af37",
-        "button_text_color": "#000000"
+        "heading_line_1": "Precision",
+        "heading_line_2": "Motion"
       }
     },
     "brand_marquee": {
@@ -1887,9 +1849,9 @@
       "settings": {
         "section_width": "page-width",
         "color_scheme": "scheme-2",
-        "gap": 24,
-        "padding-block-start": 100,
-        "padding-block-end": 100
+        "gap": 12,
+        "padding-block-start": 20,
+        "padding-block-end": 20
       }
     },
     "dispatch_video_ghMm8z": {
@@ -1966,8 +1928,8 @@
             "image": "shopify://shop_images/man-signing-for-shipping-box.jpg",
             "link": "",
             "image_ratio": "square",
-            "width": "fill",
-            "custom_width": 100,
+            "width": "custom",
+            "custom_width": 50,
             "width_mobile": "fill",
             "custom_width_mobile": 100,
             "height": "fit",
@@ -2025,20 +1987,20 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<h2>Why we take Rs1000 Advance?</h2>",
-                "width": "fit-content",
+                "text": "<h2>WHY WE TAKE RS1000 ADVANCE?</h2>",
+                "width": "fill",
                 "max_width": "normal",
                 "alignment": "left",
                 "type_preset": "custom",
                 "font": "var(--font-heading--family)",
                 "font_size": "2rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
+                "line_height": "1.2",
+                "letter_spacing": "0.5px",
+                "case": "uppercase",
                 "wrap": "pretty",
                 "color": "var(--color-primary)",
-                "background": true,
-                "background_color": "#00000026",
+                "background": false,
+                "background_color": "",
                 "corner_radius": 0,
                 "padding-block-start": 0,
                 "padding-block-end": 0,
@@ -2050,18 +2012,18 @@
             "text_nUdMBN": {
               "type": "text",
               "settings": {
-                "text": "<ul><li>We take <strong>Rs.1000 advance</strong> as deposit for the confirmation of your orders</li><li>Because most of the time people do order watches for fun but at the end of the day they don't pay for their parcels. </li><li>Due to this we lose packaging cost, transportation cost, labor cost, & wasted time.</li><li>So to overcome that we only ship orders after recieving Rs<strong>1000 in advance</strong>.</li><li>Serious buyers will do that others will cancel rightaway & we can save time for our genuine customers.</li><li><strong>Hope you understand the thought.</strong></li></ul>",
-                "width": "fit-content",
+                "text": "<p>We take <strong>Rs.1000 advance</strong> as a deposit for the confirmation of your orders. Because most of the time people do order watches for fun but at the end of the day they don't pay for their parcels.</p><p>Due to this we lose packaging cost, transportation cost, labor cost, & wasted time. So to overcome that we only ship orders after receiving <strong>Rs1000 in advance</strong>.</p><p>Serious buyers will do that, others will cancel right away & we can save time for our genuine customers.</p><p><strong>Hope you understand the thought.</strong></p>",
+                "width": "fill",
                 "max_width": "normal",
                 "alignment": "left",
                 "type_preset": "rte",
                 "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
+                "font_size": "1.05rem",
+                "line_height": "1.8",
                 "letter_spacing": "normal",
                 "case": "none",
                 "wrap": "pretty",
-                "color": "var(--color-foreground)",
+                "color": "rgba(255, 255, 255, 0.85)",
                 "background": false,
                 "background_color": "#00000026",
                 "corner_radius": 0,
@@ -2092,7 +2054,7 @@
         "align_baseline": false,
         "horizontal_alignment_flex_direction_column": "flex-start",
         "vertical_alignment_flex_direction_column": "center",
-        "gap": 32,
+        "gap": 20,
         "section_width": "page-width",
         "section_height": "",
         "section_height_custom": 50,
@@ -2108,8 +2070,8 @@
         "overlay_color": "#00000026",
         "overlay_style": "solid",
         "gradient_direction": "to top",
-        "padding-block-start": 40,
-        "padding-block-end": 40
+        "padding-block-start": 16,
+        "padding-block-end": 16
       }
     },
     "instagram_feed_kjcGde": {
@@ -2181,7 +2143,7 @@
     }
   },
   "order": [
-    "watch_carousel_hero",
+    "scroll_hero_cQzWpb",
     "brand_marquee",
     "shop_by_brand",
     "new_arrivals",
