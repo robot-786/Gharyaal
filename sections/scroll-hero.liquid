@@ -38,8 +38,8 @@
       "type": "text",
       "id": "scroll_distance",
       "label": "Scroll Distance",
-      "default": "400%",
-      "info": "e.g., 400% means the animation plays over 4 screen heights."
+      "default": "200%",
+      "info": "e.g., 200% means the animation plays over 2 screen heights."
     },
     {
       "type": "color",
@@ -308,7 +308,7 @@
           start: 'top top',
           end: "+={{ section.settings.scroll_distance }}", 
           pin: true,
-          scrub: 0.5,
+          scrub: 0.2,
           onUpdate: (self) => {
             const frameIndex = Math.min(
               frameCount - 1,
