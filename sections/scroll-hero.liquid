@@ -280,11 +280,17 @@
         offsetY = 0;
       }
 
-      // Mobile Adjustment (Optional based on React code)
-      // The React code scaled it down on mobile (0.65). Let's keep it simple (cover) for now 
-      // or implement if user finds it zoomed in. 
-      // React code: if (canvasWidth < 768) { scale 0.65 ... }
-      // We will check logic later if requested. For now, full cover is standard.
+      // Mobile Adjustment - Scale down on mobile for better visibility
+      // This makes the frame more zoomed out so the full watch is visible
+      if (canvasWidth < 768) {
+        const mobileScale = 0.70; // 70% scale for mobile - adjust as needed
+        const scaledWidth = drawWidth * mobileScale;
+        const scaledHeight = drawHeight * mobileScale;
+        offsetX = (canvasWidth - scaledWidth) / 2;
+        offsetY = (canvasHeight - scaledHeight) / 2;
+        drawWidth = scaledWidth;
+        drawHeight = scaledHeight;
+      }
 
       ctx.drawImage(img, offsetX, offsetY, drawWidth, drawHeight);
     };
