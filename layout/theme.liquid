@@ -31,8 +31,12 @@
     {%- render 'theme-styles-variables' -%}
     {%- render 'color-schemes' -%}
 
-    {% comment %} Gharyaal Custom Styles {% endcomment %}
-    {{ 'custom-gharyaal.css' | asset_url | stylesheet_tag }}
+    {% comment %} Resource hints for Shopify CDN {% endcomment %}
+    <link rel="dns-prefetch" href="https://cdn.shopify.com">
+    <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+
+    {% comment %} Gharyaal Custom Styles - Loaded with low priority for better FCP {% endcomment %}
+    {{ 'custom-gharyaal.css' | asset_url | stylesheet_tag: preload: true }}
 
     {% if request.design_mode %}
       {%- render 'theme-editor' -%}

@@ -62,8 +62,12 @@
 }
 {% endschema %}
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<!-- Preload first frame for LCP optimization -->
+<link rel="preload" href="{{ 'frame_0001.webp' | asset_url }}" as="image" fetchpriority="high">
+
+<!-- GSAP loaded from Shopify CDN with defer to avoid render blocking -->
+<script src="{{ 'gsap.min.js' | asset_url }}" defer></script>
+<script src="{{ 'ScrollTrigger.min.js' | asset_url }}" defer></script>
 
 <style>
   .scroll-hero-section {
@@ -193,131 +197,134 @@
 
 <script>
   (function() {
-    gsap.registerPlugin(ScrollTrigger);
-
-    const container = document.getElementById('ScrollHero-{{ section.id }}');
-    const canvas = document.getElementById('Canvas-{{ section.id }}');
-    const loader = document.getElementById('Loader-{{ section.id }}');
-    const loaderPercent = document.getElementById('LoaderPercent-{{ section.id }}');
-    const loaderBar = document.getElementById('LoaderBar-{{ section.id }}');
-    const title = document.getElementById('Title-{{ section.id }}');
-    const ctx = canvas.getContext('2d');
-
-    const frameCount = {{ section.settings.frame_count }};
-    const images = [];
-    let isLoaded = false;
-    
-    // Generate Frame URL pattern
-    // We grab a real asset URL and replace the number
-    // Example: cdn.../assets/frame_0001.webp?v=123
-    const frameBase = "{{ 'frame_0001.webp' | asset_url }}";
-    
-    const getFrameUrl = (index) => {
-      // pad with 4 zeros: 1 -> 0001, 10 -> 0010
-      const paddedIndex = index.toString().padStart(4, '0');
-      return frameBase.replace('frame_0001', 'frame_' + paddedIndex);
-    };
-
-    // Preload Images
-    let loadedCount = 0;
-    const onFrameLoad = () => {
-      loadedCount++;
-      const percent = Math.round((loadedCount / frameCount) * 100);
-      
-      if (loaderPercent) loaderPercent.innerText = percent;
-      if (loaderBar) loaderBar.style.width = percent + '%';
-
-      if (loadedCount === frameCount) {
-        isLoaded = true;
-        
-        // Hide loader, show title
-        gsap.to(loader, { opacity: 0, duration: 0.5, onComplete: () => loader.style.display = 'none' });
-        title.classList.add('visible');
-        
-        // Initial render
-        renderFrame(0);
-        initScroll();
+    // Wait for GSAP to load (deferred scripts)
+    function initScrollHero() {
+      if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
+        setTimeout(initScrollHero, 50);
+        return;
       }
-    };
+      
+      gsap.registerPlugin(ScrollTrigger);
 
-    for (let i = 1; i <= frameCount; i++) {
-      const img = new Image();
-      img.src = getFrameUrl(i);
-      img.onload = onFrameLoad;
-      img.onerror = () => {
-        console.error('Failed frame:', i);
-        onFrameLoad(); // Proceed anyway
+      const container = document.getElementById('ScrollHero-{{ section.id }}');
+      const canvas = document.getElementById('Canvas-{{ section.id }}');
+      const loader = document.getElementById('Loader-{{ section.id }}');
+      const loaderPercent = document.getElementById('LoaderPercent-{{ section.id }}');
+      const loaderBar = document.getElementById('LoaderBar-{{ section.id }}');
+      const title = document.getElementById('Title-{{ section.id }}');
+      const ctx = canvas.getContext('2d');
+
+      const frameCount = {{ section.settings.frame_count }};
+      const images = [];
+      let isLoaded = false;
+      
+      // Generate Frame URL pattern
+      const frameBase = "{{ 'frame_0001.webp' | asset_url }}";
+      
+      const getFrameUrl = (index) => {
+        const paddedIndex = index.toString().padStart(4, '0');
+        return frameBase.replace('frame_0001', 'frame_' + paddedIndex);
       };
-      images.push(img);
-    }
 
-    // Render Logic
-    const renderFrame = (index) => {
-      if (!images[index]) return;
-      const img = images[index];
+      // Simple sequential frame loading (reliable)
+      let loadedCount = 0;
       
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      const onFrameLoad = () => {
+        loadedCount++;
+        const percent = Math.round((loadedCount / frameCount) * 100);
+        
+        if (loaderPercent) loaderPercent.innerText = percent;
+        if (loaderBar) loaderBar.style.width = percent + '%';
 
-      // Object-fit: cover simulation
-      const canvasWidth = canvas.width;
-      const canvasHeight = canvas.height;
-      const imgRatio = img.width / img.height;
-      const canvasRatio = canvasWidth / canvasHeight;
+        if (loadedCount === frameCount) {
+          isLoaded = true;
+          
+          // Hide loader, show title
+          gsap.to(loader, { opacity: 0, duration: 0.5, onComplete: () => loader.style.display = 'none' });
+          title.classList.add('visible');
+          
+          // Initial render
+          renderFrame(0);
+          setupScrollAnimation();
+        }
+      };
 
-      let drawWidth, drawHeight, offsetX, offsetY;
-
-      if (canvasRatio > imgRatio) {
-        // Window is wider than image
-        drawWidth = canvasWidth;
-        drawHeight = canvasWidth / imgRatio;
-        offsetX = 0;
-        offsetY = (canvasHeight - drawHeight) / 2;
-      } else {
-        // Window is taller than image
-        drawWidth = canvasHeight * imgRatio;
-        drawHeight = canvasHeight;
-        offsetX = (canvasWidth - drawWidth) / 2;
-        offsetY = 0;
+      // Load all frames
+      for (let i = 1; i <= frameCount; i++) {
+        const img = new Image();
+        img.src = getFrameUrl(i);
+        img.onload = onFrameLoad;
+        img.onerror = () => {
+          console.error('Failed frame:', i);
+          onFrameLoad();
+        };
+        images.push(img);
       }
 
-      // Mobile Adjustment (Optional based on React code)
-      // The React code scaled it down on mobile (0.65). Let's keep it simple (cover) for now 
-      // or implement if user finds it zoomed in. 
-      // React code: if (canvasWidth < 768) { scale 0.65 ... }
-      // We will check logic later if requested. For now, full cover is standard.
+      // Render Logic
+      const renderFrame = (index) => {
+        if (!images[index]) return;
+        const img = images[index];
+        
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      ctx.drawImage(img, offsetX, offsetY, drawWidth, drawHeight);
-    };
+        const canvasWidth = canvas.width;
+        const canvasHeight = canvas.height;
+        const imgRatio = img.width / img.height;
+        const canvasRatio = canvasWidth / canvasHeight;
 
-    const resizeCanvas = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      renderFrame(0); // This might need current index, but 0 is safe fallback or we track it
-    };
+        let drawWidth, drawHeight, offsetX, offsetY;
 
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
-
-    // GSAP Animation
-    function initScroll() {
-      const scrollObj = { frame: 0 };
-      
-      ScrollTrigger.create({
-        trigger: container,
-        start: 'top top',
-        end: "+={{ section.settings.scroll_distance }}", 
-        pin: true,
-        scrub: 0.5,
-        onUpdate: (self) => {
-          // Map progress 0-1 to frame index 0-(total-1)
-          const frameIndex = Math.min(
-            frameCount - 1,
-            Math.ceil(self.progress * (frameCount - 1))
-          );
-          renderFrame(frameIndex);
+        if (canvasRatio > imgRatio) {
+          drawWidth = canvasWidth;
+          drawHeight = canvasWidth / imgRatio;
+          offsetX = 0;
+          offsetY = (canvasHeight - drawHeight) / 2;
+        } else {
+          drawWidth = canvasHeight * imgRatio;
+          drawHeight = canvasHeight;
+          offsetX = (canvasWidth - drawWidth) / 2;
+          offsetY = 0;
         }
-      });
+
+        ctx.drawImage(img, offsetX, offsetY, drawWidth, drawHeight);
+      };
+
+      const resizeCanvas = () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        if (images[0] && images[0].complete) {
+          renderFrame(0);
+        }
+      };
+
+      window.addEventListener('resize', resizeCanvas);
+      resizeCanvas();
+
+      // GSAP Animation
+      function setupScrollAnimation() {
+        ScrollTrigger.create({
+          trigger: container,
+          start: 'top top',
+          end: "+={{ section.settings.scroll_distance }}", 
+          pin: true,
+          scrub: 0.5,
+          onUpdate: (self) => {
+            const frameIndex = Math.min(
+              frameCount - 1,
+              Math.ceil(self.progress * (frameCount - 1))
+            );
+            renderFrame(frameIndex);
+          }
+        });
+      }
     }
 
+    // Start initialization when DOM is ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initScrollHero);
+    } else {
+      initScrollHero();
+    }
   })();
 </script>
