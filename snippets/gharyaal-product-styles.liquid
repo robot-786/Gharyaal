@@ -1,0 +1,81 @@
+{% comment %}
+  Gharyaal Product Page Styles
+  Constrains product image gallery to reasonable size
+{% endcomment %}
+
+<style>
+  /* Limit product media gallery container size */
+  .product-media-gallery,
+  .product-media-gallery__slideshow,
+  .product-media-container {
+    max-height: 550px !important;
+    padding-top: 40px !important;
+  }
+
+  /* Center images and ensure proper fit */
+  .product-media-container {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+
+  .product-media-container .product-media {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+
+  /* Ensure images fit properly within the constrained container */
+  .product-media-container .product-media img,
+  .product-media-container .product-media video {
+    max-height: 550px !important;
+    width: auto !important;
+    object-fit: cover !important;
+    margin: 0 auto !important;
+  }
+
+  /* Tablet adjustments */
+  @media screen and (max-width: 989px) {
+    .product-media-gallery,
+    .product-media-gallery__slideshow,
+    .product-media-container {
+      max-height: 450px !important;
+      padding-top: 30px !important;
+    }
+
+    .product-media-container .product-media img,
+    .product-media-container .product-media video {
+      max-height: 450px !important;
+    }
+  }
+
+  /* Mobile adjustments */
+  @media screen and (max-width: 749px) {
+    .product-media-gallery,
+    .product-media-gallery__slideshow,
+    .product-media-container {
+      padding-top: 24px !important;
+      max-height: 400px !important;
+    }
+
+    .product-media-container .product-media img,
+    .product-media-container .product-media video {
+      max-height: 400px !important;
+    }
+  }
+
+  /* Small mobile */
+  @media screen and (max-width: 480px) {
+    .product-media-gallery,
+    .product-media-gallery__slideshow,
+    .product-media-container {
+      padding-top: 20px !important;
+      max-height: 350px !important;
+    }
+
+    .product-media-container .product-media img,
+    .product-media-container .product-media video {
+      max-height: 350px !important;
+    }
+  }
+</style>
