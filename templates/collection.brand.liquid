@@ -85,9 +85,9 @@
           # Special handling for OZ/RX and Super Clone brands
           # Only exclude if we're NOT on their parent brand page
           if show_collection == true
-            if brand_handle != 'oz-rx-quality' and brand_handle != 'super-clone'
+            if brand_handle != 'oz-factory' and brand_handle != 'super-clone'
               # Exclude OZ/RX and Super Clone subcollections from showing on other brand pages
-              if col_handle_lower contains 'oz-rx-quality' or col_handle_lower contains 'super-clone'
+              if col_handle_lower contains 'oz-factory' or col_handle_lower contains 'super-clone'
                 assign show_collection = false
               endif
             endif
