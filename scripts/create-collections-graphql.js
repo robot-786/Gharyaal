@@ -129,16 +129,16 @@ const brandCollections = [
   },
   {
     title: 'OZ/RX Quality',
-    handle: 'oz-rx-quality',
+    handle: 'oz-factory',
     templateSuffix: 'brand',
     ruleSet: {
       appliedDisjunctively: false,
-      rules: [{ column: 'TAG', relation: 'EQUALS', condition: 'oz-rx-quality' }]
+      rules: [{ column: 'TAG', relation: 'EQUALS', condition: 'oz-factory' }]
     },
     subcollections: [
-      { title: 'OZ/RX Rolex', handle: 'oz-rx-quality-rolex', tag: 'rolex' },
-      { title: 'OZ/RX Audemars Piguet', handle: 'oz-rx-quality-audemars-piguet', tag: 'audemars-piguet' },
-      { title: 'OZ/RX Patek Philippe', handle: 'oz-rx-quality-patek-philippe', tag: 'patek-philippe' },
+      { title: 'OZ/RX Rolex', handle: 'oz-factory-rolex', tag: 'rolex' },
+      { title: 'OZ/RX Audemars Piguet', handle: 'oz-factory-audemars-piguet', tag: 'audemars-piguet' },
+      { title: 'OZ/RX Patek Philippe', handle: 'oz-factory-patek-philippe', tag: 'patek-philippe' },
     ]
   },
   {
