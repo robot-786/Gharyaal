@@ -106,6 +106,19 @@
         "heading": "Shop By Brand"
       }
     },
+    "scroll_hero_CeU4Ec": {
+      "type": "scroll-hero",
+      "name": "Scroll Hero (GSAP)",
+      "settings": {
+        "heading_line_1": "Precision",
+        "heading_line_2": "Motion",
+        "subheading": "Experience the mechanics of time.",
+        "frame_count": 122,
+        "scroll_distance": "200%",
+        "text_color": "#ffffff",
+        "accent_color": "#D4AF37"
+      }
+    },
     "rolex_collection": {
       "type": "product-list",
       "blocks": {
@@ -2007,6 +2020,7 @@
     "watch_carousel_hero_kMN7wa",
     "brand_marquee",
     "shop_by_brand",
+    "scroll_hero_CeU4Ec",
     "rolex_collection",
     "patek_philippe_collection",
     "ap_collection",
