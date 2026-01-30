@@ -1,0 +1,50 @@
+Handle,Title,Body (HTML),Published,Template Suffix,Rule: Product Tag
+rolex,Rolex,"<p>Explore our collection of Rolex luxury watches.</p>",true,brand,rolex
+rolex-daydate,Rolex Daydate,"<p>Rolex Daydate collection.</p>",true,,rolex__AND__daydate
+rolex-datejust,Rolex Datejust,"<p>Rolex Datejust collection.</p>",true,,rolex__AND__datejust
+rolex-submariner,Rolex Submariner,"<p>Rolex Submariner collection.</p>",true,,rolex__AND__submariner
+rolex-gmt,Rolex GMT,"<p>Rolex GMT collection.</p>",true,,rolex__AND__gmt
+rolex-skydweller,Rolex Skydweller,"<p>Rolex Skydweller collection.</p>",true,,rolex__AND__skydweller
+rolex-land-dweller,Rolex Land Dweller,"<p>Rolex Land Dweller collection.</p>",true,,rolex__AND__land-dweller
+rolex-daytona,Rolex Daytona,"<p>Rolex Daytona collection.</p>",true,,rolex__AND__daytona
+rolex-oyster-perpetual,Rolex Oyster Perpetual,"<p>Rolex Oyster Perpetual collection.</p>",true,,rolex__AND__oyster-perpetual
+rolex-yacht-master,Rolex Yacht Master,"<p>Rolex Yacht Master collection.</p>",true,,rolex__AND__yacht-master
+rolex-explorer,Rolex Explorer,"<p>Rolex Explorer collection.</p>",true,,rolex__AND__explorer
+rolex-1908,Rolex 1908,"<p>Rolex 1908 collection.</p>",true,,rolex__AND__1908
+patek-philippe,Patek Philippe,"<p>Explore our collection of Patek Philippe luxury watches.</p>",true,brand,patek-philippe
+patek-philippe-nautilus,Patek Philippe Nautilus,"<p>Patek Philippe Nautilus collection.</p>",true,,patek-philippe__AND__nautilus
+patek-philippe-aquanaut,Patek Philippe Aquanaut,"<p>Patek Philippe Aquanaut collection.</p>",true,,patek-philippe__AND__aquanaut
+patek-philippe-skeleton,Patek Philippe Skeleton,"<p>Patek Philippe Skeleton collection.</p>",true,,patek-philippe__AND__skeleton
+patek-philippe-side-second,Patek Philippe Side Second,"<p>Patek Philippe Side Second collection.</p>",true,,patek-philippe__AND__side-second
+patek-philippe-power-reserve,Patek Philippe Power Reserve,"<p>Patek Philippe Power Reserve collection.</p>",true,,patek-philippe__AND__power-reserve
+patek-philippe-cubitus,Patek Philippe Cubitus,"<p>Patek Philippe Cubitus collection.</p>",true,,patek-philippe__AND__cubitus
+patek-philippe-strap,Patek Philippe Strap,"<p>Patek Philippe Strap collection.</p>",true,,patek-philippe__AND__strap
+audemars-piguet,Audemars Piguet,"<p>Explore our collection of Audemars Piguet luxury watches.</p>",true,brand,audemars-piguet
+audemars-piguet-automatic,Audemars Piguet Automatic,"<p>Audemars Piguet Automatic collection.</p>",true,,audemars-piguet__AND__automatic
+audemars-piguet-chronograph,Audemars Piguet Chronograph,"<p>Audemars Piguet Chronograph collection.</p>",true,,audemars-piguet__AND__chronograph
+audemars-piguet-offshore,Audemars Piguet Offshore,"<p>Audemars Piguet Offshore collection.</p>",true,,audemars-piguet__AND__offshore
+audemars-piguet-skeleton,Audemars Piguet Skeleton,"<p>Audemars Piguet Skeleton collection.</p>",true,,audemars-piguet__AND__skeleton
+audemars-piguet-strap,Audemars Piguet Strap,"<p>Audemars Piguet Strap collection.</p>",true,,audemars-piguet__AND__strap
+tissot,Tissot,"<p>Explore our collection of Tissot luxury watches.</p>",true,brand,tissot
+tissot-strap,Tissot Strap,"<p>Tissot Strap collection.</p>",true,,tissot__AND__strap
+tissot-bracelet,Tissot Bracelet,"<p>Tissot Bracelet collection.</p>",true,,tissot__AND__bracelet
+tag-heuer,Tag Heuer,"<p>Explore our collection of Tag Heuer luxury watches.</p>",true,brand,tag-heuer
+tag-heuer-strap,Tag Heuer Strap,"<p>Tag Heuer Strap collection.</p>",true,,tag-heuer__AND__strap
+tag-heuer-bracelet,Tag Heuer Bracelet,"<p>Tag Heuer Bracelet collection.</p>",true,,tag-heuer__AND__bracelet
+omega,Omega,"<p>Explore our collection of Omega luxury watches.</p>",true,brand,omega
+omega-strap,Omega Strap,"<p>Omega Strap collection.</p>",true,,omega__AND__strap
+omega-bracelet,Omega Bracelet,"<p>Omega Bracelet collection.</p>",true,,omega__AND__bracelet
+hublot,Hublot,"<p>Explore our collection of Hublot luxury watches.</p>",true,brand,hublot
+oz-rx-quality,OZ/RX Quality,"<p>Explore our collection of OZ/RX Quality luxury watches.</p>",true,brand,oz-rx-quality
+oz-rx-quality-rolex,OZ/RX Rolex,"<p>OZ/RX Rolex collection.</p>",true,,oz-rx-quality__AND__rolex
+oz-rx-quality-audemars-piguet,OZ/RX Audemars Piguet,"<p>OZ/RX Audemars Piguet collection.</p>",true,,oz-rx-quality__AND__audemars-piguet
+oz-rx-quality-patek-philippe,OZ/RX Patek Philippe,"<p>OZ/RX Patek Philippe collection.</p>",true,,oz-rx-quality__AND__patek-philippe
+stone-watches,Stone Watches,"<p>Explore our collection of Stone Watches luxury watches.</p>",true,brand,stone-watches
+stone-watches-strap,Stone Watches Strap,"<p>Stone Watches Strap collection.</p>",true,,stone-watches__AND__strap
+stone-watches-bracelet,Stone Watches Bracelet,"<p>Stone Watches Bracelet collection.</p>",true,,stone-watches__AND__bracelet
+women-watches,Women Watches,"<p>Explore our collection of Women Watches luxury watches.</p>",true,brand,women-watches
+women-watches-strap,Women Watches Strap,"<p>Women Watches Strap collection.</p>",true,,women-watches__AND__strap
+women-watches-bracelet,Women Watches Bracelet,"<p>Women Watches Bracelet collection.</p>",true,,women-watches__AND__bracelet
+budget-watches,Budget Watches,"<p>Explore our collection of Budget Watches.</p>",true,brand,budget-watches
+budget-watches-strap,Budget Watches Strap,"<p>Budget Watches Strap collection.</p>",true,,budget-watches__AND__strap
+budget-watches-bracelet,Budget Watches Bracelet,"<p>Budget Watches Bracelet collection.</p>",true,,budget-watches__AND__bracelet

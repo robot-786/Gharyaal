@@ -137,54 +137,6 @@
       {% endfor %}
     </div>
   </div>
-
-  {%- comment -%} Featured Products from Brand {%- endcomment -%}
-  {% if collection.products.size > 0 %}
-    <div class="brand-featured-products page-width">
-      <h2 class="section-heading">Featured {{ collection.title }} Watches</h2>
-      
-      <div class="featured-products-grid">
-        {% for product in collection.products limit: 8 %}
-          <div class="featured-product-card">
-            {% render 'product-card', product: product %}
-          </div>
-        {% endfor %}
-      </div>
-      
-      <div class="view-all-wrapper">
-        <a href="{{ collection.url }}/all" class="button button-secondary">View All {{ collection.title }} Watches</a>
-      </div>
-    </div>
-  {% endif %}
-
-  {%- comment -%} Brand Story/USP Section {%- endcomment -%}
-  <div class="brand-story-section page-width">
-    <div class="brand-story-content">
-      <h2 class="section-heading">Why Choose {{ collection.title }}?</h2>
-      <div class="brand-features">
-        <div class="brand-feature">
-          <div class="feature-icon">✓</div>
-          <h3>Authentic Quality</h3>
-          <p>Premium 1:1 super clone replicas with meticulous attention to detail</p>
-        </div>
-        <div class="brand-feature">
-          <div class="feature-icon">⚡</div>
-          <h3>Fast Delivery</h3>
-          <p>Express shipping across Pakistan within 2-3 business days</p>
-        </div>
-        <div class="brand-feature">
-          <div class="feature-icon">🔒</div>
-          <h3>Secure Payment</h3>
-          <p>Cash on Delivery available with secure payment options</p>
-        </div>
-        <div class="brand-feature">
-          <div class="feature-icon">💎</div>
-          <h3>Best Price</h3>
-          <p>Guaranteed lowest prices in Pakistan with quality assurance</p>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
 
 <style>
@@ -371,69 +323,6 @@
   background: var(--gharyaal-mid-gray, #2d2d2d);
 }
 
-/* Featured Products */
-.brand-featured-products {
-  padding: 80px 20px;
-  background: var(--gharyaal-charcoal, #0a0a0a);
-}
-
-.featured-products-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 30px;
-  margin-bottom: 40px;
-}
-
-.view-all-wrapper {
-  text-align: center;
-  margin-top: 40px;
-}
-
-/* Brand Story */
-.brand-story-section {
-  padding: 80px 20px;
-}
-
-.brand-features {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 40px;
-  margin-top: 40px;
-}
-
-.brand-feature {
-  text-align: center;
-  padding: 30px 20px;
-  background: var(--gharyaal-dark-gray, #1a1a1a);
-  border-radius: 8px;
-  transition: transform 0.3s ease;
-}
-
-.brand-feature:hover {
-  transform: translateY(-5px);
-}
-
-.feature-icon {
-  font-size: 2.5rem;
-  color: var(--gharyaal-gold, #D4AF37);
-  margin-bottom: 1rem;
-}
-
-.brand-feature h3 {
-  font-size: 1.25rem;
-  color: var(--gharyaal-white, #ffffff);
-  margin: 0 0 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.brand-feature p {
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.7);
-  line-height: 1.6;
-  margin: 0;
-}
-
 /* Mobile Responsive */
 @media screen and (max-width: 768px) {
   .brand-hero {
@@ -445,26 +334,8 @@
     gap: 20px;
   }
 
-  .featured-products-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-  }
-
-  .brand-features {
-    grid-template-columns: 1fr;
-    gap: 30px;
-  }
-
-  .subcategories-section,
-  .brand-featured-products,
-  .brand-story-section {
+  .subcategories-section {
     padding: 40px 20px;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .featured-products-grid {
-    grid-template-columns: 1fr;
   }
 }
 </style>

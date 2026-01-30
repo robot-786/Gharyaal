@@ -206,7 +206,7 @@
     {%- comment -%} RIGHT SECTION - Search, Cart, Profile {%- endcomment -%}
     <div class="gharyaal-header-right">
       {%- comment -%} Search Button {%- endcomment -%}
-      <button type="button" class="gharyaal-icon-button" aria-label="Search" onclick="document.querySelector('predictive-search')?.open()">
+      <button type="button" class="gharyaal-icon-button" aria-label="Search" onclick="document.querySelector('#search-modal')?.showDialog()">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <circle cx="11" cy="11" r="8"/>
           <path d="m21 21-4.35-4.35"/>

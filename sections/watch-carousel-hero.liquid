@@ -68,7 +68,7 @@
     {% endif %}
     
     {% if section.settings.button_text != blank %}
-      <a href="{{ section.settings.button_link }}" class="watch-carousel-button" style="background-color: {{ section.settings.button_bg_color }}; color: {{ section.settings.button_text_color }};">
+      <a href="#shop-by-brand" class="watch-carousel-button" style="background-color: {{ section.settings.button_bg_color }}; color: {{ section.settings.button_text_color }};">
         {{ section.settings.button_text }}
       </a>
     {% endif %}
@@ -184,6 +184,11 @@ if (!customElements.get('watch-carousel-hero')) {
 </script>
 
 <style>
+/* Smooth scroll for anchor links */
+html {
+  scroll-behavior: smooth;
+}
+
 .watch-carousel-hero {
   position: relative;
   width: 100%;

@@ -11,6 +11,7 @@
   "sections": {
     "scroll_hero_cQzWpb": {
       "type": "scroll-hero",
+      "disabled": true,
       "name": "Scroll Hero Animation",
       "settings": {
         "heading_line_1": "Precision",
@@ -20,6 +21,43 @@
         "scroll_distance": "200%",
         "text_color": "#ffffff",
         "accent_color": "#d4af37"
+      }
+    },
+    "watch_carousel_hero_kMN7wa": {
+      "type": "watch-carousel-hero",
+      "blocks": {
+        "watch_slide_injiwg": {
+          "type": "watch_slide",
+          "settings": {}
+        },
+        "watch_slide_fLLGtr": {
+          "type": "watch_slide",
+          "settings": {}
+        },
+        "watch_slide_dHrBXT": {
+          "type": "watch_slide",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "watch_slide_injiwg",
+        "watch_slide_fLLGtr",
+        "watch_slide_dHrBXT"
+      ],
+      "name": "Watch Carousel Hero",
+      "settings": {
+        "section_height": 700,
+        "background_color": "#000000",
+        "enable_autoplay": true,
+        "autoplay_speed": 5,
+        "heading": "The Ultimate Luxury Timepieces",
+        "heading_color": "#ffffff",
+        "subheading": "Discover Exquisite \nCollections at Gharyaal",
+        "subheading_color": "#d4af37",
+        "button_text": "Shop Now",
+        "button_link": "",
+        "button_bg_color": "#d4af37",
+        "button_text_color": "#000000"
       }
     },
     "brand_marquee": {
@@ -1612,7 +1650,7 @@
         "padding-block-end": 60
       }
     },
-    "product_list_7QgfzF": {
+    "product_list_dfjAka": {
       "type": "product-list",
       "blocks": {
         "static-header": {
@@ -1649,11 +1687,11 @@
             "padding-inline-end": 0
           },
           "blocks": {
-            "product_list_text_QrWGz7": {
+            "product_list_text_xp9CaY": {
               "type": "_product-list-text",
               "name": "t:names.collection_title",
               "settings": {
-                "text": "<h2>Stone Watches</h2>",
+                "text": "<h2>Super Clones</h2>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -1675,7 +1713,7 @@
               },
               "blocks": {}
             },
-            "product_list_button_Vdq4xp": {
+            "product_list_button_twR7ay": {
               "type": "_product-list-button",
               "name": "t:names.product_list_button",
               "settings": {
@@ -1691,8 +1729,8 @@
             }
           },
           "block_order": [
-            "product_list_text_QrWGz7",
-            "product_list_button_Vdq4xp"
+            "product_list_text_xp9CaY",
+            "product_list_button_twR7ay"
           ]
         },
         "static-product-card": {
@@ -1713,7 +1751,7 @@
             "padding-inline-end": 0
           },
           "blocks": {
-            "product_card_gallery_XBpct3": {
+            "product_card_gallery_waCRJN": {
               "type": "_product-card-gallery",
               "name": "t:names.product_card_media",
               "settings": {
@@ -1729,7 +1767,7 @@
               },
               "blocks": {}
             },
-            "product_title_NpGVh8": {
+            "product_title_nhLyRm": {
               "type": "product-title",
               "name": "t:names.product_title",
               "settings": {
@@ -1754,7 +1792,7 @@
               },
               "blocks": {}
             },
-            "price_TKxUbG": {
+            "price_nLqFfF": {
               "type": "price",
               "name": "t:names.product_price",
               "settings": {
@@ -1779,14 +1817,207 @@
             }
           },
           "block_order": [
-            "product_card_gallery_XBpct3",
-            "product_title_NpGVh8",
-            "price_TKxUbG"
+            "product_card_gallery_waCRJN",
+            "product_title_nhLyRm",
+            "price_nLqFfF"
           ]
         }
       },
       "settings": {
-        "collection": "hublot",
+        "collection": "super-clone",
+        "layout_type": "carousel",
+        "carousel_on_mobile": true,
+        "max_products": 12,
+        "columns": 4,
+        "mobile_columns": "2",
+        "mobile_card_size": "60cqw",
+        "columns_gap": 20,
+        "rows_gap": 24,
+        "icons_style": "chevron",
+        "icons_shape": "circle",
+        "section_width": "page-width",
+        "horizontal_alignment": "flex-start",
+        "gap": 40,
+        "color_scheme": "scheme-1",
+        "padding-block-start": 80,
+        "padding-block-end": 60
+      }
+    },
+    "product_list_7TAdx9": {
+      "type": "product-list",
+      "blocks": {
+        "static-header": {
+          "type": "_product-list-content",
+          "name": "t:names.header",
+          "static": true,
+          "settings": {
+            "content_direction": "row",
+            "vertical_on_mobile": false,
+            "horizontal_alignment": "space-between",
+            "vertical_alignment": "flex-end",
+            "align_baseline": true,
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 12,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "background_media": "none",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "product_list_text_pBiMyi": {
+              "type": "_product-list-text",
+              "name": "t:names.collection_title",
+              "settings": {
+                "text": "<h2>Ladies Watches</h2>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "h2",
+                "font": "var(--font-heading--family)",
+                "font_size": "",
+                "line_height": "normal",
+                "letter_spacing": "0.05em",
+                "case": "uppercase",
+                "wrap": "pretty",
+                "color": "#D4AF37",
+                "background": false,
+                "background_color": "",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "product_list_button_T6UXmG": {
+              "type": "_product-list-button",
+              "name": "t:names.product_list_button",
+              "settings": {
+                "label": "View All",
+                "open_in_new_tab": false,
+                "style_class": "link",
+                "width": "fit-content",
+                "custom_width": 100,
+                "width_mobile": "fit-content",
+                "custom_width_mobile": 100
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "product_list_text_pBiMyi",
+            "product_list_button_T6UXmG"
+          ]
+        },
+        "static-product-card": {
+          "type": "_product-card",
+          "name": "t:names.product_card",
+          "static": true,
+          "settings": {
+            "product_card_gap": 8,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "product_card_gallery_hVf3n7": {
+              "type": "_product-card-gallery",
+              "name": "t:names.product_card_media",
+              "settings": {
+                "image_ratio": "portrait",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 8,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "product_title_fhYFLc": {
+              "type": "product-title",
+              "name": "t:names.product_title",
+              "settings": {
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "body",
+                "font": "var(--font-body--family)",
+                "font_size": "0.875rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "#ffffff",
+                "background": false,
+                "background_color": "",
+                "corner_radius": 0,
+                "padding-block-start": 12,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "price_YQHwj4": {
+              "type": "price",
+              "name": "t:names.product_price",
+              "settings": {
+                "show_sale_price_first": true,
+                "show_installments": false,
+                "show_tax_info": false,
+                "type_preset": "h6",
+                "width": "100%",
+                "alignment": "left",
+                "font": "var(--font-body--family)",
+                "font_size": "1.125rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "color": "#D4AF37",
+                "padding-block-start": 6,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "product_card_gallery_hVf3n7",
+            "product_title_fhYFLc",
+            "price_YQHwj4"
+          ]
+        }
+      },
+      "settings": {
+        "collection": "women-watches",
         "layout_type": "carousel",
         "carousel_on_mobile": true,
         "max_products": 12,
@@ -2105,37 +2336,25 @@
         "post_3WweEr": {
           "type": "post",
           "settings": {
-            "post_url": ""
+            "post_url": "https://www.instagram.com/gharyaal7/reel/DTNpHHEjA9V/"
           }
         },
         "post_pmtm6A": {
           "type": "post",
           "settings": {
-            "post_url": ""
+            "post_url": "https://www.instagram.com/gharyaal7/reel/DTflJyNjEyY/"
           }
         },
         "post_xP3Txz": {
           "type": "post",
           "settings": {
-            "post_url": ""
+            "post_url": "https://www.instagram.com/gharyaal7/reel/DFtHHmquOPe/"
           }
         },
         "post_B6nAxU": {
           "type": "post",
           "settings": {
-            "post_url": ""
-          }
-        },
-        "post_7jExEH": {
-          "type": "post",
-          "settings": {
-            "post_url": ""
-          }
-        },
-        "post_ThGhT7": {
-          "type": "post",
-          "settings": {
-            "post_url": ""
+            "post_url": "https://www.instagram.com/gharyaal7/reel/DS40OmpDMfy/"
           }
         }
       },
@@ -2143,9 +2362,7 @@
         "post_3WweEr",
         "post_pmtm6A",
         "post_xP3Txz",
-        "post_B6nAxU",
-        "post_7jExEH",
-        "post_ThGhT7"
+        "post_B6nAxU"
       ],
       "custom_css": [
         ".button {position: absolute; height: 60px; left: 50%; transform: translateX(-50%); bottom: 5px;}"
@@ -2158,7 +2375,7 @@
         "instagram_url": "https://www.instagram.com/gharyaal7",
         "show_button": true,
         "button_text": "Visit Instagram",
-        "columns": "6",
+        "columns": "4",
         "section_width": "page-width",
         "color_scheme": "scheme-5",
         "gap": 16,
@@ -2169,6 +2386,7 @@
   },
   "order": [
     "scroll_hero_cQzWpb",
+    "watch_carousel_hero_kMN7wa",
     "brand_marquee",
     "shop_by_brand",
     "new_arrivals",
@@ -2179,7 +2397,8 @@
     "tag_heuer_collection",
     "omega_collection",
     "hublot_collection",
-    "product_list_7QgfzF",
+    "product_list_dfjAka",
+    "product_list_7TAdx9",
     "why_choose_us",
     "dispatch_video_ghMm8z",
     "1768741532e18418b6",

@@ -1,0 +1,303 @@
+{%- comment -%}
+  Super Clone Sales Popup
+  Only appears on super-clone collection pages
+{%- endcomment -%}
+
+{%- liquid
+  assign is_super_clone_page = false
+  
+  if collection.handle contains 'super-clone' or collection.handle == 'super-clones'
+    assign is_super_clone_page = true
+  endif
+-%}
+
+{% if is_super_clone_page %}
+<div id="super-clone-popup" class="super-clone-popup hidden">
+  <div class="popup-overlay"></div>
+  <div class="popup-content">
+    <button class="popup-close" aria-label="Close popup">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+    
+    <div class="popup-icon">
+      <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="10"></circle>
+        <path d="M12 6v6l4 2"></path>
+      </svg>
+    </div>
+    
+    <h2 class="popup-title">Super Clone Collection</h2>
+    <p class="popup-message">
+      These are premium 1:1 Super Clone quality watches with Japanese movements. 
+      <strong>Highest quality guaranteed!</strong>
+    </p>
+    
+    <div class="popup-features">
+      <div class="feature-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+        <span>1:1 Super Clone Quality</span>
+      </div>
+      <div class="feature-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+        <span>Swiss Movement</span>
+      </div>
+      <div class="feature-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+        <span>Premium Materials</span>
+      </div>
+    </div>
+    
+    <button class="popup-cta">Continue Shopping</button>
+  </div>
+</div>
+
+<style>
+  .super-clone-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+
+  .super-clone-popup.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  .popup-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(4px);
+  }
+
+  .popup-content {
+    position: relative;
+    background: #FFFFFF;
+    max-width: 500px;
+    width: 90%;
+    padding: 2.5rem 2rem;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    animation: popupSlideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 2px solid #D4AF37;
+  }
+
+  @keyframes popupSlideUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px) scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  .popup-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: transparent;
+    border: none;
+    color: #666;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .popup-close:hover {
+    background: #F5F5F5;
+    color: #000;
+  }
+
+  .popup-icon {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 1.5rem;
+    color: #D4AF37;
+    animation: iconPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes iconPulse {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+  }
+
+  .popup-title {
+    font-family: var(--font-heading--family), serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #0A0A0A;
+    margin: 0 0 1rem;
+    letter-spacing: 0.02em;
+  }
+
+  .popup-message {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #333333;
+    margin: 0 0 2rem;
+  }
+
+  .popup-message strong {
+    color: #D4AF37;
+    font-weight: 600;
+  }
+
+  .popup-features {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+    text-align: left;
+  }
+
+  .feature-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.95rem;
+    color: #333;
+  }
+
+  .feature-item svg {
+    flex-shrink: 0;
+    color: #D4AF37;
+  }
+
+  .popup-cta {
+    background: linear-gradient(135deg, #D4AF37, #B8960F);
+    color: #FFFFFF;
+    border: none;
+    padding: 1rem 2.5rem;
+    border-radius: 8px;
+    font-family: var(--font-heading--family), serif;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+    width: 100%;
+  }
+
+  .popup-cta:hover {
+    background: linear-gradient(135deg, #E8C963, #D4AF37);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+  }
+
+  /* Mobile Optimization */
+  @media screen and (max-width: 749px) {
+    .popup-content {
+      max-width: 95%;
+      padding: 2rem 1.5rem;
+      border-radius: 12px;
+    }
+
+    .popup-title {
+      font-size: 1.5rem;
+    }
+
+    .popup-message {
+      font-size: 0.95rem;
+    }
+
+    .popup-icon {
+      width: 56px;
+      height: 56px;
+      margin-bottom: 1rem;
+    }
+
+    .popup-features {
+      gap: 0.5rem;
+    }
+
+    .feature-item {
+      font-size: 0.9rem;
+    }
+
+    .popup-cta {
+      padding: 0.9rem 2rem;
+      font-size: 0.95rem;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .popup-content {
+      padding: 1.75rem 1.25rem;
+    }
+
+    .popup-title {
+      font-size: 1.35rem;
+    }
+  }
+</style>
+
+<script>
+  (function() {
+    const popup = document.getElementById('super-clone-popup');
+    if (!popup) return;
+
+    const closeBtn = popup.querySelector('.popup-close');
+    const ctaBtn = popup.querySelector('.popup-cta');
+    const overlay = popup.querySelector('.popup-overlay');
+
+    function closePopup() {
+      popup.classList.add('hidden');
+      document.body.style.overflow = ''; // Re-enable scrolling
+    }
+
+    // Show popup after 1 second delay
+    setTimeout(() => {
+      popup.classList.remove('hidden');
+      document.body.style.overflow = 'hidden'; // Prevent scrolling
+    }, 1000);
+
+    // Close on button click
+    closeBtn.addEventListener('click', closePopup);
+    ctaBtn.addEventListener('click', closePopup);
+    overlay.addEventListener('click', closePopup);
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !popup.classList.contains('hidden')) {
+        closePopup();
+      }
+    });
+  })();
+</script>
+{% endif %}
