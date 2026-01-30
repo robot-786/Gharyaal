@@ -21,7 +21,7 @@
               </div>
             {% else %}
               {%- comment -%} Hardcoded test images for local development {%- endcomment -%}
-              {% assign watch_images = 'watch-2-patek.png,watch-3-ap.png,watch-4-omega.png,watch-5-tag.png' | split: ',' %}
+              {% assign watch_images = 'watch-1-rolex.png,watch-2-patek.png,watch-3-ap.png,watch-4-omega.png,watch-5-tag.png' | split: ',' %}
               {% assign watch_index = forloop.index0 | modulo: 5 %}
               {% assign watch_image = watch_images[watch_index] %}
               <div class="watch-image-wrapper">
