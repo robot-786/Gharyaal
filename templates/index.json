@@ -1438,7 +1438,7 @@
         }
       },
       "settings": {
-        "collection": "super-clone",
+        "collection": "super-clones",
         "layout_type": "carousel",
         "carousel_on_mobile": true,
         "max_products": 12,
