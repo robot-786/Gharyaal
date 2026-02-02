@@ -2049,7 +2049,7 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<h2>WHY WE TAKE RS1000 ADVANCE?</h2>",
+                "text": "<h2>WHY WE TAKE RS 1000 ADVANCE?</h2>",
                 "width": "fill",
                 "max_width": "normal",
                 "alignment": "left",
@@ -2107,7 +2107,7 @@
         "image_FQrm9G",
         "group_UenHMr"
       ],
-      "name": "t:names.image_with_text",
+      "name": "Why we Take Advance",
       "settings": {
         "content_direction": "row",
         "vertical_on_mobile": true,
