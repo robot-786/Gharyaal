@@ -136,6 +136,9 @@ src="https://www.facebook.com/tr?id=664593216744820&ev=PageView&noscript=1"
     {% comment %} Gharyaal Floating Social Buttons - Instagram & WhatsApp {% endcomment %}
     {% render 'floating-social-buttons' %}
 
+    {% comment %} Facebook Pixel Event Tracking {% endcomment %}
+    {% render 'facebook-pixel-events' %}
+
     {% if settings.quick_add or settings.mobile_quick_add %}
       {% render 'quick-add-modal' %}
     {% endif %}
