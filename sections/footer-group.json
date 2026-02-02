@@ -18,7 +18,7 @@
         "bg_color": "#000000",
         "text_color": "#ffffff",
         "col_1_heading": "QUICK LINKS",
-        "col_1_menu": "footer",
+        "col_1_menu": "footer-quick-links-menu",
         "col_2_heading": "CONTACT US",
         "contact_email": "gharyaalbytaimour714@gmail.com",
         "contact_phone": "+92 3259556689",
