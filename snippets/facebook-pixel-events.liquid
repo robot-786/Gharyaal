@@ -1,0 +1,85 @@
+{% comment %}
+  Facebook Pixel Event Tracking
+  Tracks: AddToCart, InitiateCheckout, Purchase
+{% endcomment %}
+
+{%- if template.name == 'product' -%}
+  {%- comment -%} Track Add to Cart on Product Pages {%- endcomment -%}
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Track when product is added to cart
+      document.addEventListener('cart:item-added', function(event) {
+        if (typeof fbq !== 'undefined' && event.detail) {
+          fbq('track', 'AddToCart', {
+            content_name: event.detail.productTitle || '',
+            content_ids: [event.detail.productId || ''],
+            content_type: 'product',
+            value: event.detail.price ? (event.detail.price / 100) : 0,
+            currency: '{{ cart.currency.iso_code }}'
+          });
+        }
+      });
+
+      // Fallback: Track on form submission
+      const forms = document.querySelectorAll('form[action*="/cart/add"]');
+      forms.forEach(form => {
+        form.addEventListener('submit', function() {
+          if (typeof fbq !== 'undefined') {
+            const productTitle = document.querySelector('.product__title, h1')?.textContent?.trim() || '';
+            const productId = form.querySelector('input[name="id"]')?.value || '';
+            const priceElement = document.querySelector('.price-item--regular, .price__regular');
+            const price = priceElement ? parseFloat(priceElement.textContent.replace(/[^0-9.]/g, '')) : 0;
+            
+            fbq('track', 'AddToCart', {
+              content_name: productTitle,
+              content_ids: [productId],
+              content_type: 'product',
+              value: price,
+              currency: '{{ cart.currency.iso_code }}'
+            });
+          }
+        });
+      });
+    });
+  </script>
+{%- endif -%}
+
+{%- if template.name == 'cart' -%}
+  {%- comment -%} Track Initiate Checkout on Cart Page {%- endcomment -%}
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const checkoutButtons = document.querySelectorAll('button[name="checkout"], a[href*="/checkout"]');
+      
+      checkoutButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          if (typeof fbq !== 'undefined') {
+            fbq('track', 'InitiateCheckout', {
+              content_ids: {{ cart.items | map: 'product_id' | json }},
+              content_type: 'product',
+              value: {{ cart.total_price | money_without_currency | remove: ',' }},
+              currency: '{{ cart.currency.iso_code }}',
+              num_items: {{ cart.item_count }}
+            });
+          }
+        });
+      });
+    });
+  </script>
+{%- endif -%}
+
+{%- if template.name == 'customers/order' or checkout.order -%}
+  {%- comment -%} Track Purchase on Thank You Page {%- endcomment -%}
+  {%- if first_time_accessed -%}
+    <script>
+      if (typeof fbq !== 'undefined') {
+        fbq('track', 'Purchase', {
+          content_ids: {{ order.line_items | map: 'product_id' | json }},
+          content_type: 'product',
+          value: {{ order.total_price | money_without_currency | remove: ',' }},
+          currency: '{{ order.currency }}',
+          num_items: {{ order.line_items.size }}
+        });
+      }
+    </script>
+  {%- endif -%}
+{%- endif -%}
