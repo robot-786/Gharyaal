@@ -1,8 +1,91 @@
 {% comment %}
-  Gharyaal Hamburger Menu - Custom navigation with 12 categories
-  Dark luxury theme with gold accents
-  Works on both mobile and desktop
+  Gharyaal Hamburger Menu - Configuration-Based Navigation
+  
+  TO EDIT THE MENU: Scroll down to the menu_items section below and edit the list
+  
+  FORMAT:
+  - parent|handle|Name - Creates a collection link (with or without dropdown)
+  - sub|handle|Name - Creates a subcategory under the last parent
+  - link|url|Name - Creates a custom link
+  
+  IMPORTANT: 
+  - One item per line
+  - Order matters - items appear in the order you list them
+  - Subcategories must come AFTER their parent
 {% endcomment %}
+
+{%- comment -%} Menu Configuration - EDIT THIS LIST {%- endcomment -%}
+{%- assign menu_items = '
+parent|rolex|Rolex
+sub|rolex-submariner|Submariner
+sub|rolex-daytona|Daytona
+sub|rolex-datejust|Datejust
+sub|rolex-daydate|Day-Date
+sub|rolex-gmt|GMT-Master
+sub|rolex-yacht-master|Yacht-Master
+sub|rolex-oyster-perpetual|Oyster Perpetual
+sub|rolex-skydweller|Sky-Dweller
+sub|rolex-land-dweller|Land-Dweller
+sub|rolex-explorer|Explorer
+sub|rolex-1908|1908
+
+parent|patek-philippe|Patek Philippe
+sub|patek-philippe-nautilus|Nautilus
+sub|patek-philippe-aquanaut|Aquanaut
+sub|patek-philippe-skeleton|Skeleton
+sub|patek-philippe-cubitus|Cubitus
+sub|patek-philippe-strap|Leather Strap
+
+parent|audemars-piguet|Audemars Piguet
+sub|audemars-piguet-automatic|Automatic
+sub|audemars-piguet-chronograph|Chronograph
+sub|audemars-piguet-offshore|Royal Oak Offshore
+sub|audemars-piguet-skeleton|Skeleton
+sub|audemars-piguet-strap|Leather Strap
+
+parent|omega|Omega
+sub|omega-bracelet|Metal Bracelet
+sub|omega-strap|Leather Strap
+
+parent|tag-heuer|Tag Heuer
+sub|tag-heuer-bracelet|Metal Bracelet
+sub|tag-heuer-strap|Leather Strap
+
+parent|tissot|Tissot
+sub|tissot-bracelet|Metal Bracelet
+sub|tissot-strap|Leather Strap
+
+parent|hublot|Hublot
+
+parent|super-clone|Super Clones
+sub|super-clone-rolex|Rolex
+sub|super-clone-patek-philippe|Patek Philippe
+sub|super-clone-audemars-piguet|Audemars Piguet
+sub|super-clone-omega|Omega
+sub|super-clone-richard-mille|Richard Mille
+sub|super-clone-franck-muller|Franck Muller
+
+parent|oz-factory|OZ Factory
+sub|oz-factory-rolex|Rolex
+sub|oz-factory-patek-philippe|Patek Philippe
+sub|oz-factory-audemars-piguet|Audemars Piguet
+
+parent|women-watches|Ladies Watches
+sub|women-watches-bracelet|Metal Bracelet
+sub|women-watches-strap|Leather Strap
+
+
+
+parent|budget-watches|Budget Watches
+sub|budget-watches-bracelet|Metal Bracelet
+sub|budget-watches-strap|Leather Strap
+
+parent|stone-watches|Stone Watches
+sub|stone-watches-bracelet|Metal Bracelet
+sub|stone-watches-strap|Leather Strap
+
+' | strip | split: '
+' -%}
 
 <details
   id="Details-gharyaal-menu"
@@ -29,192 +112,104 @@
     </div>
     
     <nav class="gharyaal-drawer-nav" role="navigation">
+      {%- comment -%} Process menu items from configuration {%- endcomment -%}
+      {% assign current_parent = nil %}
+      {% assign current_parent_has_subs = false %}
+      {% assign subcategories_html = '' %}
+      
+      {% for item in menu_items %}
+        {% if item == blank %}{% continue %}{% endif %}
         
-        {%- comment -%} 1. ROLEX {%- endcomment -%}
-        <details class="gharyaal-menu-item">
-          <summary class="gharyaal-menu-link">
-            <span>Rolex</span>
-            <svg class="chevron" width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </summary>
-          <div class="gharyaal-submenu">
-            <a href="/collections/rolex-submariner" class="gharyaal-sublink">Submariner</a>
-            <a href="/collections/rolex-daytona" class="gharyaal-sublink">Daytona</a>
-            <a href="/collections/rolex-datejust" class="gharyaal-sublink">Datejust</a>
-            <a href="/collections/rolex-daydate" class="gharyaal-sublink">Day-Date</a>
-            <a href="/collections/rolex-gmt" class="gharyaal-sublink">GMT-Master</a>
-            <a href="/collections/rolex-yacht-master" class="gharyaal-sublink">Yacht-Master</a>
-            <a href="/collections/rolex-oyster-perpetual" class="gharyaal-sublink">Oyster Perpetual</a>
-            <a href="/collections/rolex-land-dweller" class="gharyaal-sublink">Sea-Dweller</a>
-            <a href="/collections/rolex-skydweller" class="gharyaal-sublink">Sky-Dweller</a>
+        {%- comment -%} Parse item: type|handle|name {%- endcomment -%}
+        {% assign parts = item | split: '|' %}
+        {% assign item_type = parts[0] | strip %}
+        {% assign item_handle = parts[1] | strip %}
+        {% assign item_name = parts[2] | strip %}
+        
+        {% if item_type == 'parent' %}
+          {%- comment -%} Close previous parent if it had subcategories {%- endcomment -%}
+          {% if current_parent and current_parent_has_subs %}
+            {{ subcategories_html }}
+                </div>
+              </details>
+            {% assign subcategories_html = '' %}
+          {% elsif current_parent and current_parent_has_subs == false %}
+            {%- comment -%} Previous parent had no subs, output as direct link {%- endcomment -%}
+            <div class="gharyaal-menu-item">
+              <a href="/collections/{{ current_parent }}" class="gharyaal-menu-link gharyaal-menu-link--no-sub">
+                <span>{{ current_parent_name }}</span>
+              </a>
+            </div>
+          {% endif %}
+          
+          {%- comment -%} Start new parent {%- endcomment -%}
+          {% assign current_parent = item_handle %}
+          {% assign current_parent_name = item_name %}
+          {% assign current_parent_has_subs = false %}
+          {% assign subcategories_html = '' %}
+          
+        {% elsif item_type == 'sub' %}
+          {%- comment -%} This is a subcategory {%- endcomment -%}
+          {% if current_parent_has_subs == false %}
+            {%- comment -%} First subcategory for this parent, create dropdown header {%- endcomment -%}
+            {% assign current_parent_has_subs = true %}
+            {% capture subcategories_html %}
+              <details class="gharyaal-menu-item">
+                <summary class="gharyaal-menu-link">
+                  <span>{{ current_parent_name }}</span>
+                  <svg class="chevron" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </summary>
+                <div class="gharyaal-submenu">
+            {% endcapture %}
+          {% endif %}
+          
+          {%- comment -%} Add subcategory link {%- endcomment -%}
+          {% capture subcategories_html %}{{ subcategories_html }}
+                  <a href="/collections/{{ item_handle }}" class="gharyaal-sublink">
+                    {{ item_name }}
+                  </a>
+          {% endcapture %}
+          
+        {% elsif item_type == 'link' %}
+          {%- comment -%} Close previous parent if exists {%- endcomment -%}
+          {% if current_parent and current_parent_has_subs %}
+            {{ subcategories_html }}
+                </div>
+              </details>
+            {% assign subcategories_html = '' %}
+            {% assign current_parent = nil %}
+          {% elsif current_parent %}
+            <div class="gharyaal-menu-item">
+              <a href="/collections/{{ current_parent }}" class="gharyaal-menu-link gharyaal-menu-link--no-sub">
+                <span>{{ current_parent_name }}</span>
+              </a>
+            </div>
+            {% assign current_parent = nil %}
+          {% endif %}
+          
+          {%- comment -%} Custom link {%- endcomment -%}
+          <div class="gharyaal-menu-item">
+            <a href="{{ item_handle }}" class="gharyaal-menu-link gharyaal-menu-link--no-sub">
+              <span>{{ item_name }}</span>
+            </a>
           </div>
-        </details>
-
-        {%- comment -%} 2. PATEK PHILIPPE {%- endcomment -%}
-        <details class="gharyaal-menu-item">
-          <summary class="gharyaal-menu-link">
-            <span>Patek Philippe</span>
-            <svg class="chevron" width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </summary>
-          <div class="gharyaal-submenu">
-            <a href="/collections/patek-philippe-nautilus" class="gharyaal-sublink">Nautilus</a>
-            <a href="/collections/patek-philippe-aquanaut" class="gharyaal-sublink">Aquanaut</a>
-            <a href="/collections/patek-philippe-skeleton" class="gharyaal-sublink">Skeleton</a>
-            <a href="/collections/patek-philippe-cubitus" class="gharyaal-sublink">Cubitus</a>
-            <a href="/collections/patek-philippe-power-reserve" class="gharyaal-sublink">Power Reserve</a>
-            <a href="/collections/patek-philippe-side-second" class="gharyaal-sublink">Small Seconds</a>
-            <a href="/collections/patek-philippe-strap" class="gharyaal-sublink">Leather Strap</a>
-          </div>
-        </details>
-
-        {%- comment -%} 3. AUDEMARS PIGUET {%- endcomment -%}
-        <details class="gharyaal-menu-item">
-          <summary class="gharyaal-menu-link">
-            <span>Audemars Piguet</span>
-            <svg class="chevron" width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </summary>
-          <div class="gharyaal-submenu">
-            <a href="/collections/audemars-piguet-automatic" class="gharyaal-sublink">Automatic</a>
-            <a href="/collections/audemars-piguet-chronograph" class="gharyaal-sublink">Chronograph</a>
-            <a href="/collections/audemars-piguet-offshore" class="gharyaal-sublink">Royal Oak Offshore</a>
-            <a href="/collections/audemars-piguet-skeleton" class="gharyaal-sublink">Skeleton</a>
-            <a href="/collections/audemars-piguet-strap" class="gharyaal-sublink">Leather Strap</a>
-          </div>
-        </details>
-
-        {%- comment -%} 4. OMEGA {%- endcomment -%}
-        <details class="gharyaal-menu-item">
-          <summary class="gharyaal-menu-link">
-            <span>Omega</span>
-            <svg class="chevron" width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </summary>
-          <div class="gharyaal-submenu">
-            <a href="/collections/omega-bracelet" class="gharyaal-sublink">Metal Bracelet</a>
-            <a href="/collections/omega-strap" class="gharyaal-sublink">Leather Strap</a>
-          </div>
-        </details>
-
-        {%- comment -%} 5. TAG HEUER {%- endcomment -%}
-        <details class="gharyaal-menu-item">
-          <summary class="gharyaal-menu-link">
-            <span>Tag Heuer</span>
-            <svg class="chevron" width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </summary>
-          <div class="gharyaal-submenu">
-            <a href="/collections/tag-heuer-bracelet" class="gharyaal-sublink">Metal Bracelet</a>
-            <a href="/collections/tag-heuer-strap" class="gharyaal-sublink">Leather Strap</a>
-          </div>
-        </details>
-
-        {%- comment -%} 6. TISSOT {%- endcomment -%}
-        <details class="gharyaal-menu-item">
-          <summary class="gharyaal-menu-link">
-            <span>Tissot</span>
-            <svg class="chevron" width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </summary>
-          <div class="gharyaal-submenu">
-            <a href="/collections/tissot-bracelet" class="gharyaal-sublink">Metal Bracelet</a>
-            <a href="/collections/tissot-strap" class="gharyaal-sublink">Leather Strap</a>
-          </div>
-        </details>
-
-        {%- comment -%} 7. HUBLOT (no subcategories) {%- endcomment -%}
+        {% endif %}
+      {% endfor %}
+      
+      {%- comment -%} Close last parent if exists {%- endcomment -%}
+      {% if current_parent and current_parent_has_subs %}
+        {{ subcategories_html }}
+            </div>
+          </details>
+      {% elsif current_parent %}
         <div class="gharyaal-menu-item">
-          <a href="/collections/hublot" class="gharyaal-menu-link gharyaal-menu-link--no-sub">
-            <span>Hublot</span>
+          <a href="/collections/{{ current_parent }}" class="gharyaal-menu-link gharyaal-menu-link--no-sub">
+            <span>{{ current_parent_name }}</span>
           </a>
         </div>
-
-        {%- comment -%} 8. SUPER CLONES {%- endcomment -%}
-        <details class="gharyaal-menu-item">
-          <summary class="gharyaal-menu-link">
-            <span>Super Clones</span>
-            <svg class="chevron" width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </summary>
-          <div class="gharyaal-submenu">
-            <a href="/collections/super-clone-rolex" class="gharyaal-sublink">Rolex</a>
-            <a href="/collections/super-clone-patek-philippe" class="gharyaal-sublink">Patek Philippe</a>
-            <a href="/collections/super-clone-audemars-piguet" class="gharyaal-sublink">Audemars Piguet</a>
-            <a href="/collections/super-clone-omega" class="gharyaal-sublink">Omega</a>
-            <a href="/collections/super-clone-richard-mille" class="gharyaal-sublink">Richard Mille</a>
-            <a href="/collections/super-clone-franck-muller" class="gharyaal-sublink">Franck Muller</a>
-          </div>
-        </details>
-
-        {%- comment -%} 9. OZ Factory {%- endcomment -%}
-        <details class="gharyaal-menu-item">
-          <summary class="gharyaal-menu-link">
-            <span>OZ Factory</span>
-            <svg class="chevron" width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </summary>
-          <div class="gharyaal-submenu">
-            <a href="/collections/oz-factory-rolex" class="gharyaal-sublink">Rolex</a>
-            <a href="/collections/oz-factory-patek-philippe" class="gharyaal-sublink">Patek Philippe</a>
-            <a href="/collections/oz-factory-audemars-piguet" class="gharyaal-sublink">Audemars Piguet</a>
-          </div>
-        </details>
-
-
-        
-        {%- comment -%} 10. WOMEN WATCHES {%- endcomment -%}
-        <details class="gharyaal-menu-item">
-          <summary class="gharyaal-menu-link">
-            <span>Women Watches</span>
-            <svg class="chevron" width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </summary>
-          <div class="gharyaal-submenu">
-            <a href="/collections/women-watches-bracelet" class="gharyaal-sublink">Metal Bracelet</a>
-            <a href="/collections/women-watches-strap" class="gharyaal-sublink">Leather Strap</a>
-          </div>
-        </details>
-
-        {%- comment -%} 11. BUDGET WATCHES {%- endcomment -%}
-        <details class="gharyaal-menu-item">
-          <summary class="gharyaal-menu-link">
-            <span>Budget Watches</span>
-            <svg class="chevron" width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </summary>
-          <div class="gharyaal-submenu">
-            <a href="/collections/budget-watches-bracelet" class="gharyaal-sublink">Metal Bracelet</a>
-            <a href="/collections/budget-watches-strap" class="gharyaal-sublink">Leather Strap</a>
-          </div>
-        </details>
-
-
-        {%- comment -%} 12. STONE WATCHES {%- endcomment -%}
-        <details class="gharyaal-menu-item">
-          <summary class="gharyaal-menu-link">
-            <span>Stone Watches</span>
-            <svg class="chevron" width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </summary>
-          <div class="gharyaal-submenu">
-            <a href="/collections/stone-watches-bracelet" class="gharyaal-sublink">Metal Bracelet</a>
-            <a href="/collections/stone-watches-strap" class="gharyaal-sublink">Leather Strap</a>
-          </div>
-        </details>
-
-
+      {% endif %}
         
       </nav>
     </div>

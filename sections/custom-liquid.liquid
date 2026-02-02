@@ -53,8 +53,14 @@
     {
       "type": "text",
       "id": "contact_phone",
-      "label": "Phone Number",
+      "label": "Phone Number (SIM Calls)",
       "default": "+923268181493"
+    },
+    {
+      "type": "text",
+      "id": "contact_phone_2",
+      "label": "Phone Number (WhatsApp)",
+      "default": "+923001234567"
     },
     {
       "type": "textarea",
@@ -192,7 +198,13 @@
 
       {% if section.settings.contact_phone != blank %}
         <div class="contact-row">
-          <span class="contact-label">Phone:</span> {{ section.settings.contact_phone }}
+          <span class="contact-label">Phone (SIM Calls):</span> {{ section.settings.contact_phone }}
+        </div>
+      {% endif %}
+
+      {% if section.settings.contact_phone_2 != blank %}
+        <div class="contact-row">
+          <span class="contact-label">Phone (WhatsApp):</span> {{ section.settings.contact_phone_2 }}
         </div>
       {% endif %}
 
