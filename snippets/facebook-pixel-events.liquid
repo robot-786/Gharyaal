@@ -6,41 +6,86 @@
 {%- if template.name == 'product' -%}
   {%- comment -%} Track Add to Cart on Product Pages {%- endcomment -%}
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // Track when product is added to cart
-      document.addEventListener('cart:item-added', function(event) {
-        if (typeof fbq !== 'undefined' && event.detail) {
-          fbq('track', 'AddToCart', {
-            content_name: event.detail.productTitle || '',
-            content_ids: [event.detail.productId || ''],
-            content_type: 'product',
-            value: event.detail.price ? (event.detail.price / 100) : 0,
-            currency: '{{ cart.currency.iso_code }}'
-          });
-        }
-      });
+    (function() {
+      if (typeof fbq === 'undefined') return;
 
-      // Fallback: Track on form submission
-      const forms = document.querySelectorAll('form[action*="/cart/add"]');
-      forms.forEach(form => {
-        form.addEventListener('submit', function() {
-          if (typeof fbq !== 'undefined') {
-            const productTitle = document.querySelector('.product__title, h1')?.textContent?.trim() || '';
-            const productId = form.querySelector('input[name="id"]')?.value || '';
-            const priceElement = document.querySelector('.price-item--regular, .price__regular');
-            const price = priceElement ? parseFloat(priceElement.textContent.replace(/[^0-9.]/g, '')) : 0;
-            
-            fbq('track', 'AddToCart', {
-              content_name: productTitle,
-              content_ids: [productId],
-              content_type: 'product',
-              value: price,
-              currency: '{{ cart.currency.iso_code }}'
-            });
+      // Get product data from page
+      const getProductData = () => {
+        const productJson = document.querySelector('[data-product-json], script[type="application/json"][data-product-json]');
+        if (productJson) {
+          try {
+            const product = JSON.parse(productJson.textContent);
+            return {
+              id: product.id,
+              title: product.title,
+              price: product.price / 100,
+              variant: product.selected_or_first_available_variant?.id
+            };
+          } catch (e) {
+            console.error('Error parsing product JSON:', e);
+          }
+        }
+        return null;
+      };
+
+      // Listen for cart updates (Shopify's native event)
+      document.addEventListener('DOMContentLoaded', function() {
+        // Method 1: Intercept fetch requests to /cart/add.js
+        const originalFetch = window.fetch;
+        window.fetch = function(...args) {
+          const url = args[0];
+          if (typeof url === 'string' && url.includes('/cart/add')) {
+            const product = getProductData();
+            if (product) {
+              fbq('track', 'AddToCart', {
+                content_name: product.title,
+                content_ids: [String(product.id)],
+                content_type: 'product',
+                value: product.price,
+                currency: '{{ cart.currency.iso_code }}'
+              });
+            }
+          }
+          return originalFetch.apply(this, args);
+        };
+
+        // Method 2: Listen for form submissions
+        const forms = document.querySelectorAll('form[action*="/cart/add"]');
+        forms.forEach(form => {
+          form.addEventListener('submit', function(e) {
+            const product = getProductData();
+            if (product) {
+              fbq('track', 'AddToCart', {
+                content_name: product.title,
+                content_ids: [String(product.id)],
+                content_type: 'product',
+                value: product.price,
+                currency: '{{ cart.currency.iso_code }}'
+              });
+            }
+          });
+        });
+
+        // Method 3: Listen for quick add buttons
+        document.addEventListener('click', function(e) {
+          const button = e.target.closest('[name="add"], button[type="submit"]');
+          if (button && button.form?.action?.includes('/cart/add')) {
+            const product = getProductData();
+            if (product) {
+              setTimeout(() => {
+                fbq('track', 'AddToCart', {
+                  content_name: product.title,
+                  content_ids: [String(product.id)],
+                  content_type: 'product',
+                  value: product.price,
+                  currency: '{{ cart.currency.iso_code }}'
+                });
+              }, 100);
+            }
           }
         });
       });
-    });
+    })();
   </script>
 {%- endif -%}
 
