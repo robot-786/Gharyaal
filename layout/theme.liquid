@@ -142,5 +142,6 @@ src="https://www.facebook.com/tr?id=664593216744820&ev=PageView&noscript=1"
     {% if settings.quick_add or settings.mobile_quick_add %}
       {% render 'quick-add-modal' %}
     {% endif %}
-  </body>
+  <script src="{{ 'tiny-img-link-preloader.js' | asset_url }}" defer></script>
+</body>
 </html>
