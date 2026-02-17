@@ -41,7 +41,7 @@
     {% if request.design_mode %}
       {%- render 'theme-editor' -%}
     {% endif %}
-    <!-- Meta Pixel Code -->
+    {% comment %} <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -57,7 +57,7 @@ fbq('track', 'PageView');
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=664593216744820&ev=PageView&noscript=1"
 /></noscript>
-<!-- End Meta Pixel Code -->
+<!-- End Meta Pixel Code --> {% endcomment %}
     {{ content_for_header }}
   </head>
 
