@@ -108,6 +108,14 @@
                 "padding-inline-end": 0
               },
               "blocks": {
+                "custom_liquid_QEcWF8": {
+                  "type": "custom-liquid",
+                  "name": "t:names.custom_liquid",
+                  "settings": {
+                    "custom_liquid": "<style>\n.rating-inline {\n  display: inline-flex;\n  align-items: center;\n  gap: 8px;\n  font-family: Arial, sans-serif;\n  font-size: 14px;\n  line-height: 1;\n  background: transparent; /* removed white background */\n}\n\n.rating-inline .stars {\n  display: inline-flex;\n  align-items: center;\n  gap: 4px;\n}\n\n.rating-inline .stars svg {\n  width: 14px;\n  height: 14px;\n}\n\n.rating-inline .stars .star-filled { fill: #F5A623; }\n.rating-inline .stars .star-empty  { fill: #D9D9D9; }\n\n.rating-inline .text {\n  color: #ffffff; /* text → white */\n  font-weight: 400;\n}\n\n.rating-inline .text strong {\n  color: #ffffff; /* rating number → white */\n  font-weight: 700;\n}\n</style>\n\n<div class=\"rating-inline\">\n  <div class=\"stars\">\n    <svg class=\"star-filled\" viewBox=\"0 0 24 24\"><path d=\"M12 .587l3.668 7.57 8.332 1.151-6.064 5.936 1.432 8.293L12 18.896l-7.368 4.641 1.432-8.293L.001 9.308l8.331-1.151z\"/></svg>\n    <svg class=\"star-filled\" viewBox=\"0 0 24 24\"><path d=\"M12 .587l3.668 7.57 8.332 1.151-6.064 5.936 1.432 8.293L12 18.896l-7.368 4.641 1.432-8.293L.001 9.308l8.331-1.151z\"/></svg>\n    <svg class=\"star-filled\" viewBox=\"0 0 24 24\"><path d=\"M12 .587l3.668 7.57 8.332 1.151-6.064 5.936 1.432 8.293L12 18.896l-7.368 4.641 1.432-8.293L.001 9.308l8.331-1.151z\"/></svg>\n    <svg class=\"star-filled\" viewBox=\"0 0 24 24\"><path d=\"M12 .587l3.668 7.57 8.332 1.151-6.064 5.936 1.432 8.293L12 18.896l-7.368 4.641 1.432-8.293L.001 9.308l8.331-1.151z\"/></svg>\n    <svg class=\"star-empty\" viewBox=\"0 0 24 24\"><path d=\"M12 .587l3.668 7.57 8.332 1.151-6.064 5.936 1.432 8.293L12 18.896l-7.368 4.641 1.432-8.293L.001 9.308l8.331-1.151z\"/></svg>\n  </div>\n\n  <div class=\"text\"><strong>4.8</strong> from 29 reviews</div>\n</div>"
+                  },
+                  "blocks": {}
+                },
                 "text_xrnftG": {
                   "type": "text",
                   "name": "Product title",
@@ -158,6 +166,7 @@
                 }
               },
               "block_order": [
+                "custom_liquid_QEcWF8",
                 "text_xrnftG",
                 "price_tVjtKg"
               ]
