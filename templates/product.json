@@ -174,6 +174,7 @@
             "divider_VJhene": {
               "type": "_divider",
               "name": "t:names.divider",
+              "disabled": true,
               "settings": {
                 "thickness": 1,
                 "corner_radius": "square",
@@ -240,6 +241,13 @@
             },
             "guarantees_block": {
               "type": "custom-liquid",
+              "settings": {
+                "custom_liquid": "<style>\n.whatsapp-product-btn {\n  display: block;\n  width: 100%;\n  text-align: center;\n  background: #25D366;\n  color: #000;\n  padding: 14px 0;\n  border-radius: 10px;\n  font-size: 16px;\n  font-weight: 700;\n  text-decoration: none;\n  margin-top: 8px !important; /* Reduced gap */\n}\n\n.whatsapp-product-btn:hover {\n  opacity: 0.9;\n}\n</style>\n\n<a href=\"https://api.whatsapp.com/send/?phone=923259556689&text&type=phone_number&app_absent=0\" \n   target=\"_blank\" \n   class=\"whatsapp-product-btn\">\n   Order on WhatsApp\n</a>"
+              },
+              "blocks": {}
+            },
+            "custom_liquid_mAPgYb": {
+              "type": "custom-liquid",
               "disabled": true,
               "settings": {
                 "custom_liquid": "{% render 'product-guarantees' %}"
@@ -288,6 +296,7 @@
             "variant_picker_R3rGDr",
             "buy_buttons_eYQEYi",
             "guarantees_block",
+            "custom_liquid_mAPgYb",
             "custom_liquid_FBYfLa",
             "text_aEtTtq"
           ]
