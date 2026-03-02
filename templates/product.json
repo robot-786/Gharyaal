@@ -455,10 +455,238 @@
         "padding-block-start": 48,
         "padding-block-end": 48
       }
+    },
+    "why_choose_us_YQT3fD": {
+      "type": "why-choose-us",
+      "blocks": {
+        "feature_FGX9FA": {
+          "type": "feature",
+          "settings": {
+            "icon_svg": "",
+            "icon_name": "checkmark",
+            "title": "Premium Quality",
+            "description": "Master copies crafted with precision and attention to detail."
+          }
+        },
+        "feature_9etqew": {
+          "type": "feature",
+          "settings": {
+            "icon_svg": "",
+            "icon_name": "truck",
+            "title": "Fast Shipping",
+            "description": "Quick and secure delivery across Pakistan."
+          }
+        },
+        "feature_XyeHi7": {
+          "type": "feature",
+          "settings": {
+            "icon_svg": "",
+            "icon_name": "shield",
+            "title": "100% Authentic",
+            "description": "Guaranteed authenticity on every timepiece."
+          }
+        },
+        "feature_zzjxCX": {
+          "type": "feature",
+          "settings": {
+            "icon_svg": "",
+            "icon_name": "heart",
+            "title": "Customer Support",
+            "description": "24/7 support to help you with any questions."
+          }
+        }
+      },
+      "block_order": [
+        "feature_FGX9FA",
+        "feature_9etqew",
+        "feature_XyeHi7",
+        "feature_zzjxCX"
+      ],
+      "name": "Why Choose Us",
+      "settings": {
+        "section_width": "page-width",
+        "color_scheme": "",
+        "gap": 24,
+        "padding-block-start": 16,
+        "padding-block-end": 16
+      }
+    },
+    "section_63c34d": {
+      "type": "section",
+      "blocks": {
+        "image_QbdAXA": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/IMG_7245_1.webp",
+            "link": "",
+            "image_ratio": "square",
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "group_YKfBHT": {
+          "type": "group",
+          "settings": {
+            "content_direction": "column",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 12,
+            "width": "custom",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "background_media": "none",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "toggle_overlay": false,
+            "overlay_color": "#00000026",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "link": "",
+            "open_in_new_tab": false,
+            "placeholder": "",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "text_HWkWz4": {
+              "type": "text",
+              "name": "t:names.heading",
+              "settings": {
+                "text": "<h2>WHY WE TAKE RS.1000 ADVANCE?</h2>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "center",
+                "type_preset": "h3",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground-heading)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "text_77eC3g": {
+              "type": "text",
+              "settings": {
+                "text": "<p>We take <strong>Rs.1000 advance</strong> as a deposit for the confirmation of your orders. Because most of the time people do order watches for fun but at the end of the day they don't pay for their parcels.</p><p>Due to this we lose packaging cost, transportation cost, labor cost, & wasted time. So to overcome that we only ship orders after receiving <strong>Rs 1000 in advance</strong>.</p><p>Serious buyers will do that, others will cancel right away & we can save time for our genuine customers.</p><p><strong>Hope you understand the thought.</strong></p>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "center",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "button_YEEjjn": {
+              "type": "button",
+              "disabled": true,
+              "settings": {
+                "label": "Shop now",
+                "link": "shopify://collections/all",
+                "open_in_new_tab": false,
+                "style_class": "button",
+                "width": "fit-content",
+                "custom_width": 100,
+                "width_mobile": "fit-content",
+                "custom_width_mobile": 100
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "text_HWkWz4",
+            "text_77eC3g",
+            "button_YEEjjn"
+          ]
+        }
+      },
+      "block_order": [
+        "image_QbdAXA",
+        "group_YKfBHT"
+      ],
+      "name": "t:names.image_with_text",
+      "settings": {
+        "content_direction": "row",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 32,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "color_scheme": "",
+        "background_media": "none",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_radius": 0,
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "padding-block-start": 40,
+        "padding-block-end": 40
+      }
     }
   },
   "order": [
     "main",
-    "product_recommendations_hmWtwj"
+    "product_recommendations_hmWtwj",
+    "why_choose_us_YQT3fD",
+    "section_63c34d"
   ]
 }
