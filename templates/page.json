@@ -6,7 +6,8 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */{
+ */
+{
   "sections": {
     "main": {
       "type": "main-page",
@@ -41,11 +42,45 @@
           "type": "page-content",
           "settings": {},
           "blocks": {}
+        },
+        "ai_gen_block_b54c7d0_JGczKx": {
+          "type": "ai_gen_block_b54c7d0",
+          "settings": {
+            "show_icon": false,
+            "heading": "Our Location",
+            "address": "H/NO: X-390, Old Ratta Amral",
+            "show_map_link": false,
+            "map_link": "",
+            "button_text": "Get Directions",
+            "desktop_width_percent": 100,
+            "alignment": "center",
+            "text_alignment": "center",
+            "spacing": 20,
+            "padding_top": 48,
+            "padding_bottom": 48,
+            "padding_horizontal": 24,
+            "background_color": "#ffffff",
+            "heading_color": "#d4af37",
+            "text_color": "#000000",
+            "icon_color": "#d4af37",
+            "heading_size": 32,
+            "text_size": 16,
+            "icon_size": 48,
+            "button_background": "#000000",
+            "button_hover_background": "#333333",
+            "button_text_color": "#ffffff",
+            "button_text_size": 14,
+            "button_padding": 8,
+            "button_border_radius": 6,
+            "border_radius": 0
+          },
+          "blocks": {}
         }
       },
       "block_order": [
         "heading",
-        "page-content"
+        "page-content",
+        "ai_gen_block_b54c7d0_JGczKx"
       ],
       "settings": {
         "content_direction": "column",
