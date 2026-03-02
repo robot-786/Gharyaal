@@ -681,12 +681,73 @@
         "padding-block-start": 40,
         "padding-block-end": 40
       }
+    },
+    "blocks_4rKRhW": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_af9fe91_PxGByr": {
+          "type": "ai_gen_block_af9fe91",
+          "settings": {
+            "heading": "Customer Reviews",
+            "heading_size": 32,
+            "background_color": "#000000",
+            "heading_color": "#000000",
+            "border_color": "#0000000f",
+            "grid_gap": 8,
+            "image_border_radius": 4,
+            "desktop_width_percent": 100,
+            "review_image_1": "shopify://shop_images/01d9b86d-cadc-4965-8309-7050d903cf94.jpg",
+            "review_image_2": "shopify://shop_images/7b3051ee-5b37-409e-a1c3-97936521abe1.jpg",
+            "review_image_3": "shopify://shop_images/4caec17e-8edb-4788-a89c-fe19f8434ab0.jpg",
+            "review_image_4": "shopify://shop_images/d7940af5-a8d1-45b2-83af-c94c89127ba9.jpg",
+            "review_image_5": "shopify://shop_images/5d86dbd3-057b-4e17-a1a0-b94064b0a254.jpg",
+            "review_image_6": "shopify://shop_images/9f6e3e02-f444-4613-b532-39f4e74b228e.jpg",
+            "review_image_7": "shopify://shop_images/cb1cc960-ef3a-4abe-92e5-e90143f0975a.jpg",
+            "review_image_8": "shopify://shop_images/029a7f01-71fc-4d61-bafb-12ed70f44743.jpg",
+            "review_image_9": "shopify://shop_images/99ad7995-0b73-421d-8e94-00988001ee45.jpg",
+            "review_image_10": "shopify://shop_images/326b15da-bad4-41db-b492-0c6b67a94a11.jpg"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_af9fe91_PxGByr"
+      ],
+      "name": "Customer review grid",
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "center",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 12,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "color_scheme": "scheme-5",
+        "background_media": "none",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_radius": 0,
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
     }
   },
   "order": [
     "main",
     "product_recommendations_hmWtwj",
     "why_choose_us_YQT3fD",
-    "section_63c34d"
+    "section_63c34d",
+    "blocks_4rKRhW"
   ]
 }
